@@ -104,7 +104,9 @@
       exec-once = [
         "kitty"
         "nm-applet &"
-        "waybar & hyprpaper --image ../pictures/bridge.png & brave"
+        "waybar &"
+        "hyprpaper --config ~/.config/hypr/hyprpaper.conf &"
+        "brave"
       ];
 
       # KEYBINDINGS
@@ -183,5 +185,12 @@
     $color13 = rgba(7BC7DDee)
     $color14 = rgba(9CB4E3ee)
     $color15 = rgba(c3dde7ee)
+  '';
+
+  home.file.".config/hypr/hyprpaper.conf".text = ''
+    preload = ~/nixos-config/modules/home-manager/pictures/bridge.png
+    wallpaper = HDMI-A-1,~/nixos-config/modules/home-manager/pictures/bridge.png
+    wallpaper = DP-2,~/nixos-config/modules/home-manager/pictures/bridge.png
+    wallpaper = HDMI-A-2,~/nixos-config/modules/home-manager/pictures/bridge.png
   '';
 }
