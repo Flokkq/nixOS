@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  colorScheme = import ./terminal-catppuccin-mocha-color-scheme.nix;
+  colors = import ./terminal-catppuccin-mocha-color-scheme.nix;
 in {
   home.packages = with pkgs; [
     alacritty
@@ -21,38 +21,38 @@ opacity = 1
 
 [colors]
   [colors.primary]
-    background = "${colorScheme.primary.background}"
-    foreground = "${colorScheme.primary.foreground}"
-    dim_foreground = "${colorScheme.primary.dim_foreground}"
-    bright_foreground = "${colorScheme.primary.bright_foreground}"
+    background = "${colors.primary.background}"
+    foreground = "${colors.primary.foreground}"
+    dim_foreground = "${colors.primary.dim_foreground}"
+    bright_foreground = "${colors.primary.bright_foreground}"
 
   [colors.cursor]
-    text = "${colorScheme.cursor.text}"
-    cursor = "${colorScheme.cursor.cursor}"
+    text = "${colors.cursor.text}"
+    cursor = "${colors.cursor.cursor}"
 
   [colors.selection]
-    text = "${colorScheme.selection.text}"
-    background = "${colorScheme.selection.background}"
+    text = "${colors.selection.text}"
+    background = "${colors.selection.background}"
 
   [colors.normal]
-    black = "${colorScheme.normal.black}"
-    red = "${colorScheme.normal.red}"
-    green = "${colorScheme.normal.green}"
-    yellow = "${colorScheme.normal.yellow}"
-    blue = "${colorScheme.normal.blue}"
-    magenta = "${colorScheme.normal.magenta}"
-    cyan = "${colorScheme.normal.cyan}"
-    white = "${colorScheme.normal.white}"
+    black = "${colors.normal.black}"
+    red = "${colors.normal.red}"
+    green = "${colors.normal.green}"
+    yellow = "${colors.normal.yellow}"
+    blue = "${colors.normal.blue}"
+    magenta = "${colors.normal.magenta}"
+    cyan = "${colors.normal.cyan}"
+    white = "${colors.normal.white}"
 
   [colors.bright]
-    black = "${colorScheme.bright.black}"
-    red = "${colorScheme.bright.red}"
-    green = "${colorScheme.bright.green}"
-    yellow = "${colorScheme.bright.yellow}"
-    blue = "${colorScheme.bright.blue}"
-    magenta = "${colorScheme.bright.magenta}"
-    cyan = "${colorScheme.bright.cyan}"
-    white = "${colorScheme.bright.white}"
+    black = "${colors.bright.black}"
+    red = "${colors.bright.red}"
+    green = "${colors.bright.green}"
+    yellow = "${colors.bright.yellow}"
+    blue = "${colors.bright.blue}"
+    magenta = "${colors.bright.magenta}"
+    cyan = "${colors.bright.cyan}"
+    white = "${colors.bright.white}"
 
 [bell]
 animation = "EaseOutExpo"

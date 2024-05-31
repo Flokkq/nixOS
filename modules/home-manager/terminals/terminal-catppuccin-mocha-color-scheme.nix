@@ -14,6 +14,31 @@ let
       text = "#1E1E2E";
       background = "#F5E0DC";
     };
+    url = "#F5E0DC";
+    border = {
+      active = "#B4BEFE";
+      inactive = "#6C7086";
+      bell = "#F9E2AF";
+    };
+    titlebar = {
+      wayland = "#1E1E2E";
+      macos = "#1E1E2E";
+    };
+    tab_bar = {
+      active_foreground = "#11111B";
+      active_background = "#CBA6F7";
+      inactive_foreground = "#CDD6F4";
+      inactive_background = "#181825";
+      background = "#11111B";
+    };
+    mark = {
+      mark1_foreground = "#1E1E2E";
+      mark1_background = "#B4BEFE";
+      mark2_foreground = "#1E1E2E";
+      mark2_background = "#CBA6F7";
+      mark3_foreground = "#1E1E2E";
+      mark3_background = "#74C7EC";
+    };
     normal = {
       black = "#45475A";
       red = "#F38BA8";
