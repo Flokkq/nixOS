@@ -13,147 +13,153 @@
     hyprpaper
   ];
 
-  # Uncomment the following line if needed
-  # systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
-    extraConfig = ''
+    settings = {
       # MONITORS
-      monitor=HDMI-A-1,1920x1080@74.97,auto,auto
-      monitor=DP-2,2560x1440@143.86,auto,auto
-      monitor=HDMI-A-2,1920x1080@74.97,auto,auto
+      monitor = [
+        "HDMI-A-1,1920x1080@74.97,auto,auto"
+        "DP-2,2560x1440@143.86,auto,auto"
+        "HDMI-A-2,1920x1080@74.97,auto,auto"
+      ];
 
       # ENVIRONMENT VARIABLES
-      env = XCURSOR_SIZE,24
-      env = HYPRCURSOR_SIZE,24
+      env = [
+        "XCURSOR_SIZE,24"
+        "HYPRCURSOR_SIZE,24"
+      ];
 
       # INPUT
-      input {
-          follow_mouse = 1
-
-          sensitivity = 0
-
-          touchpad {
-              natural_scroll = false
-          }
-      }
+      input = {
+        follow_mouse = 1;
+        sensitivity = 0;
+        touchpad = {
+          natural_scroll = false;
+        };
+      };
 
       # LOOK AND FEEL
-      general {
-          gaps_in = 5
-          gaps_out = 20
-          border_size = 2
-          col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-          col.inactive_border = rgba(595959aa)
+      general = {
+        gaps_in = 5;
+        gaps_out = 20;
+        border_size = 2;
+        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        "col.inactive_border" = "rgba(595959aa)";
+        resize_on_border = false;
+        allow_tearing = false;
+        layout = "dwindle";
+      };
 
-          resize_on_border = false
-          allow_tearing = false
-          layout = dwindle
-      }
+      decoration = {
+        rounding = 10;
+        active_opacity = 1.0;
+        inactive_opacity = 1.0;
+        drop_shadow = true;
+        shadow_range = 4;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(1a1a1aee)";
+        blur = {
+          enabled = true;
+          size = 3;
+          passes = 1;
+          vibrancy = 0.1696;
+        };
+      };
 
-      decoration {
-          rounding = 10
-          active_opacity = 1.0
-          inactive_opacity = 1.0
+      animations = {
+        enabled = true;
+        bezier = [
+          "myBezier, 0.05, 0.9, 0.1, 1.05"
+        ];
+        animation = [
+          "windows, 1, 7, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 7, default"
+          "workspaces, 1, 6, default"
+        ];
+      };
 
-          drop_shadow = true
-          shadow_range = 4
-          shadow_render_power = 3
-          col.shadow = rgba(1a1a1aee)
+      dwindle = {
+        pseudotile = true;
+        preserve_split = true;
+      };
 
-          blur {
-              enabled = true
-              size = 3
-              passes = 1
-              vibrancy = 0.1696
-          }
-      }
+      master = {
+        new_is_master = true;
+      };
 
-      animations {
-          enabled = true
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-          animation = border, 1, 10, default
-          animation = borderangle, 1, 8, default
-          animation = fade, 1, 7, default
-          animation = workspaces, 1, 6, default
-      }
+      misc = {
+        force_default_wallpaper = -1;
+        disable_hyprland_logo = false;
+      };
 
-      dwindle {
-          pseudotile = true
-          preserve_split = true
-      }
-
-      master {
-          new_is_master = true
-      }
-
-      misc {
-          force_default_wallpaper = -1
-          disable_hyprland_logo = false
-      }
-
-      gestures {
-          workspace_swipe = false
-      }
+      gestures = {
+        workspace_swipe = false;
+      };
 
       # AUTOSTART
-      exec-once = kitty
-      exec-once = nm-applet &
-      exec-once = waybar & hyprpaper & brave
+      exec-once = [
+        "kitty"
+        "nm-applet &"
+        "waybar & hyprpaper --image ../pictures/bridge.png & brave"
+      ];
 
       # KEYBINDINGS
-      $mainMod = SUPER
+      "$mainMod" = "SUPER";
+      bind = [
+        "$mainMod, Q, exec, kitty"
+        "$mainMod, C, killactive,"
+        "$mainMod, E, exec, dolphin"
+        "$mainMod, V, togglefloating,"
+        "$mainMod, space, exec, wofi --show drun"
+        "$mainMod, P, pseudo,"
+        "$mainMod, H, movefocus, l"
+        "$mainMod, L, movefocus, r"
+        "$mainMod, K, movefocus, u"
+        "$mainMod, J, movefocus, d"
+        "$mainMod, left, movefocus, l"
+        "$mainMod, right, movefocus, r"
+        "$mainMod, up, movefocus, u"
+        "$mainMod, down, movefocus, d"
+        "$mainMod, 1, workspace, 1"
+        "$mainMod, 2, workspace, 2"
+        "$mainMod, 3, workspace, 3"
+        "$mainMod, 4, workspace, 4"
+        "$mainMod, 5, workspace, 5"
+        "$mainMod, 6, workspace, 6"
+        "$mainMod, 7, workspace, 7"
+        "$mainMod, 8, workspace, 8"
+        "$mainMod, 9, workspace, 9"
+        "$mainMod, 0, workspace, 10"
+        "$mainMod SHIFT, 1, movetoworkspace, 1"
+        "$mainMod SHIFT, 2, movetoworkspace, 2"
+        "$mainMod SHIFT, 3, movetoworkspace, 3"
+        "$mainMod SHIFT, 4, movetoworkspace, 4"
+        "$mainMod SHIFT, 5, movetoworkspace, 5"
+        "$mainMod SHIFT, 6, movetoworkspace, 6"
+        "$mainMod SHIFT, 7, movetoworkspace, 7"
+        "$mainMod SHIFT, 8, movetoworkspace, 8"
+        "$mainMod SHIFT, 9, movetoworkspace, 9"
+        "$mainMod SHIFT, 0, movetoworkspace, 10"
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+      ];
 
-      bind = $mainMod, Q, exec, kitty
-      bind = $mainMod, C, killactive,
-      bind = $mainMod, E, exec, dolphin
-      bind = $mainMod, V, togglefloating,
-      bind = $mainMod, space, exec, wofi --show drun
-      bind = $mainMod, P, pseudo,
+      bindm = [
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+      ];
 
-      bind = $mainMod, H, movefocus, l
-      bind = $mainMod, L, movefocus, r
-      bind = $mainMod, K, movefocus, u
-      bind = $mainMod, J, movefocus, d
+      windowrulev2 = [
+        "suppressevent maximize, class:.*"
+      ];
+    };
 
-      bind = $mainMod, left, movefocus, l
-      bind = $mainMod, right, movefocus, r
-      bind = $mainMod, up, movefocus, u
-      bind = $mainMod, down, movefocus, d
-
-      bind = $mainMod, 1, workspace, 1
-      bind = $mainMod, 2, workspace, 2
-      bind = $mainMod, 3, workspace, 3
-      bind = $mainMod, 4, workspace, 4
-      bind = $mainMod, 5, workspace, 5
-      bind = $mainMod, 6, workspace, 6
-      bind = $mainMod, 7, workspace, 7
-      bind = $mainMod, 8, workspace, 8
-      bind = $mainMod, 9, workspace, 9
-      bind = $mainMod, 0, workspace, 10
-
-      bind = $mainMod SHIFT, 1, movetoworkspace, 1
-      bind = $mainMod SHIFT, 2, movetoworkspace, 2
-      bind = $mainMod SHIFT, 3, movetoworkspace, 3
-      bind = $mainMod SHIFT, 4, movetoworkspace, 4
-      bind = $mainMod SHIFT, 5, movetoworkspace, 5
-      bind = $mainMod SHIFT, 6, movetoworkspace, 6
-      bind = $mainMod SHIFT, 7, movetoworkspace, 7
-      bind = $mainMod SHIFT, 8, movetoworkspace, 8
-      bind = $mainMod SHIFT, 9, movetoworkspace, 9
-      bind = $mainMod SHIFT, 0, movetoworkspace, 10
-
-      bind = $mainMod, mouse_down, workspace, e+1
-      bind = $mainMod, mouse_up, workspace, e-1
-
-      bindm = $mainMod, mouse:272, movewindow
-      bindm = $mainMod, mouse:273, resizewindow
-
-      windowrulev2 = suppressevent maximize, class:.*
+    extraConfig = ''
+      # additional non-Nix-configurable settings
     '';
   };
 

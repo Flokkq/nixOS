@@ -95,6 +95,7 @@
       bat
       xclip
       xorg.xev
+      gh
     ];
   };
 

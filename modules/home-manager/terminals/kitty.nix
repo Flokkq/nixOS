@@ -13,14 +13,14 @@ in {
       scrollback_lines = 10000;
       enable_audio_bell = false;
       update_check_interval = 0;
-      font_size = 13;
+      font_size = 11;
       cursor_shape = "Block";
       cursor_underline_thickness = 1;
       window_padding_width = 10;
       url_style = "curly";
       confirm_os_window_close = "0";
       remember_window_size = "no";
-      disable_ligatures = "never";
+      disable_ligatures = "always";
       shell = "${pkgs.tmux}/bin/tmux";
       initial_window_width = 1200;
       initial_window_height = 600;
