@@ -26,6 +26,11 @@ let
 in
 with lib;
 {
+  home.packages = with pkgs; [
+    pavucontrol
+    wlogout
+  ];
+
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
