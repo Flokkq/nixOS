@@ -5,6 +5,8 @@
     ./hyprland-environment.nix
     ./colors.nix
     ./hyprpaper.nix
+    ./hypridle.nix
+    ./hyprlock.nix
   ];
 
   home.packages = with pkgs; [
@@ -107,6 +109,7 @@
         "nm-applet &"
         "waybar &"
         "hyprpaper --config ~/.config/hypr/hyprpaper.conf &"
+        "hypridle --config ~/.config/hypr/hypridle.conf"
         "brave"
       ];
 
