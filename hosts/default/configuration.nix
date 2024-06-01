@@ -96,6 +96,7 @@
       xclip
       xorg.xev
       gh
+      yad
     ];
   };
 

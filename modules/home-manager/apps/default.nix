@@ -6,6 +6,5 @@
     ./communication.nix
     ./devtools.nix
     ./onepassword.nix
-    ./waybar.nix
   ];
 }

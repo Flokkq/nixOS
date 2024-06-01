@@ -6,5 +6,6 @@
     ./terminals
     ./shells
     ./hypr
+    ./waybar.nix
   ];
 }
