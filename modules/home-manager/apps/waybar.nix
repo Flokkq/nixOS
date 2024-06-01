@@ -153,8 +153,7 @@ with lib;
         "custom/startmenu" = {
           tooltip = false;
           format = "";
-          # exec = "rofi -show drun";
-          on-click = "sleep 0.1 && wofi";
+          on-click = "sleep 0.1 && wofi --show drun";
         };
 
         "custom/hyprbindings" = {

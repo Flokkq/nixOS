@@ -3,6 +3,8 @@
 {
   imports = [
     ./hyprland-environment.nix
+    ./colors.nix
+    ./hyprpaper.nix
   ];
 
   home.packages = with pkgs; [
@@ -108,15 +110,21 @@
         "brave"
       ];
 
-      # KEYBINDINGS
+      # Keybindings
       "$mainMod" = "SUPER";
+      
       bind = [
+        # Launch Applications
         "$mainMod, Q, exec, kitty"
-        "$mainMod, C, killactive,"
         "$mainMod, E, exec, dolphin"
-        "$mainMod, V, togglefloating,"
         "$mainMod, space, exec, wofi --show drun"
+      
+        # Window Management
+        "$mainMod, C, killactive,"
+        "$mainMod, V, togglefloating,"
         "$mainMod, P, pseudo,"
+      
+        # Move Focus
         "$mainMod, H, movefocus, l"
         "$mainMod, L, movefocus, r"
         "$mainMod, K, movefocus, u"
@@ -125,6 +133,8 @@
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
+      
+        # Workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -135,6 +145,7 @@
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
+
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -145,10 +156,29 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
+      
+        # Workspace Navigation with Mouse
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
+      
+        # Move Windows on the Same Screen
+        "$mainMod SHIFT, J, exec, hyprctl dispatch movewindow south"
+        "$mainMod SHIFT, K, exec, hyprctl dispatch movewindow north"
+        "$mainMod SHIFT, H, exec, hyprctl dispatch movewindow west"
+        "$mainMod SHIFT, L, exec, hyprctl dispatch movewindow east"
+      
+        # Move Focus to Another Display
+        "$mainMod, S, exec, hyprctl dispatch focusmonitor west"
+        "$mainMod, G, exec, hyprctl dispatch focusmonitor east"
+      
+        # Move Windows to Another Display
+        "$mainMod SHIFT, S, exec, hyprctl dispatch movetomonitor west"
+        "$mainMod SHIFT, G, exec, hyprctl dispatch movetomonitor east"
+      
+        # Maximize Window (Resizes to a normal size instead of full screen)
+        "$mainMod SHIFT, M, exec, hyprctl dispatch resize active 100% 100%"
       ];
-
+      
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
@@ -164,32 +194,4 @@
     '';
   };
 
-  home.file.".config/hypr/colors".text = ''
-    $background = rgba(1d192bee)
-    $foreground = rgba(c3dde7ee)
-
-    $color0 = rgba(1d192bee)
-    $color1 = rgba(465EA7ee)
-    $color2 = rgba(5A89B6ee)
-    $color3 = rgba(6296CAee)
-    $color4 = rgba(73B3D4ee)
-    $color5 = rgba(7BC7DDee)
-    $color6 = rgba(9CB4E3ee)
-    $color7 = rgba(c3dde7ee)
-    $color8 = rgba(889aa1ee)
-    $color9 = rgba(465EA7ee)
-    $color10 = rgba(5A89B6ee)
-    $color11 = rgba(6296CAee)
-    $color12 = rgba(73B3D4ee)
-    $color13 = rgba(7BC7DDee)
-    $color14 = rgba(9CB4E3ee)
-    $color15 = rgba(c3dde7ee)
-  '';
-
-  home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ~/nixos-config/modules/home-manager/pictures/bridge.png
-    wallpaper = HDMI-A-1,~/nixos-config/modules/home-manager/pictures/bridge.png
-    wallpaper = DP-2,~/nixos-config/modules/home-manager/pictures/bridge.png
-    wallpaper = HDMI-A-2,~/nixos-config/modules/home-manager/pictures/bridge.png
-  '';
 }
