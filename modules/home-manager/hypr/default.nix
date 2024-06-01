@@ -115,27 +115,48 @@
 
       # Keybindings
       "$mainMod" = "SUPER";
-      
+      /* bind = [
+      ]; */
+
       bind = [
         # Launch Applications
-        "$mainMod, Q, exec, kitty"
-        "$mainMod, E, exec, dolphin"
-        "$mainMod, space, exec, wofi --show drun"
+        "$mainMod, SPACE, exec,  wofi --show drun"
+        "$mainMod SHIFT, SPACE, exec, kitty"
+        "$mainMod, Q, killactive"
+        "$mainMod SHIFT, W, exec, web-search"
+        "$mainMod SHIFT, N, exec, swaync-client -rs"
+        "$mainMod, W, exec, brave"
+        "$mainMod, S, exec, screenshootin"
+        "$mainMod, D, exec, discord"
+        "$mainMod, N, exec, dolphin"
+        "$mainMod, M, exec, spotify"
+        "$mainMod SHIFT, C, exec, exit"
       
         # Window Management
-        "$mainMod, C, killactive,"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, P, pseudo,"
+        "$mainMod, P, pseudo"
+        "$mainMod SHIFT, I, togglesplit"
+        "$mainMod, F, fullscreen"
+        "$mainMod SHIFT, F, fullscreen"
       
         # Move Focus
         "$mainMod, H, movefocus, l"
         "$mainMod, L, movefocus, r"
         "$mainMod, K, movefocus, u"
         "$mainMod, J, movefocus, d"
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+        "$mainMod, Left, movefocus, l"
+        "$mainMod, Right, movefocus, r"
+        "$mainMod, Up, movefocus, u"
+        "$mainMod, Down, movefocus, d"
+
+        # Move Windows
+        "$mainMod SHIFT, Left, movewindow, l"
+        "$mainMod SHIFT, Right, movewindow, r"
+        "$mainMod SHIFT, Up, movewindow, u"
+        "$mainMod SHIFT, Down, movewindow, d"
+        "$mainMod SHIFT, H, movewindow, l"
+        "$mainMod SHIFT, L, movewindow, r"
+        "$mainMod SHIFT, K, movewindow, u"
+        "$mainMod SHIFT, J, movewindow, d"
       
         # Workspaces
         "$mainMod, 1, workspace, 1"
@@ -163,23 +184,12 @@
         # Workspace Navigation with Mouse
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
-      
-        # Move Windows on the Same Screen
-        "$mainMod SHIFT, J, exec, hyprctl dispatch movewindow south"
-        "$mainMod SHIFT, K, exec, hyprctl dispatch movewindow north"
-        "$mainMod SHIFT, H, exec, hyprctl dispatch movewindow west"
-        "$mainMod SHIFT, L, exec, hyprctl dispatch movewindow east"
-      
-        # Move Focus to Another Display
-        "$mainMod, S, exec, hyprctl dispatch focusmonitor west"
-        "$mainMod, G, exec, hyprctl dispatch focusmonitor east"
-      
-        # Move Windows to Another Display
-        "$mainMod SHIFT, S, exec, hyprctl dispatch movetomonitor west"
-        "$mainMod SHIFT, G, exec, hyprctl dispatch movetomonitor east"
-      
-        # Maximize Window (Resizes to a normal size instead of full screen)
-        "$mainMod SHIFT, M, exec, hyprctl dispatch resize active 100% 100%"
+       
+        # Other      
+        "$mainMod, ENTER, togglespecialworkspace"
+        "$mainMod SHIFT, ENTER, movetoworkspace,special"
+
+        "ALT, TAB, exec, cyclenext & bringactivetotop"
       ];
       
       bindm = [
