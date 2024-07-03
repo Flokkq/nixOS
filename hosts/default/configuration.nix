@@ -50,16 +50,18 @@
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "at";
-    xkbVariant = "";
-  };
+  services.xserver.layout = "at";
+  services.xserver.xkbVariant = "";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
+
+  # Enable Docker
+  services.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -71,7 +73,10 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
+    wireplumber.enable = true;
   };
+
+  xdg.portal.enable = true;
 
   services.xserver.libinput.enable = true;
 
@@ -97,6 +102,7 @@
       xorg.xev
       gh
       yad
+      xdg-desktop-portal
     ];
   };
 
@@ -117,6 +123,7 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     pkgs.nerdfonts
+    pkgs.xdg-desktop-portal-hyprland
 
     # (pkgs.stdenv.mkDerivation {
       # name = "monaco";
@@ -126,10 +133,8 @@
   ];
 
   environment.sessionVariables = {
-
+    # Session variables can be added here if needed
   };
-
 
   system.stateVersion = "23.11"; 
 }
-
