@@ -115,8 +115,6 @@
 
       # Keybindings
       "$mainMod" = "SUPER";
-      /* bind = [
-      ]; */
 
       bind = [
         # Launch Applications
