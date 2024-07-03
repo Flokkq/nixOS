@@ -105,12 +105,15 @@
 
       # AUTOSTART
       exec-once = [
-        "kitty"
+        "systemctl --user start hyprland-session.target"
         "nm-applet &"
+        "sudo mount -a"
+        "swww init"
         "waybar &"
         "hyprpaper --config ~/.config/hypr/hyprpaper.conf &"
         "hypridle --config ~/.config/hypr/hypridle.conf"
         "brave"
+        "kitty"
       ];
 
       # Keybindings

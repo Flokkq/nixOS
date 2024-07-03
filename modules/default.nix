@@ -2,7 +2,6 @@
 
 {
   imports = [
-    # ./other.nix 
     ./apps
     ./terminals
     ./shells

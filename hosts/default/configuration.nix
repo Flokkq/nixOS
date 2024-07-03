@@ -42,26 +42,15 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.layout = "at";
-  services.xserver.xkbVariant = "";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
-  # Enable Docker
-  services.docker.enable = true;
+  # Enable docker
   virtualisation.docker.enable = true;
+
+  
+  # Enable CUPS to print documents
+  services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -77,8 +66,6 @@
   };
 
   xdg.portal.enable = true;
-
-  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.flokkq = {
@@ -120,20 +107,46 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  fonts.fonts = with pkgs; [
+    pkgs.nerdfonts
+  ];
+
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     pkgs.nerdfonts
     pkgs.xdg-desktop-portal-hyprland
 
+
     # (pkgs.stdenv.mkDerivation {
-      # name = "monaco";
-      # src = ./fonts/monaco.ttf;
-      # fontDirectories = [ "share/fonts/truetype" ];
+    #    name = "monaco";
+    #    src = ./fonts/monaco.ttf;
+    #    fontDirectories = [ "share/fonts/truetype" ];
     # })
   ];
 
   environment.sessionVariables = {
     # Session variables can be added here if needed
+  };
+
+  services.greetd = {
+    enable = true;
+    vt = 1;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+  };
+
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 
   system.stateVersion = "23.11"; 
