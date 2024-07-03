@@ -7,6 +7,7 @@
       ./main-user.nix
 
       inputs.home-manager.nixosModules.default
+      inputs.catppuccin.nixosModules.catppuccin
     ];
 
   main-user.enable = true;
@@ -96,9 +97,12 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "backup";
-    users = {
-      "flokkq" = import ./home.nix;
-    };
+    users.flokkq = {
+        imports = [
+            ./home.nix
+            inputs.catppuccin.homeManagerModules.catppuccin
+        ];
+    };     
   };
 
   programs.hyprland.enable = true;
@@ -107,7 +111,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = [
     pkgs.nerdfonts
   ];
 
@@ -149,5 +153,5 @@
     TTYVTDisallocate = true;
   };
 
-  system.stateVersion = "23.11"; 
+  system.stateVersion = "23.11";
 }
