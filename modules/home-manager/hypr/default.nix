@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{  pkgs, ... }:
 
 {
   imports = [
@@ -11,7 +11,7 @@
 
   home.packages = with pkgs; [
     swww
-    dolphin
+    gnome.nautilus
     wofi
     hyprpaper
   ];
@@ -129,7 +129,7 @@
         "$mainMod, W, exec, brave"
         "$mainMod, S, exec, screenshootin"
         "$mainMod, D, exec, discord"
-        "$mainMod, N, exec, dolphin"
+        "$mainMod, N, exec, nautilus"
         "$mainMod, M, exec, spotify"
         "$mainMod SHIFT, C, exec, exit"
       

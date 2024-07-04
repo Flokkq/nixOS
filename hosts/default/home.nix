@@ -1,5 +1,4 @@
-{ config, pkgs, inputs, ... }:
-
+{ pkgs, ... }:
 {
   imports = [
     ../../modules/home-manager
@@ -63,17 +62,27 @@
   gtk = {
     enable = true;
 
-    catppuccin = {
+    /* catppuccin = {
       enable = true;
       flavor = "mocha";
       accent = "pink";
       size = "standard";
       tweaks = [ "normal" ];
+    }; */
+
+    cursorTheme = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+    };
+
+    theme = {
+      package = pkgs.rose-pine-gtk-theme;
+      name = "rose-pine";
     };
 
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      package = pkgs.rose-pine-icon-theme;
+      name = "rose-pine";
     };
   };
 }
