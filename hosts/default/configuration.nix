@@ -94,6 +94,7 @@
       gh
       yad
       xdg-desktop-portal
+      flameshot
     ];
   };
 
