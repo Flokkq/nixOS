@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, gst_all_1, ... }:
 
 {
   imports =
@@ -52,6 +52,9 @@
   
   # Enable CUPS to print documents
   services.printing.enable = true;
+
+  # Enable GVfs
+  services.gvfs.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -152,6 +155,17 @@
     TTYVHangup = true;
     TTYVTDisallocate = true;
   };
+
+  nixpkgs.overlays = [(self: super: {
+    gnome = super.gnome.overrideScope' (gself: gsuper: {
+        nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
+          buildInputs = nsuper.buildInputs ++ (with gst_all_1; [
+            gst-plugins-good
+            gst-plugins-bad
+          ]);
+        });
+      });
+  })];
 
   system.stateVersion = "23.11";
 }
