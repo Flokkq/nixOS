@@ -5,6 +5,6 @@
     ./dev
     ./apps
     ./hypr
-    ./waybar.nix
+    ./waybar
   ];
 }
