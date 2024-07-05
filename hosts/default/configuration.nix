@@ -93,6 +93,7 @@
       hayabusa
       neofetch
       jq
+      typioca
     ];
   };
 
