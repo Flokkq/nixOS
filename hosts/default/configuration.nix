@@ -77,15 +77,10 @@
     description = "flokkq";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      git
       eza
-      zoxide
-      tmux
-      neovim 
       oh-my-zsh
       fzf
       ripgrep
-      btop
       cloc
       docker
       bat
@@ -95,6 +90,9 @@
       yad
       xdg-desktop-portal
       flameshot
+      hayabusa
+      neofetch
+      jq
     ];
   };
 
@@ -120,7 +118,7 @@
   ];
 
   # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     pkgs.nerdfonts
     pkgs.xdg-desktop-portal-hyprland
 

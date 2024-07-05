@@ -63,8 +63,6 @@
       # source $ZSHRC_DIR/scripts/extract.sh
       # source $ZSHRC_DIR/scripts/lg.sh
       # source $ZSHRC_DIR/scripts/air.sh
-
-      eval "$(zoxide init --cmd cd zsh)"
     '';
   
     plugins = [

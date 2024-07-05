@@ -1,11 +1,9 @@
-{config, ... }:
+{ ... }:
 
 {
   imports = [
-    # ./other.nix 
+    ./dev
     ./apps
-    ./terminals
-    ./shells
     ./hypr
     ./waybar.nix
   ];

@@ -1,15 +1,16 @@
-{config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ./browsers.nix
-    ./communication.nix
-    ./devtools.nix
+    ./browsers
+    ./communication
+    ./music
+
+    ./zathura.nix
   ];
 
 
   home.packages = with pkgs; [
-    spotify
     _1password-gui
   ];
 }
