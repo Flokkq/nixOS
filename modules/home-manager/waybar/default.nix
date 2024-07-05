@@ -3,6 +3,8 @@
 with lib;
 {
   home.packages = with pkgs; [
+    waybar
+
     pavucontrol
     wlogout
     xsensors
@@ -12,9 +14,16 @@ with lib;
     playerctl
   ];
 
+
+  home.file.".config/waybar/modules" = {
+    source = ./modules;
+  };
+
+
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar;
+    style = builtins.readFile ./styles.css;
+
     settings = [
       {
         layer = "top";
@@ -296,7 +305,5 @@ with lib;
         };
       }
     ];
-
-    style = builtins.readFile ./styles.css;
   };
 }
