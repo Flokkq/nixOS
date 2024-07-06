@@ -32,5 +32,32 @@
         inputs.home-manager.nixosModules.home-manager
       ];
     };
+
+    templates = {
+      rust-default = {
+        description = "Default Rust template";
+        path = ./templates/rust/default;
+      };
+
+      /* rust-axum = {
+        description = "Rust template with Axum framework";
+        path = ./templates/rust/axum;
+      }; */
+
+      go-default = {
+        description = "Default Go template";
+        path = ./templates/go/default;
+      };
+
+      go-nethttp = {
+        description = "Go template with net/http package";
+        path = ./templates/go/nethttp;
+      };
+
+      c-default = {
+        description = "Simple Hello World in C";
+        path = ./templates/c/default;
+      };
+    };
   };
 }
