@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -6,5 +6,9 @@
     ./apps
     ./hypr
     ./waybar
+  ];
+
+  home.packages = with pkgs; [
+    nerdfonts
   ];
 }

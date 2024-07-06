@@ -4,9 +4,9 @@
   imports = [
     ./terminals
     ./shells
+    ./editors
     ./btop
-    ./nvim
-    
+ 
     ./git.nix
     ./tmux.nix
     ./zoxide.nix
