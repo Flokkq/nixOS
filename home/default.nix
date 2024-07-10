@@ -4,8 +4,6 @@
   imports = [
     ./dev
     ./apps
-    ./hypr
-    ./waybar
   ];
 
   home.packages = with pkgs; [
