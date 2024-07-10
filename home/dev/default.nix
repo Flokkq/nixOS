@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./terminals
     ./shells
     ./editors
     ./btop
