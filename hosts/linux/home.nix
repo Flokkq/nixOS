@@ -24,9 +24,7 @@
   home.stateVersion = "23.11";
 
   home.packages = [
-    (import ../../scripts/list-hypr-bindings.nix { inherit pkgs; })
-    (import ../../scripts/theme-selector.nix { inherit pkgs; })
-    (import ../../scripts/task-waybar.nix { inherit pkgs; })
+    (import ../../scripts/linux { inherit pkgs; })
   ];
 
   home.file = {
