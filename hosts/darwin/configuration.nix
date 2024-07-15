@@ -1,15 +1,16 @@
-{ pkgs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports = [
-/*     inputs.home-manager.nixosModules.default */
+    inputs.home-manager.darwinModules.home-manager
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   services.nix-daemon.enable = true;
+
   # Bootloader.
-  networking.hostName = "MBP-Clemens";
+  networking.hostName = "MacBook-Pro-von-Clemens";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -19,6 +20,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clemensweber = {
     description = "clemensweber";
+    home = lib.mkForce "/Users/clemensweber"; 
     packages = with pkgs; [
       eza
       oh-my-zsh
@@ -34,15 +36,13 @@
     ];
   };
 
-  /* home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+  home-manager = {
     backupFileExtension = "backup";
-    users.clemensweber = {
-      imports = [
-        ./home.nix
-      ];
-    };     
-  }; */
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs; };
+    users.clemensweber = import ./home.nix;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

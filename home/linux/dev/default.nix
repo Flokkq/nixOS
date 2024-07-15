@@ -3,5 +3,6 @@
 {
   imports = [
     ./terminals
+    ./direnv.nix
   ];
 }
