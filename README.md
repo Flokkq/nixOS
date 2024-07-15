@@ -24,8 +24,7 @@ See [./hosts](./hosts) for details of each host.
 | **Terminal Emulator**       | [Tmux][Tmux] + [Kitty][Kitty]                                                                                       | [Tmux][Tmux] + [iTerm][iTerm]                                                                                       |
 | **Bar**                     | [Waybar][Waybar]                                                                                                    | [SketchyBar][SketchyBar]                                                                                            |
 | **Application Launcher**    | [Wofi][Wofi]                                                                                                        | [Raycast][Raycast]                                                                                                  |
-| **Notification Daemon**     | (leave blank)                                                                                                       | (leave blank)                                                                                                       |
-| **Display Manager**         | Wayland                                                                                                             | Native macOS                                                                                                        |
+| **Display Manager**         | [Greetd][Greetd]                                                                                                             | Native macOS                                                                                                        |
 | **Color Scheme**            | [Catppuccin][Catppuccin] + [Rosepine][Rosepine]                                                              | Default macOS                                                                                                       |
 | **System resource monitor** | [Btop][Btop]                                                                                                        | [Btop][Btop]                                                                                                        |
 | **File Manager**            | [Nautilus][Nautilus]                                                                                               | Finder                                                                                                              |
@@ -45,6 +44,7 @@ See [./hosts](./hosts) for details of each host.
 [SketchyBar]:https://github.com/FelixKratz/SketchyBar
 [Wofi]:https://hg.sr.ht/~scoopta/wofi
 [Raycast]:https://www.raycast.com/
+[Greetd]: https://wiki.alpinelinux.org/wiki/Greetd
 [Catppuccin]:https://github.com/catppuccin/catppuccin
 [Rosepine]:https://github.com/rose-pine/gtk
 [Btop]:https://github.com/aristocratos/btop
@@ -52,4 +52,4 @@ See [./hosts](./hosts) for details of each host.
 [Zsh]:https://www.zsh.org/
 [Spicetify]:https://github.com/khanhas/spicetify-cli
 [Neovim]:https://github.com/neovim/neovim
-[Nerd font]:https://github.com/ryanoasis/nerd-fonts
+[Nerd fonts]:https://github.com/ryanoasis/nerd-fonts
