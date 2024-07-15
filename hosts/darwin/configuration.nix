@@ -1,29 +1,23 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ../main-user.nix
-    inputs.home-manager.nixosModules.default
+/*     inputs.home-manager.nixosModules.default */
   ];
 
-  main-user.enable = true;
-  main-user.userName = "clemensweber";
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  services.nix-daemon.enable = true;
   # Bootloader.
-  networking.hostName = "MBP-Pro von Clemens";
+  networking.hostName = "MBP-Clemens";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
-  # Enable docker
-  virtualisation.docker.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clemensweber = {
-    isNormalUser = true;
     description = "clemensweber";
     packages = with pkgs; [
       eza
@@ -34,23 +28,21 @@
       docker
       bat
       gh
-      yad
-      hayabusa
       neofetch
       jq
       typioca
     ];
   };
 
-  home-manager = {
+  /* home-manager = {
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "backup";
-    /* users.clemensweber = {
+    users.clemensweber = {
       imports = [
         ./home.nix
       ];
-    };      */
-  };
+    };     
+  }; */
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -63,6 +55,4 @@
   environment.systemPackages = [
     pkgs.nerdfonts
   ];
-
-  system.stateVersion = "23.11"; # Don't change
 }
