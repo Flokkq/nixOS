@@ -29,23 +29,23 @@
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, ... }: {
+  outputs = { self, nix-darwin, nixpkgs, home-manager, hyprland, hyprland-plugins, catppuccin, spicetify-nix, ... }@inputs: {
     nixosConfigurations = {
       default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/linux/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
         ];
       };
     };
 
     darwinConfigurations = {
-      default = inputs.nix-darwin.lib.darwinSystem {
+      "MacBook-Pro-von-Clemens" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/darwin/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
+          home-manager.nixosModules.home-manager
         ];
       };
     };
@@ -55,11 +55,6 @@
         description = "Default Rust template";
         path = ./templates/rust/default;
       };
-
-      /* rust-axum = {
-        description = "Rust template with Axum framework";
-        path = ./templates/rust/axum;
-      }; */
 
       go-default = {
         description = "Default Go template";
