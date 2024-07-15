@@ -1,4 +1,4 @@
-<h2 align="center">:crab: flokkq's Nix Config :crab:</h2>
+<h2 align="center">:crab: Flokkq's Nix Config :crab:</h2>
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/palette/macchiato.png" width="400" />
