@@ -36,20 +36,20 @@ See [./hosts](./hosts) for details of each host.
 
 ### Links
 
-1. [Hyprland](https://github.com/hyprwm/Hyprland)
-2. [Yabai](https://github.com/koekeishiya/yabai)
-3. [Tmux](https://github.com/tmux/tmux)
-4. [Kitty](https://github.com/kovidgoyal/kitty)
-5. [iTerm](https://iterm2.com/)
-6. [Waybar](https://github.com/Alexays/Waybar)
-7. [SketchyBar](https://github.com/FelixKratz/SketchyBar)
-8. [Wofi](https://hg.sr.ht/~scoopta/wofi)
-9. [Raycast](https://www.raycast.com/)
-10. [Catppuccin](https://github.com/catppuccin/catppuccin)
-11. [Rosepine](https://github.com/rose-pine/gtk)
-11. [Btop](https://github.com/aristocratos/btop)
-12. [Nautilus](https://gitlab.gnome.org/GNOME/nautilus)
-13. [Zsh](https://www.zsh.org/)
-14. [Spicetify](https://github.com/khanhas/spicetify-cli)
-15. [Neovim](https://github.com/neovim/neovim)
-16. [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
+[Hyprland]:https://github.com/hyprwm/Hyprland
+[Yabai]:https://github.com/koekeishiya/yabai
+[Tmux]:https://github.com/tmux/tmux
+[Kitty]:https://github.com/kovidgoyal/kitty
+[iTerm]:https://iterm2.com/
+[Waybar]:https://github.com/Alexays/Waybar
+[SketchyBar]:https://github.com/FelixKratz/SketchyBar
+[Wofi]:https://hg.sr.ht/~scoopta/wofi
+[Raycast]:https://www.raycast.com/
+[Catppuccin]:https://github.com/catppuccin/catppuccin
+[Rosepine]:https://github.com/rose-pine/gtk
+[Btop]:https://github.com/aristocratos/btop
+[Nautilus]:https://gitlab.gnome.org/GNOME/nautilus
+[Zsh]:https://www.zsh.org/
+[Spicetify]:https://github.com/khanhas/spicetify-cli
+[Neovim]:https://github.com/neovim/neovim
+[Nerd font]:https://github.com/ryanoasis/nerd-fonts
