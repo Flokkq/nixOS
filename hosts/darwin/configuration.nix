@@ -1,8 +1,5 @@
-{ pkgs, nixpkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
-let
-  lib = nixpkgs.lib;
-in
 {
   imports = [
     ../main-user.nix
@@ -48,12 +45,11 @@ in
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     backupFileExtension = "backup";
-    users.flokkq = {
+    /* users.clemensweber = {
       imports = [
-        # Uncomment the following line if the file exists
-        # ./home.nix
+        ./home.nix
       ];
-    };     
+    };      */
   };
 
   # Allow unfree packages

@@ -18,6 +18,8 @@ This repository is home to the nix code that builds my systems:
 
 See [./hosts](./hosts) for details of each host.
 
+## Components
+
 |                             | NixOS (Wayland)                                                                                                      | macOS                                                                                                               |
 | --------------------------- | :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------ |
 | **Window Manager**          | [Hyprland][Hyprland]                                                                                                | [Yabai][Yabai]                                                                                                      |
@@ -33,7 +35,9 @@ See [./hosts](./hosts) for details of each host.
 | **Text Editor**             | [Neovim][Neovim]                                                                                                    | [Neovim][Neovim]                                                                                                    |
 | **Fonts**                   | [Nerd fonts][Nerd fonts]                                                                                            | [Nerd fonts][Nerd fonts]                                                                                            |
 
-### Links
+## How to Deploy this Flake?
+
+> :red_circle: **IMPORTANT**: **Not (yet)** 
 
 [Hyprland]:https://github.com/hyprwm/Hyprland
 [Yabai]:https://github.com/koekeishiya/yabai

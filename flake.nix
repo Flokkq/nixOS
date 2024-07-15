@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "Nixos config flake for darwin";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -44,13 +44,13 @@
       "MacBook-Pro-von-Clemens" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./hosts/darwin/configuration.nix
-          home-manager.nixosModules.home-manager
+/*           ./hosts/darwin/configuration.nix */
+/*           home-manager.nixosModules.home-manager */
         ];
       };
     };
 
-    templates = {
+    /* templates = {
       rust-default = {
         description = "Default Rust template";
         path = ./templates/rust/default;
@@ -70,6 +70,6 @@
         description = "Simple Hello World in C";
         path = ./templates/c/default;
       };
-    };
+    }; */
   };
 }
