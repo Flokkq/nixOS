@@ -7,18 +7,7 @@
 
  # Home Manager needs a bit of information about you and the paths it should
   home.username = "clemensweber";
-  home.homeDirectory = "/home/clemensweber";
-
-  # This value determines the Home Manager release that your configuration is
-  targets.genericLinux.enable = true;
-  home.activation = {
-    linkDesktopApplications = {
-      after = [ "writeBoundary" "createXdgUserDirectories" ];
-      before = [ ];
-      data = '''';
-    };  
-  };
-
+  home.homeDirectory = "/Users/clemensweber";
 
   # You should not change this value, even if you update Home Manager.
   home.stateVersion = "23.11";

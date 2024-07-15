@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./discord.nix
+    ./brave.nix
   ];
 }

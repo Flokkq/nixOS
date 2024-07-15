@@ -45,12 +45,12 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/darwin/configuration.nix
-/*           home-manager.nixosModules.home-manager */
+          home-manager.darwinModules.home-manager
         ];
       };
     };
 
-    /* templates = {
+    templates = {
       rust-default = {
         description = "Default Rust template";
         path = ./templates/rust/default;
@@ -70,6 +70,6 @@
         description = "Simple Hello World in C";
         path = ./templates/c/default;
       };
-    }; */
+    };
   };
 }
