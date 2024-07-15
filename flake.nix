@@ -44,7 +44,7 @@
       "MacBook-Pro-von-Clemens" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
         modules = [
-/*           ./hosts/darwin/configuration.nix */
+          ./hosts/darwin/configuration.nix
 /*           home-manager.nixosModules.home-manager */
         ];
       };
