@@ -14,46 +14,46 @@
 This repository is home to the nix code that builds my systems:
 
 1. NixOS Desktop: NixOS with home-manager, hyprland, etc.
-2. MacBook-Pro 2021: nix-darwin with home-manager, share the same home-manager configuration with NixOS Desktop.
+2. MacBook-Pro 2021: nix-darwin with home-manager, sharing the same home-manager configuration with NixOS Desktop.
 
 See [./hosts](./hosts) for details of each host.
 
 ## Components
 
-|                             | NixOS (Wayland)                                                                                                      | macOS                                                                                                               |
-| --------------------------- | :------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------ |
-| **Window Manager**          | [Hyprland][Hyprland]                                                                                                | [Yabai][Yabai]                                                                                                      |
-| **Terminal Emulator**       | [Tmux][Tmux] + [Kitty][Kitty]                                                                                       | [Tmux][Tmux] + [iTerm][iTerm]                                                                                       |
-| **Bar**                     | [Waybar][Waybar]                                                                                                    | [SketchyBar][SketchyBar]                                                                                            |
-| **Application Launcher**    | [Wofi][Wofi]                                                                                                        | [Raycast][Raycast]                                                                                                  |
-| **Display Manager**         | [Greetd][Greetd]                                                                                                             | Native macOS                                                                                                        |
-| **Color Scheme**            | [Catppuccin][Catppuccin] + [Rosepine][Rosepine]                                                              | Default macOS                                                                                                       |
-| **System resource monitor** | [Btop][Btop]                                                                                                        | [Btop][Btop]                                                                                                        |
-| **File Manager**            | [Nautilus][Nautilus]                                                                                               | Finder                                                                                                              |
-| **Shell**                   | [Zsh][Zsh]                                                                                                          | [Zsh][Zsh]                                                                                                          |
-| **Music Player**            | [Spicetify][Spicetify]                                                                                              | Spotify                                                                                                             |
-| **Text Editor**             | [Neovim][Neovim]                                                                                                    | [Neovim][Neovim]                                                                                                    |
-| **Fonts**                   | [Nerd fonts][Nerd fonts]                                                                                            | [Nerd fonts][Nerd fonts]                                                                                            |
+|                             | NixOS (Wayland)                                   | macOS                                  |
+| --------------------------- | :------------------------------------------------ | :-------------------------------------- |
+| **Window Manager**          | [Hyprland][Hyprland]                              | [Yabai][Yabai]                          |
+| **Terminal Emulator**       | [Tmux][Tmux] + [Kitty][Kitty]                     | [Tmux][Tmux] + [iTerm][iTerm]           |
+| **Bar**                     | [Waybar][Waybar]                                  | [SketchyBar][SketchyBar]                |
+| **Application Launcher**    | [Wofi][Wofi]                                      | [Raycast][Raycast]                      |
+| **Display Manager**         | [Greetd][Greetd]                                  | Native macOS                            |
+| **Color Scheme**            | [Catppuccin][Catppuccin] + [Rosepine][Rosepine]   | Default macOS                           |
+| **System resource monitor** | [Btop][Btop]                                      | [Btop][Btop]                            |
+| **File Manager**            | [Nautilus][Nautilus]                              | Finder                                  |
+| **Shell**                   | [Zsh][Zsh]                                        | [Zsh][Zsh]                              |
+| **Music Player**            | [Spicetify][Spicetify]                            | Spotify                                 |
+| **Text Editor**             | [Neovim][Neovim]                                  | [Neovim][Neovim]                        |
+| **Fonts**                   | [Nerd fonts][Nerd fonts]                          | [Nerd fonts][Nerd fonts]                |
 
 ## How to Deploy this Flake?
 
-> :red_circle: **IMPORTANT**: **Not (yet)** 
+> :red_circle: **IMPORTANT**: It is **NOT RECOMMENDED OR SAFE** to use this configuration as it is still in development and contains hardcoded strings. Use at your own risk!
 
-[Hyprland]:https://github.com/hyprwm/Hyprland
-[Yabai]:https://github.com/koekeishiya/yabai
-[Tmux]:https://github.com/tmux/tmux
-[Kitty]:https://github.com/kovidgoyal/kitty
-[iTerm]:https://iterm2.com/
-[Waybar]:https://github.com/Alexays/Waybar
-[SketchyBar]:https://github.com/FelixKratz/SketchyBar
-[Wofi]:https://hg.sr.ht/~scoopta/wofi
-[Raycast]:https://www.raycast.com/
+[Hyprland]: https://github.com/hyprwm/Hyprland
+[Yabai]: https://github.com/koekeishiya/yabai
+[Tmux]: https://github.com/tmux/tmux
+[Kitty]: https://github.com/kovidgoyal/kitty
+[iTerm]: https://iterm2.com/
+[Waybar]: https://github.com/Alexays/Waybar
+[SketchyBar]: https://github.com/FelixKratz/SketchyBar
+[Wofi]: https://hg.sr.ht/~scoopta/wofi
+[Raycast]: https://www.raycast.com/
 [Greetd]: https://wiki.alpinelinux.org/wiki/Greetd
-[Catppuccin]:https://github.com/catppuccin/catppuccin
-[Rosepine]:https://github.com/rose-pine/gtk
-[Btop]:https://github.com/aristocratos/btop
-[Nautilus]:https://gitlab.gnome.org/GNOME/nautilus
-[Zsh]:https://www.zsh.org/
-[Spicetify]:https://github.com/khanhas/spicetify-cli
-[Neovim]:https://github.com/neovim/neovim
-[Nerd fonts]:https://github.com/ryanoasis/nerd-fonts
+[Catppuccin]: https://github.com/catppuccin/catppuccin
+[Rosepine]: https://github.com/rose-pine/gtk
+[Btop]: https://github.com/aristocratos/btop
+[Nautilus]: https://gitlab.gnome.org/GNOME/nautilus
+[Zsh]: https://www.zsh.org/
+[Spicetify]: https://github.com/khanhas/spicetify-cli
+[Neovim]: https://github.com/neovim/neovim
+[Nerd fonts]: https://github.com/ryanoasis/nerd-fonts
