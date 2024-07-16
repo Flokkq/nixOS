@@ -14,7 +14,7 @@
 This repository is home to the nix code that builds my systems:
 
 1. NixOS Desktop: NixOS with home-manager, hyprland, etc.
-2. macOS Desktop: nix-darwin with home-manager, share the same home-manager configuration with NixOS Desktop.
+2. MacBook-Pro 2021: nix-darwin with home-manager, share the same home-manager configuration with NixOS Desktop.
 
 See [./hosts](./hosts) for details of each host.
 
