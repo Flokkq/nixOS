@@ -1,5 +1,5 @@
 { ... }:
 
 {
-    home.file."config/sketchybar".source = ./sketchybar;
+    home.file.".config/sketchybar".source = ./sketchybar;
 }
