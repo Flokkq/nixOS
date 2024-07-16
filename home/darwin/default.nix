@@ -4,6 +4,6 @@
   imports = [
     ./dev
     ./apps
-    ./yabai
+    ./wm
   ];
 }
