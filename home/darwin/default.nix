@@ -5,5 +5,6 @@
     ./dev
     ./apps
     ./wm
+    ./jankyborders
   ];
 }
