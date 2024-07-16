@@ -1,0 +1,13 @@
+#!/bin/bash
+
+options=(
+	style=round
+	width=6.0
+	hidpi=off
+	active_color=0xaae2e2e3
+	inactive_color=0xaa414550
+	background_color=0x302c2e34
+    blacklist="Simulator"
+)
+
+borders "${options[@]}"
