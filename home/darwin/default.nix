@@ -4,5 +4,6 @@
   imports = [
     ./dev
     ./apps
+    ./yabai
   ];
 }
