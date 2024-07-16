@@ -61,6 +61,9 @@
     # `brew install`
     brews = [
       "httpie"
+      "lua"
+      "switchaudio-osx"
+      "nowplaying-cli"
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
       "FelixKratz/formulae/sketchybar"
@@ -70,6 +73,7 @@
     # `brew install --cask`
     casks = [
         # "wireshark"
+        "sf-symbols"
     ];
   };
 }

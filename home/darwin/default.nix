@@ -6,5 +6,6 @@
     ./apps
     ./wm
     ./jankyborders
+    ./sketchybar
   ];
 }
