@@ -54,11 +54,17 @@
 
     taps = [
       "homebrew/services"
+      "koekeishiya/formulae"
+      "FelixKratz/formulae"
     ];
 
     # `brew install`
     brews = [
-      "httpie" 
+      "httpie"
+      "koekeishiya/formulae/yabai"
+      "koekeishiya/formulae/skhd"
+      "FelixKratz/formulae/sketchybar"
+      "FelixKratz/formulae/borders"
     ];
 
     # `brew install --cask`
