@@ -28,7 +28,7 @@
         autohide = true;
         show-recents = false;  # disable recent apps
 
-        # customize Hot Corners(触发角, 鼠标移动到屏幕角落时触发的动作)
+        # customize Hot Corners
         wvous-tl-corner = 2;  # top-left - Mission Control
         wvous-tr-corner = 13;  # top-right - Lock Screen
         wvous-bl-corner = 3;  # bottom-left - Application Windows
@@ -49,7 +49,7 @@
       trackpad = {
         Clicking = true;  # enable tap to click
         TrackpadRightClick = true;  # enable two finger right click
-        TrackpadThreeFingerDrag = true;  # enable three finger drag
+        TrackpadThreeFingerDrag = false;  # enable three finger drag
       };
 
       # customize settings that not supported by nix-darwin directly
@@ -160,11 +160,4 @@
 
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
-
-  # Create /etc/zshrc that loads the nix-darwin environment.
-  # this is required if you want to use darwin's default shell - zsh
-  programs.zsh.enable = true;
-  environment.shells = [
-    pkgs.zsh
-  ];
 }
