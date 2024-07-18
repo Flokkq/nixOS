@@ -67,7 +67,7 @@
       };
 
       c-default = {
-        description = "Simple Hello World in C";
+        description = "Simple Hello World written in C";
         path = ./templates/c/default;
       };
     };
