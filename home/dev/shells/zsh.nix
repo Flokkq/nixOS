@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    starship
+  ];
+
   programs.zsh = {
     enable = true;
 
@@ -10,7 +14,7 @@
         "git" 
 	"colored-man-pages"
       ]; 
-      theme = "norm"; # Set your preferred theme
+      # theme = "norm"; # Set your preferred theme
     };
 
     syntaxHighlighting.enable = true;
@@ -54,6 +58,8 @@
     # Custom initialization
     initExtra = ''
       DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+      eval "$(starship init zsh)"
 
       # SSH connections
       source $ZSHRC_DIR/.ssh_aliases
