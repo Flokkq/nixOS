@@ -4,7 +4,6 @@
   imports = [
     ./browsers
     ./communication
-    ./music
 
     ./zathura.nix
   ];
