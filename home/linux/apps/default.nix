@@ -5,5 +5,6 @@
   imports = [
     ./communication
     ./music
+    ./browsers
   ];
 }

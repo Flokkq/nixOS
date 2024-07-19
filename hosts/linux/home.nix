@@ -24,7 +24,7 @@
   home.stateVersion = "23.11";
 
   home.packages = [
-    (import ../../scripts/linux { inherit pkgs; })
+/*     (import ../../scripts/linux { inherit pkgs; }) */
   ];
 
   home.file = {

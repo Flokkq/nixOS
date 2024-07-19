@@ -6,9 +6,9 @@
   ];
 
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ~/nixos-config/modules/home-manager/pictures/bridge.png
-    wallpaper = HDMI-A-1,~/nixos-config/modules/home-manager/pictures/bridge.png
-    wallpaper = DP-2,~/nixos-config/modules/home-manager/pictures/bridge.png
-    wallpaper = HDMI-A-2,~/nixos-config/modules/home-manager/pictures/bridge.png
+    preload = ~/nixos-config/home/pictures/bridge.png
+    wallpaper = HDMI-A-1,~/nixos-config/home/pictures/bridge.png
+    wallpaper = DP-2,~/nixos-config/home/pictures/bridge.png
+    wallpaper = HDMI-A-2,~/nixos-config/home/pictures/bridge.png
   '';
 }

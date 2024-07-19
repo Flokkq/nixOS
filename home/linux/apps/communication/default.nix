@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./vencord.nix
-    ./webcord.nix
+    ./vesktop.nix
+    /* ./vencord.nix
+    ./webcord.nix */
   ];
 }

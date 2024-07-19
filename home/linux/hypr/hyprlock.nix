@@ -8,7 +8,7 @@
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
         monitor =
-        path = ~/nixos-config/modules/home-manager/pictures/bridge.png 
+        path = ~/nixos-config/home/pictures/bridge.png 
         blur_passes = 3
         contrast = 0.8916
         brightness = 0.8172
