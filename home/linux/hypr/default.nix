@@ -45,10 +45,10 @@
       # LOOK AND FEEL
       general = {
         gaps_in = 5;
-        gaps_out = 20;
+        gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "0xaae2e2e3";
+        "col.inactive_border" = "0xaa414550";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
