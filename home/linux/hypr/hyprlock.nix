@@ -23,7 +23,7 @@
     }
 
     input-field {
-        monitor =
+        monitor = DP-2
         size = 250, 60
         outline_thickness = 2
         dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
@@ -42,7 +42,7 @@
     }
 
     label {
-        monitor =
+        monitor = DP-2
         text = cmd[update:1000] echo "$(date +"%-I:%M%p")"
         color = rgba(255, 255, 255, 0.6)
         font_size = 120
@@ -53,7 +53,7 @@
     }
 
     label {
-        monitor =
+        monitor = DP-2
         text = Hi there, $USER
         color = rgba(255, 255, 255, 0.6)
         font_size = 25
@@ -64,7 +64,7 @@
     }
 
     label {
-        monitor =
+        monitor = DP-2
         text = cmd[update:1000] echo "$(~/Documents/Scripts/whatsong.sh)" 
         color = rgba(255, 255, 255, 0.6)
         font_size = 18
