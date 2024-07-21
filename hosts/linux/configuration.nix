@@ -88,6 +88,7 @@
       xorg.xev
       gh
       yad
+      gcc
       xdg-desktop-portal
       flameshot
       hayabusa
