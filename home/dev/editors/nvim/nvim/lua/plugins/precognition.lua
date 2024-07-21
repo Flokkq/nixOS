@@ -1,6 +1,9 @@
 return {
-	"tris203/precognition.nvim",
-	config = {
-		event = "VeryLazy",
-	},
+    {
+        "tris203/precognition.nvim",
+        config = {
+            event = "VeryLazy",
+        },
+        enabled = false,
+    },
 }
