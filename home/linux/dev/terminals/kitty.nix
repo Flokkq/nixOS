@@ -21,7 +21,6 @@ in {
       confirm_os_window_close = "0";
       remember_window_size = "no";
       disable_ligatures = "always";
-      shell = "${pkgs.tmux}/bin/tmux";
       initial_window_width = 1200;
       initial_window_height = 600;
 
