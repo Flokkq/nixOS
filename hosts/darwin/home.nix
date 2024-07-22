@@ -10,7 +10,7 @@
   home.homeDirectory = "/Users/clemensweber";
 
   # You should not change this value, even if you update Home Manager.
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
 
   home.packages = [];
 
