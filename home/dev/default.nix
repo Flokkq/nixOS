@@ -5,6 +5,7 @@
     ./shells
     ./editors
     ./btop
+    ./zellij
  
     ./git.nix
     ./tmux.nix
