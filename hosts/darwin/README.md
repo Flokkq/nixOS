@@ -1,6 +1,6 @@
 # nix-darwin :rocket:
 
-If you’re looking to get started with nix-darwin, @ryan4yin has an excellent kickstart repository! Check it out [here](https://github.com/ryan4yin/nix-darwin-kickstarter.git). Additionally, the official [nix-darwin repository](com/https://github.com/LnL7/nix-darwin) provides a comprehensive guide, especially useful for your first iteration and switch.
+If you’re looking to get started with nix-darwin, [@ryan4yin](https://github.com/ryan4yin) has an excellent kickstart repository! Check it out [here](https://github.com/ryan4yin/nix-darwin-kickstarter.git). Additionally, the official [nix-darwin repository](https://github.com/LnL7/nix-darwin.git) provides a comprehensive guide, especially useful for your first iteration and switch.
 
 ## Where Are All the Binaries?
 
