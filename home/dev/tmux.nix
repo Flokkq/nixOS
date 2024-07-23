@@ -1,33 +1,129 @@
 { pkgs, ... }:
 
+let
+  catppuccin = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "catppuccin";
+    version = "unstable-2023-01-06";
+    src = pkgs.fetchFromGitHub {
+      owner = "dreamsofcode-io";
+      repo = "catppuccin-tmux";
+      rev = "main";
+      sha256 = "sha256-FJHM6LJkiAwxaLd5pnAoF3a7AE1ZqHWoCpUJE0ncCA8=";
+    };
+  };
+  rose-pine = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "rose-pine";
+    version = "unstable-2023-01-06";
+    src = pkgs.fetchFromGitHub {
+      owner = "rose-pine";
+      repo = "tmux";
+      rev = "main";
+      sha256 = "sha256-0ccJVQIIOpHdr3xMIBC1wbgsARCNpmN+xMYVO6eu/SI=";
+    };
+  };
+  tokyo-night = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "tokyo-night";
+    version = "unstable-2023-01-06";
+    src = pkgs.fetchFromGitHub {
+      owner = "janoamaral";
+      repo = "tokyo-night-tmux";
+      rev = "master";
+      sha256 = "sha256-3rMYYzzSS2jaAMLjcQoKreE0oo4VWF9dZgDtABCUOtY=";
+    };
+  };
+in
 {
   home.packages = with pkgs; [
     tmux
   ];
 
   programs.tmux = {
-    enable = true;
+  enable = true;
 
-    shortcut = "C-d";
-    keyMode = "vi";
+  aggressiveResize = true;
+  baseIndex = 1;
+  disableConfirmationPrompt = true;
+  shell = "${pkgs.zsh}/bin/zsh";
+  keyMode = "vi";
+  newSession = true;
+  secureSocket = true;
+  shortcut = "C-D";
 
-    plugins = with pkgs; [
-      tmuxPlugins.cpu
-      tmuxPlugins.better-mouse-mode
-      tmuxPlugins.yank
-      tmuxPlugins.copycat
+  plugins = with pkgs.tmuxPlugins; [
+    tokyo-night
+    catppuccin
+    rose-pine
 
-      {
-        plugin = tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '60' # minutes
-        '';
-      }
-    ];
+    vim-tmux-navigator
+    better-mouse-mode
+    sensible
+    copycat
+    yank
+    cpu
+
+    {
+      plugin = resurrect;
+      extraConfig = "set -g @resurrect-strategy-nvim 'sessio'";
+    }
+    {
+      plugin = continuum;
+      extraConfig = ''
+        set -g @continuum-restore 'on'
+        set -g @continuum-save-interval '60' # minutes
+      '';
+    }
+  ];
+
+  extraConfig = ''
+    # catppuccin
+    set -g @catppuccin_flavour 'mocha' # or frappe, macchiato, latte
+
+    # set-default colorset-option -ga terminal-overrides ",xterm-256color:Tc"
+    set -as terminal-features ",xterm-256color:RGB"
+    # set-option -sa terminal-overrides ",xterm*:Tc"
+    set -g mouse on
+
+    unbind C-b
+    set -g prefix C-Space
+    bind C-Space send-prefix
+
+    # Vim style pane selection
+    bind h select-pane -L
+    bind j select-pane -D
+    bind k select-pane -U
+    bind l select-pane -R
+
+    # Start windows and panes at 1, not 0
+    set -g base-index 1
+    set -g pane-base-index 1
+    set-window-option -g pane-base-index 1
+    set-option -g renumber-windows on
+
+    # Use Alt-arrow keys without prefix key to switch panes
+    bind -n M-Left select-pane -L
+    bind -n M-Right select-pane -R
+    bind -n M-Up select-pane -U
+    bind -n M-Down select-pane -D
+
+    # Shift arrow to switch windows
+    bind -n S-Left  previous-window
+    bind -n S-Right next-window
+
+    # Shift Alt vim keys to switch windows
+    bind -n M-H previous-window
+    bind -n M-L next-window
+
+    # set vi-mode
+    set-window-option -g mode-keys vi
+
+    # keybindings
+    bind-key -T copy-mode-vi v send-keys -X begin-selection
+    bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+    bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+    bind '"' split-window -v -c "#{pane_current_path}"
+    bind % split-window -h -c "#{pane_current_path}"
+    bind c new-window -c "#{pane_current_path}"
+  '';
   };
 }
