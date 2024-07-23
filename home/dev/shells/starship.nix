@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -10,6 +10,14 @@
     enableZshIntegration = true;
     enableFishIntegration = true;
     settings = {
+      custom.nixos = {
+        command = "echo -n   24.11";
+        when = "true";
+        format = "using [$output](bold blue)";
+      };
+
+      format = "$directory$custom $all";  # Add the custom module after the directory listing
+
       buf = {
         disabled = true;
       };
@@ -42,9 +50,8 @@
         symbol = " ";
       };
       package = {
-        disabled = true;
+        disabled = false;
       };
     };
   };
 }
-
