@@ -84,8 +84,8 @@ in
     set -g mouse on
 
     unbind C-b
-    set -g prefix C-Space
-    bind C-Space send-prefix
+    set -g prefix C-W
+    bind C-W send-prefix
 
     # Vim style pane selection
     bind h select-pane -L
