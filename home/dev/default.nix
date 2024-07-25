@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -10,5 +10,9 @@
     ./git.nix
     ./tmux.nix
     ./zoxide.nix
+  ];
+
+  home.packages = with pkgs; [
+    lazygit
   ];
 }
