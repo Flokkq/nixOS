@@ -2,10 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    kanata  
+    #kanata  
   ];
-
-  programs.kanata = {
-    enable = true;
-  };
 }
