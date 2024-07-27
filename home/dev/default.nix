@@ -6,6 +6,7 @@
     ./editors
     ./btop
     ./zellij
+    ./neofetch
  
     ./git.nix
     ./tmux.nix

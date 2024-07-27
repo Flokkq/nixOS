@@ -92,7 +92,6 @@
       xdg-desktop-portal
       flameshot
       hayabusa
-      neofetch
       jq
       typioca
     ];
