@@ -14,7 +14,7 @@
 This repository is home to the nix code that builds my systems:
 
 1. NixOS Desktop: NixOS with home-manager, hyprland, etc.
-2. MacBook-Pro 2021: nix-darwin with home-manager, sharing the same home-manager configuration with NixOS Desktop.
+2. MacBook-Pro 2021: nix-darwin sharing the same home-manager configuration with NixOS Desktop.
 
 See [./hosts](./hosts) for details of each host.
 
@@ -34,6 +34,12 @@ See [./hosts](./hosts) for details of each host.
 | **Music Player**            | [Spicetify][Spicetify]                            | Spotify                                 |
 | **Text Editor**             | [Neovim][Neovim]                                  | [Neovim][Neovim]                        |
 | **Fonts**                   | [Nerd fonts][Nerd fonts]                          | [Nerd fonts][Nerd fonts]                |
+
+## Future Improvements and Known Issues
+
+This configuration is a work in progress. Several components, particularly on the darwin side, are still incomplete. Whilst linux is almost done Waybar and Hyprland are prone to random crashes, and many configurations could be significantly improved.
+
+If you're interested in the ongoing development or want to see what's planned, please check out the [Issues](https://github.com/flokkq/dotfiles/issues) page. Suggestions are welcome!
 
 ## How to Deploy this Flake?
 
