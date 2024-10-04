@@ -1,0 +1,45 @@
+name: Generate Changelog
+
+on:
+  push:
+    tags:
+      - "v*.*.*"  
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  generate-changelog:
+    name: Generate Changelog
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  
+
+      - name: Set Up Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Generate Changelog with git-cliff
+        uses: orhun/git-cliff-action@main
+        id: git-cliff
+        with:
+          config: cliff.toml   
+          args: -vv --latest --no-exec --github-repo ${{ github.repository }}
+
+      - name: Display Generated Changelog
+        run: echo "${{ steps.git-cliff.outputs.content }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: "Release ${{ github.ref }}"
+          body: ${{ steps.git-cliff.outputs.content }}
+          draft: false
+          prerelease: true
+          token: ${{ secrets.GH_PAT }}
