@@ -93,7 +93,7 @@
   users.users.flokkq = {
     isNormalUser = true;
     description = "flokkq";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       eza
       oh-my-zsh
@@ -119,6 +119,8 @@
       banana-cursor-dreams
     ];
   };
+
+  security.sudo.wheelNeedsPassword = false;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
