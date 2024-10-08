@@ -1,18 +1,18 @@
-{ config, pkgs, inputs, lib, ... }:
+{  pkgs, inputs, lib, meta, ... }:
 
 {
   imports = [
     inputs.home-manager.darwinModules.home-manager
-    ./system.nix
-    ./apps.nix
+    ../../modules/languages.nix
+    ../../modules/unfree.nix
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  networking.hostName = "MacBook-Pro-von-Clemens";
-  networking.computerName = "MacBook-Pro-von-Clemens";
-  system.defaults.smb.NetBIOSName = "MacBook-Pro-von-Clemens";
+  networking.hostName = meta.hostname;
+  networking.computerName = meta.hostname;
+  system.defaults.smb.NetBIOSName = meta.hostname;
 
   nix.settings.trusted-users = ["clemensweber"];
 
@@ -40,14 +40,6 @@
   users.users.clemensweber = {
     description = "clemensweber";
     home = lib.mkForce "/Users/clemensweber"; 
-  };
-
-  home-manager = {
-    backupFileExtension = "backup";
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
-    users.clemensweber = import ./home.nix;
   };
 
   nix.gc = {

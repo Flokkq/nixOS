@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, meta, ... }:
 
+let
+  monitorUtils = import ./lib/monitor-utils.nix { inherit lib; };
+  primaryMonitor = builtins.elemAt (builtins.filter (m: m.primary) meta.monitors) 0;
+in
 {
   home.packages = with pkgs; [
     hyprlock
@@ -23,7 +27,7 @@
     }
 
     input-field {
-        monitor = DP-2
+        monitor = ${primaryMonitor.name}
         size = 250, 60
         outline_thickness = 2
         dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
@@ -42,7 +46,7 @@
     }
 
     label {
-        monitor = DP-2
+        monitor = ${primaryMonitor.name}
         text = cmd[update:1000] echo "$(date +"%-I:%M%p")"
         color = rgba(255, 255, 255, 0.6)
         font_size = 120
@@ -53,7 +57,7 @@
     }
 
     label {
-        monitor = DP-2
+        monitor = ${primaryMonitor.name}
         text = Hi there, $USER
         color = rgba(255, 255, 255, 0.6)
         font_size = 25
@@ -64,7 +68,7 @@
     }
 
     label {
-        monitor = DP-2
+        monitor = ${primaryMonitor.name}
         text = cmd[update:1000] echo "$(~/Documents/Scripts/whatsong.sh)" 
         color = rgba(255, 255, 255, 0.6)
         font_size = 18

@@ -3,7 +3,6 @@
 {
   imports = [
     ./browsers
-    ./communication
 
     ./zathura.nix
   ];
