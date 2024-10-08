@@ -16,6 +16,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -31,7 +34,18 @@
     };
   };
 
-  outputs = { self, nix-darwin, nixpkgs, home-manager, hyprland, hyprland-plugins, catppuccin, spicetify-nix, ... }@inputs: {
+  outputs = { 
+    self, 
+    nix-darwin, 
+    nixpkgs-unstable,
+    nixpkgs, 
+    home-manager, 
+    disko, 
+    hyprland-plugins, 
+    catppuccin, 
+    spicetify-nix, 
+    ... 
+  }@inputs: {
     nixosConfigurations = {
       default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
