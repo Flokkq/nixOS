@@ -90,10 +90,15 @@
       yad
       gcc
       xdg-desktop-portal
-      flameshot
+      grim
       hayabusa
       jq
       typioca
+      zip
+      unzip
+      distrobox
+      banana-cursor
+      banana-cursor-dreams
     ];
   };
 
