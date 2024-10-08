@@ -24,7 +24,7 @@ Packages installed via home-manager:
 
 ```nix
 home.packages = with pkgs; [
-  discord
+  spotify
 ];
 ```
 

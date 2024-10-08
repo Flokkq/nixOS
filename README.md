@@ -41,9 +41,19 @@ This configuration is a work in progress. Several components, particularly on th
 
 If you're interested in the ongoing development or want to see what's planned, please check out the [Issues](https://github.com/flokkq/dotfiles/issues) page. Suggestions are welcome!
 
+## Documentation
+
+For detailed, platform-specific documentation, refer to the following:
+
+- [Linux documentation](/hosts/linux/README.md)
+- [Darwin (macOS) documentation](/hosts/darwin/README.md)
+
+These will guide you through the specifics of each setup.
+
 ## How to Deploy this Flake?
 
-> :red_circle: **IMPORTANT**: It is **NOT RECOMMENDED OR SAFE** to use this configuration as it is still in development and contains hardcoded strings. Use at your own risk!
+> :red_circle: **IMPORTANT**: This configuration is still under development, making it **UNSAFE AND NOT RECOMMENDED** for general use. Proceed at your own risk!  
+> That said, if you're feeling adventurous, you can check out the [untested install guide](INSTALL.md) for more details. 
 
 [Hyprland]: https://github.com/hyprwm/Hyprland
 [Yabai]: https://github.com/koekeishiya/yabai

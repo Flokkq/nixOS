@@ -74,7 +74,7 @@
             scale = 1;
             framerate = 143.86;
             transform = 0;
-            primary = true;
+            primary = true;  
           }
           {
             name = "HDMI-A-2";
@@ -86,7 +86,7 @@
           }
         ]; 
       }
-      { name = "MacBook-Pro-von-Clemens"; system = "darwin"; monitors = []; }
+      { name = "MacBook-Pro-von-Clemens"; system = "darwin"; monitors = [ /* builtin: true */ ]; }
     ];
 
     # Function to generate configurations for all systems
