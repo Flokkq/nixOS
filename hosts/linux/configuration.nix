@@ -1,32 +1,33 @@
-{ pkgs, inputs, gst_all_1, ... }:
+{ pkgs, inputs, meta, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = 
+    [ 
       ./hardware-configuration.nix
       ./main-user.nix
+      ../../modules/default.nix
 
       inputs.home-manager.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
     ];
 
   main-user.enable = true;
-  main-user.userName = "flokkq";
+  main-user.userName = meta.hostname;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos";
+  # Use the dynamically set hostname
+  networking.hostName = meta.hostname;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Vienna";
+  time.timeZone = meta.timeZone or "Europe/Vienna";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -43,10 +44,10 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
-  # Enable bluetooth
+  # Enable Bluetooth
   hardware.bluetooth.enable = true;
 
-  # virtualisation
+  # Virtualisation
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.podman = {
@@ -61,9 +62,6 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
@@ -90,9 +88,9 @@
   networking.firewall.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.flokkq = {
+  users.users."${meta.hostname}" = {
     isNormalUser = true;
-    description = "flokkq";
+    description = meta.hostname;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       eza
@@ -122,17 +120,6 @@
 
   security.sudo.wheelNeedsPassword = false;
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    backupFileExtension = "backup";
-    users.flokkq = {
-        imports = [
-            ./home.nix
-            inputs.catppuccin.homeManagerModules.catppuccin
-        ];
-    };     
-  };
-
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
@@ -147,13 +134,6 @@
   environment.systemPackages = [
     pkgs.nerdfonts
     pkgs.xdg-desktop-portal-hyprland
-
-
-    # (pkgs.stdenv.mkDerivation {
-    #    name = "monaco";
-    #    src = ./fonts/monaco.ttf;
-    #    fontDirectories = [ "share/fonts/truetype" ];
-    # })
   ];
 
   environment.sessionVariables = {
@@ -184,7 +164,7 @@
   nixpkgs.overlays = [(self: super: {
     gnome = super.gnome.overrideScope' (gself: gsuper: {
         nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
-          buildInputs = nsuper.buildInputs ++ (with gst_all_1; [
+          buildInputs = nsuper.buildInputs ++ (with inputs.gst_all_1; [
             gst-plugins-good
             gst-plugins-bad
           ]);

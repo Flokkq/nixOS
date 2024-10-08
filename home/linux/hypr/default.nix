@@ -1,5 +1,6 @@
-{  pkgs, ... }:
-
+{  pkgs, meta, lib, ... }: let
+  monitorUtils = import ./lib/monitor-utils.nix { inherit lib; };
+  in
 {
   imports = [
     ./hyprland-environment.nix
@@ -20,12 +21,7 @@
     enable = true;
     systemdIntegration = true;
     settings = {
-      # MONITORS
-      monitor = [
-        "HDMI-A-1,1920x1080@74.97,auto,auto"
-        "DP-2,2560x1440@143.86,auto,auto"
-        "HDMI-A-2,1920x1080@74.97,auto,auto"
-      ];
+    monitor = map monitorUtils.generateHyprlandMonitorConfig meta.monitors meta.monitors;
 
       # ENVIRONMENT VARIABLES
       env = [

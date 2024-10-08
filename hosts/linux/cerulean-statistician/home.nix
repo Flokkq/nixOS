@@ -1,39 +1,36 @@
-{ pkgs, ... }:
+{ pkgs, meta, ... }:
 {
   imports = [
-    ../../home
-    ../../home/linux
+    ../../../home
+    ../../../home/linux
   ];
 
- # Home Manager needs a bit of information about you and the paths it should
-  home.username = "flokkq";
-  home.homeDirectory = "/home/flokkq";
+  # Home Manager needs a bit of information about the user and paths
+  home.username = meta.hostname;
+  home.homeDirectory = meta.hostname;
 
-  # This value determines the Home Manager release that your configuration is
+  # Home Manager release information
   targets.genericLinux.enable = true;
+
   home.activation = {
     linkDesktopApplications = {
       after = [ "writeBoundary" "createXdgUserDirectories" ];
       before = [ ];
       data = '''';
-    };  
+    };
   };
-
 
   # You should not change this value, even if you update Home Manager.
   home.stateVersion = "24.11";
 
   home.packages = [
-/*     (import ../../scripts/linux { inherit pkgs; }) */
+    # Add your home packages here if needed
+    # (import ../../scripts/linux { inherit pkgs; })
   ];
 
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
+    # You can define files or dotfiles to be managed here
     # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
@@ -57,17 +54,18 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Set GTK theme for user
+  # Set GTK theme for the user
   gtk = {
     enable = true;
 
-    /* catppuccin = {
-      enable = true;
-      flavor = "mocha";
-      accent = "pink";
-      size = "standard";
-      tweaks = [ "normal" ];
-    }; */
+    # Optionally, enable Catppuccin theme
+    # catppuccin = {
+    #   enable = true;
+    #   flavor = "mocha";
+    #   accent = "pink";
+    #   size = "standard";
+    #   tweaks = [ "normal" ];
+    # };
 
     cursorTheme = {
       package = pkgs.bibata-cursors;
