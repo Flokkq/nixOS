@@ -30,6 +30,8 @@
       la = "eza -A";
       tree = "eza --tree";
 
+      e = "nvim";
+
       cat = "bat";
 
       git = "LC_ALL=en_US git";
@@ -56,15 +58,6 @@
       DISABLE_UNTRACKED_FILES_DIRTY="true"
 
       eval "$(starship init zsh)"
-
-      # SSH connections
-      source $ZSHRC_DIR/.ssh_aliases
-
-      # Scripts
-      # source $ZSHRC_DIR/scripts/cloc-git.sh
-      # source $ZSHRC_DIR/scripts/extract.sh
-      # source $ZSHRC_DIR/scripts/lg.sh
-      # source $ZSHRC_DIR/scripts/air.sh
     '';
   
     plugins = [
