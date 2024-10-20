@@ -56,7 +56,10 @@
     # Custom initialization
     initExtra = ''
       DISABLE_UNTRACKED_FILES_DIRTY="true"
+      HISTSIZE=999999999
+      SAVEHIST=999999999
 
+      setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
       eval "$(starship init zsh)"
     '';
   
