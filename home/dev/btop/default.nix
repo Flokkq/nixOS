@@ -13,7 +13,7 @@
     enable = true;
 
     settings = {
-      color_theme = "~/.config/btop/themes/catppuccin_mocha.theme";
+      color_theme = "catppuccin_mocha";
       theme_background = true;
       truecolor = true;
       force_tty = false;
