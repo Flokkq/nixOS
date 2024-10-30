@@ -1,16 +1,13 @@
 { ... }:
 {
   imports = [
-    ../../../home
-    ../../../home/darwin
+    ../../home
+    ../../home/darwin
   ];
 
  # Home Manager needs a bit of information about you and the paths it should
   home.username = "clemensweber";
   home.homeDirectory = "/Users/clemensweber";
-
-  # You should not change this value, even if you update Home Manager.
-  home.stateVersion = "24.11";
 
   home.packages = [];
 
@@ -43,4 +40,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # You should not change this value, even if you update Home Manager.
+  home.stateVersion = "24.11";
 }

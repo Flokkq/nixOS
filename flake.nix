@@ -93,7 +93,7 @@
     forAllSystems = fn: nixpkgs.lib.genAttrs systems (system: fn { pkgs = import nixpkgs { inherit system; }; });
 
     # Overlays to be used only for Linux
-    overlays = import ./overlays { inherit inputs; };
+    # overlays = import ./overlays { inherit inputs; };
 
     forLinuxHosts = host: {
       name = host.name;
@@ -108,23 +108,25 @@
         };
         system = "x86_64-linux"; 
         modules = [
-          ./hosts/linux/${host.name}/default.nix
-          ./hosts/linux/configuration.nix
+            disko.nixosModules.disko
 
-          disko.nixosModules.disko
+            ./hosts/linux/cerulean-statistician/hardware-configuration.nix
+            # ./hosts/${host.name}/disko-config.nix
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.mainUser = import ./hosts/linux/main-user.nix;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              meta = host;
-            };
-          }
+            ./hosts/linux/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.backupFileExtension = "bak";
+              home-manager.useUserPackages = true;
+              home-manager.users.flokkq = import ./hosts/linux/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                meta = host;
+              };
+            }
         ];
-        overlays = [ overlays ];  # Apply overlays for Linux
+        #overlays = [ overlays ];  # Apply overlays for Linux
       };
     };
 
@@ -146,6 +148,8 @@
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
+            home-manager.backupfileextension = "bak";
+            home-manager.users.clemensweber = import ./hosts/darwin/home.nix;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;

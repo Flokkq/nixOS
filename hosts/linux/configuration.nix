@@ -3,16 +3,11 @@
 {
   imports = 
     [ 
-      ./hardware-configuration.nix
-      ./main-user.nix
       ../../modules/default.nix
 
       inputs.home-manager.nixosModules.default
       inputs.catppuccin.nixosModules.catppuccin
     ];
-
-  main-user.enable = true;
-  main-user.userName = meta.hostname;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -88,9 +83,10 @@
   networking.firewall.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."${meta.hostname}" = {
+  users.users."flokkq" = {
     isNormalUser = true;
     description = meta.hostname;
+    hashedPassword = "$6$roAT/Ee8qQqCf88u$33jo8ikm2KdYNMvv88YJQUFXhNEo8P6Gm2pLRqGKgUCz/E0.TcYeG58duD7DlnvH6prqxXh42jmjyFIzxyOk90";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       eza
@@ -113,8 +109,6 @@
       zip
       unzip
       distrobox
-      banana-cursor
-      banana-cursor-dreams
     ];
   };
 
