@@ -7,9 +7,10 @@
   monitorUtils = import ./lib/utils.nix {inherit lib;};
 
   # Automatically set wallpaper for each monitor
-  wallpaperConfig = lib.concatStringsSep "\n" (map (monitor:
-    "wallpaper = ${monitor.name},~/nixos-config/home/pictures/_1.png"
-  ) meta.monitors);
+  wallpaperConfig = lib.concatStringsSep "\n" (map (
+      monitor: "wallpaper = ${monitor.name},~/nixos-config/home/pictures/_1.png"
+    )
+    meta.monitors);
 in {
   home.packages = with pkgs; [
     hyprpaper
