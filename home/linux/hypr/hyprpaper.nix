@@ -8,7 +8,7 @@
 
   # Automatically set wallpaper for each monitor
   wallpaperConfig = lib.concatStringsSep "\n" (map (
-      monitor: "wallpaper = ${monitor.name},~/nixos-config/home/pictures/_1.png"
+      monitor: "wallpaper = ${monitor.name},~/nixos-config/wallpapers/_1.png"
     )
     meta.monitors);
 in {
@@ -17,7 +17,7 @@ in {
   ];
 
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ~/nixos-config/home/pictures/_1.png
+    preload = ~/nixos-config/wallpapers/_1.png
     ${wallpaperConfig}
   '';
 }

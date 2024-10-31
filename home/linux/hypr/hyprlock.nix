@@ -15,7 +15,7 @@ in {
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
         monitor =
-        path = ~/nixos-config/home/pictures/_1.png
+        path = ~/nixos-config/wallpapers/_1.png
         blur_passes = 3
         contrast = 0.8916
         brightness = 0.8172
