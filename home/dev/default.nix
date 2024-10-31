@@ -5,6 +5,8 @@
     ./btop
     ./zellij
     ./neofetch
+    ./bat
+    ./yazi
 
     ./git.nix
     ./tmux.nix
