@@ -18,6 +18,7 @@ in {
 
   home.packages = with pkgs; [
     swww
+    libnotify
     wofi
   ];
 
@@ -117,7 +118,7 @@ in {
 
       bind = [
         # Launch Applications
-        "$mainMod, SPACE, exec,  wofi --show drun"
+        "$mainMod, SPACE, exec,  wofi --show drun -I -m -i"
         "$mainMod SHIFT, SPACE, exec, kitty"
         "$mainMod, Q, killactive"
         "$mainMod SHIFT, W, exec, web-search"
