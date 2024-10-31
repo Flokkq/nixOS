@@ -60,11 +60,11 @@
         monitors = [
           {
             name = "HDMI-A-1";
-            dimensions = "3840x2160";
-            position = "auto-right";
-            scale = 2;
-            framerate = 60;
-            transform = 1;
+            dimensions = "1920x1080";
+            position = "auto";
+            scale = 1;
+            framerate = 74.97;
+            transform = 0;
             primary = false;
             internal = false;
           }
@@ -105,7 +105,7 @@
     forAllSystems = fn: nixpkgs.lib.genAttrs systems (system: fn {pkgs = import nixpkgs {inherit system;};});
 
     # Overlays to be used only for Linux
-    overlays = import ./overlays { inherit inputs; };
+    overlays = import ./overlays {inherit inputs;};
 
     forLinuxHosts = host: {
       name = host.name;
@@ -138,7 +138,7 @@
             };
           }
         ];
-        # overlays = [ overlays ];  
+        # overlays = [ overlays ];
       };
     };
 
