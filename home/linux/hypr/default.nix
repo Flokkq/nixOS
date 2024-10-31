@@ -119,22 +119,21 @@ in {
       bind = [
         # Launch Applications
         "$mainMod, SPACE, exec,  wofi --show drun -I -m -i"
-        "$mainMod SHIFT, SPACE, exec, kitty"
-        "$mainMod, Q, killactive"
         "$mainMod SHIFT, W, exec, web-search"
         "$mainMod SHIFT, N, exec, swaync-client -rs"
-        "$mainMod, W, exec, brave"
-        "$mainMod, S, exec, screenshootin"
+        "$mainMod SHIFT, C, exec, exit"
+        "$mainMod, Q, exec, kitty"
+        "$mainMod, C, killactive"
+        "$mainMod, B, exec, brave"
         "$mainMod, D, exec, discord"
         "$mainMod, N, exec, nautilus"
-        "$mainMod, M, exec, spotify"
-        "$mainMod SHIFT, C, exec, exit"
+        "$mainMod, S, exec, spotify"
 
         # Window Management
         "$mainMod, P, pseudo"
         "$mainMod SHIFT, I, togglesplit"
-        "$mainMod, F, fullscreen"
-        "$mainMod SHIFT, F, fullscreen"
+        "$mainMod, M, fullscreen, 1"
+        "$mainMod SHIFT, M, fullscreen, 0"
 
         # Move Focus
         "$mainMod, H, movefocus, l"
@@ -186,8 +185,6 @@ in {
         # Other
         "$mainMod, ENTER, togglespecialworkspace"
         "$mainMod SHIFT, ENTER, movetoworkspace,special"
-
-        "ALT, TAB, exec, cyclenext & bringactivetotop"
       ];
 
       bindm = [
