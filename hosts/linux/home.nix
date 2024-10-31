@@ -56,5 +56,5 @@
   programs.home-manager.enable = true;
 
   # You should not change this value, even if you update Home Manager.
-  home.stateVersion = "24.11";
+  home.stateVersion = "24.05";
 }

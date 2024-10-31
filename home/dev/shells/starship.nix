@@ -9,7 +9,7 @@
     enableFishIntegration = true;
     settings = {
       custom.nixos = {
-        command = "echo -n   24.11";
+        command = "echo -n   24.05";
         when = "true";
         format = "using [$output](bold blue)";
       };
