@@ -9,26 +9,6 @@
       sha256 = "sha256-FJHM6LJkiAwxaLd5pnAoF3a7AE1ZqHWoCpUJE0ncCA8=";
     };
   };
-  rose-pine = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "rose-pine";
-    version = "unstable-2023-01-06";
-    src = pkgs.fetchFromGitHub {
-      owner = "rose-pine";
-      repo = "tmux";
-      rev = "main";
-      sha256 = "sha256-0ccJVQIIOpHdr3xMIBC1wbgsARCNpmN+xMYVO6eu/SI=";
-    };
-  };
-  tokyo-night = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "tokyo-night";
-    version = "unstable-2023-01-06";
-    src = pkgs.fetchFromGitHub {
-      owner = "janoamaral";
-      repo = "tokyo-night-tmux";
-      rev = "master";
-      sha256 = "sha256-3rMYYzzSS2jaAMLjcQoKreE0oo4VWF9dZgDtABCUOtY=";
-    };
-  };
   tmuxPomodoroPlus = pkgs.tmuxPlugins.mkTmuxPlugin {
     pluginName = "tmux-pomodoro-plus";
     version = "main";
@@ -57,9 +37,7 @@ in {
     shortcut = "C-D";
 
     plugins = with pkgs.tmuxPlugins; [
-      tokyo-night
       catppuccin
-      rose-pine
       tmuxPomodoroPlus
 
       vim-tmux-navigator
