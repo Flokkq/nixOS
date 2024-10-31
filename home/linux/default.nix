@@ -4,6 +4,7 @@
     ./waybar
     ./dev
     ./apps
+    ./swaync
 
     ./nautilus.nix
     ./grimblast.nix
