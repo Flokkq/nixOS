@@ -4,5 +4,7 @@
     ./waybar
     ./dev
     ./apps
+
+    ./nautilus.nix
   ];
 }

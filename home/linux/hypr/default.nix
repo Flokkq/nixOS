@@ -18,7 +18,6 @@ in {
 
   home.packages = with pkgs; [
     swww
-    nautilus
     wofi
   ];
 
