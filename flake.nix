@@ -105,7 +105,7 @@
     forAllSystems = fn: nixpkgs.lib.genAttrs systems (system: fn {pkgs = import nixpkgs {inherit system;};});
 
     # Overlays to be used only for Linux
-    # overlays = import ./overlays { inherit inputs; };
+    overlays = import ./overlays { inherit inputs; };
 
     forLinuxHosts = host: {
       name = host.name;
@@ -123,7 +123,7 @@
           disko.nixosModules.disko
 
           ./hosts/linux/cerulean-statistician/hardware-configuration.nix
-          # ./hosts/${host.name}/disko-config.nix
+          ./hosts/${host.name}/disko-config.nix
 
           ./hosts/linux/configuration.nix
           home-manager.nixosModules.home-manager
@@ -138,7 +138,7 @@
             };
           }
         ];
-        #overlays = [ overlays ];  # Apply overlays for Linux
+        # overlays = [ overlays ];  
       };
     };
 
