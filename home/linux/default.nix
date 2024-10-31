@@ -7,5 +7,6 @@
 
     ./nautilus.nix
     ./grimblast.nix
+    ./avizo.nix
   ];
 }
