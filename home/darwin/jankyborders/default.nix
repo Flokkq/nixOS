@@ -1,5 +1,3 @@
-{ ... }:
-
-{
-    home.file.".config/borders/bordersrc".source = ./bordersrc;
+{...}: {
+  home.file.".config/borders/bordersrc".source = ./bordersrc;
 }

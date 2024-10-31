@@ -1,15 +1,17 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
-        "git" 
-	"colored-man-pages"
-      ]; 
+      plugins = [
+        "git"
+        "colored-man-pages"
+      ];
       # theme = "norm"; # Set your preferred theme
     };
 
@@ -62,7 +64,7 @@
       setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
       eval "$(starship init zsh)"
     '';
-  
+
     plugins = [
       {
         name = "zsh-autosuggestions";
@@ -85,4 +87,3 @@
     ];
   };
 }
-

@@ -1,13 +1,11 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./shells
     ./editors
     ./btop
     ./zellij
     ./neofetch
- 
+
     ./git.nix
     ./tmux.nix
     ./zoxide.nix

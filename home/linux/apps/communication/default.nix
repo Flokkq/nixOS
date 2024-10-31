@@ -1,9 +1,9 @@
-{ ... }:
-
-{
+{...}: {
   imports = [
-    /* ./vesktop.nix
+    /*
+       ./vesktop.nix
     ./vencord.nix
-    ./webcord.nix */
+    ./webcord.nix
+    */
   ];
 }

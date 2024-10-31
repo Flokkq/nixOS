@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   colors = import ./terminal-catppuccin-mocha-color-scheme.nix;
 in {
   home.packages = with pkgs; [

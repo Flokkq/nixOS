@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     starship
   ];
@@ -16,7 +14,7 @@
         format = "using [$output](bold blue)";
       };
 
-      format = "$directory$custom $all";  # Add the custom module after the directory listing
+      format = "$directory$custom $all"; # Add the custom module after the directory listing
 
       buf = {
         disabled = true;

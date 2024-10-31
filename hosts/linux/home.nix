@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../../home
     ../../home/linux
@@ -14,8 +17,8 @@
 
   home.activation = {
     linkDesktopApplications = {
-      after = [ "writeBoundary" "createXdgUserDirectories" ];
-      before = [ ];
+      after = ["writeBoundary" "createXdgUserDirectories"];
+      before = [];
       data = '''';
     };
   };

@@ -1,13 +1,13 @@
-{ pkgs, inputs, meta, ... }:
-
 {
-  imports = 
-    [ 
-      ../../modules/default.nix
-
-      inputs.home-manager.nixosModules.default
-      inputs.catppuccin.nixosModules.catppuccin
-    ];
+  pkgs,
+  inputs,
+  meta,
+  ...
+}: {
+  imports = [
+    inputs.home-manager.nixosModules.default
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -17,7 +17,7 @@
   # Use the dynamically set hostname
   networking.hostName = meta.hostname;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -87,7 +87,7 @@
     isNormalUser = true;
     description = meta.hostname;
     hashedPassword = "$6$roAT/Ee8qQqCf88u$33jo8ikm2KdYNMvv88YJQUFXhNEo8P6Gm2pLRqGKgUCz/E0.TcYeG58duD7DlnvH6prqxXh42jmjyFIzxyOk90";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
       eza
       oh-my-zsh
@@ -155,16 +155,20 @@
     TTYVTDisallocate = true;
   };
 
-  nixpkgs.overlays = [(self: super: {
-    gnome = super.gnome.overrideScope' (gself: gsuper: {
+  nixpkgs.overlays = [
+    (self: super: {
+      gnome = super.gnome.overrideScope' (gself: gsuper: {
         nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
-          buildInputs = nsuper.buildInputs ++ (with inputs.gst_all_1; [
-            gst-plugins-good
-            gst-plugins-bad
-          ]);
+          buildInputs =
+            nsuper.buildInputs
+            ++ (with inputs.gst_all_1; [
+              gst-plugins-good
+              gst-plugins-bad
+            ]);
         });
       });
-  })];
+    })
+  ];
 
   system.stateVersion = "24.11";
 }

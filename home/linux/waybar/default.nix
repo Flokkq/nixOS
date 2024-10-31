@@ -1,7 +1,9 @@
-{ pkgs, lib, ... }:
-
-with lib;
 {
+  pkgs,
+  lib,
+  ...
+}:
+with lib; {
   home.packages = with pkgs; [
     waybar
 
@@ -14,11 +16,9 @@ with lib;
     playerctl
   ];
 
-
   home.file.".config/waybar/modules" = {
     source = ./modules;
   };
-
 
   programs.waybar = {
     enable = true;
@@ -74,10 +74,10 @@ with lib;
               "<span foreground='#B8BB26'></span>"
             ];
             format-charging = [
-              "" 
-              "" 
-              "" 
-              "" 
+              ""
+              ""
+              ""
+              ""
               ""
             ];
           };
@@ -117,7 +117,7 @@ with lib;
           tooltip-format-wifi = " {essid} {frequency}MHz\nStrength: {signaldBm}dBm ({signalStrength}%)\nIP: {ipaddr}/{cidr}\n {bandwidthUpBits}  {bandwidthDownBits}";
           interval = 10;
         };
-        
+
         "backlight" = {
           device = "intel_backlight";
           format = "{icon}  {percent}%";
@@ -296,7 +296,7 @@ with lib;
             car = " ";
             default = [
               "<span foreground='#15161E'> </span>"
-              "<span foreground='#15161E'> </span>" 
+              "<span foreground='#15161E'> </span>"
               "<span foreground='#15161E'> </span>"
               "<span foreground='#15161E'> </span>"
               "<span foreground='#15161E'> </span>"
