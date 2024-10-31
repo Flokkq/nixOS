@@ -123,7 +123,7 @@
           disko.nixosModules.disko
 
           ./hosts/linux/cerulean-statistician/hardware-configuration.nix
-          ./hosts/${host.name}/disko-config.nix
+          # ./hosts/${host.name}/disko-config.nix
 
           ./hosts/linux/configuration.nix
           home-manager.nixosModules.home-manager
