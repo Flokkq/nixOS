@@ -53,8 +53,8 @@ These will guide you through the specifics of each setup.
 ## How to Deploy this Flake?
 
 > [!WARNING]
-> :red_circle: **IMPORTANT**: This configuration is still under development, making it **UNSAFE AND NOT RECOMMENDED** for general use. Proceed at your own risk!  
-> That said, if you're feeling adventurous, you can check out the [untested install guide](INSTALL.md) for more details. 
+> :red_circle: **IMPORTANT**: This configuration is still unstable, making it **UNSAFE AND NOT RECOMMENDED** for general use. Proceed at your own risk!  
+> That said, if you're feeling adventurous, you can check out the [install guide](INSTALL.md) for more details. 
 
 [Hyprland]: https://github.com/hyprwm/Hyprland
 [Yabai]: https://github.com/koekeishiya/yabai
