@@ -1,9 +1,12 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
 }: {
   imports = [
+    inputs.catppuccin.homeManagerModules.catppuccin
+
     ../../home
     ../../home/linux
   ];
@@ -36,19 +39,21 @@
   # Set GTK theme for the user
   gtk = {
     enable = true;
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
+
     cursorTheme = {
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
     };
 
-    theme = {
-      package = pkgs.rose-pine-gtk-theme;
-      name = "rose-pine";
-    };
-
-    iconTheme = {
-      package = pkgs.rose-pine-icon-theme;
-      name = "rose-pine";
+    catppuccin = {
+      enable = true;
+      flavor = "mocha";
+      accent = "pink";
+      size = "standard";
+      tweaks = ["normal"];
     };
   };
 
