@@ -29,6 +29,11 @@
       url = "github:catppuccin/nix";
     };
 
+    schizofox = {
+      url = "github:schizofox/schizofox/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
     };
