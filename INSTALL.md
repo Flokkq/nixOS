@@ -95,7 +95,8 @@
    reboot
    ```
 
-   > **IMPORTANT**: You will be asked to set a password for the root user. Make sure to set it to `ciscodisco`, as you will need it later.
+   > ![IMPORTANT]
+   > You will be asked to set a password for the root user. Make sure to remember it, as you will need it later.
 
 ---
 
@@ -106,7 +107,7 @@
    After rebooting, log in with the following credentials:
 
    - **Username**: `root`
-   - **Password**: `ciscodisco` (or the password you set in Step 9)
+   - **Password**: `<flokkq-is-cool>` 
 
 1. **Install Git**
 
@@ -121,8 +122,16 @@
    Clone the configuration repository to your home directory:
 
    ```bash
-   cd ~ && git clone https://github.com/Sbim-BeSt-Kaindorf/laptops.git
+   cd /etc/nixos && git clone https://github.com/Flokkq/nixos.git
    ```
+
+   Generate yourself a nice Username
+
+   ```bash
+   chmod +x hostname.sh && ./hostname.sh
+   ```
+
+   Make sure to move `hardware-configuration.nix` and `disko-config.nix` to `hosts/linux/<your_username>`
 
 3. **Add an Entry to the Hosts Array in `flake.nix`**
 
