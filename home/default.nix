@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./dev
     ./apps
 
-    ./kanata.nix    
+    ./kanata.nix
   ];
 
   home.packages = with pkgs; [

@@ -1,6 +1,4 @@
-{ pkks, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./terminals
     ./direnv.nix
@@ -8,7 +6,7 @@
     ./zellij.nix
   ];
 
-  home.packages = with pkks; [
+  home.packages = with pkgs; [
     cava
   ];
 }

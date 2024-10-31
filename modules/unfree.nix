@@ -17,7 +17,7 @@
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
-  nixpkgs.config.allowBroken = true; 
+  nixpkgs.config.allowBroken = true;
 
   environment.systemPackages = with pkgs; [
     discord

@@ -1,12 +1,9 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./browsers
 
     ./zathura.nix
   ];
-
 
   home.packages = with pkgs; [
     _1password-gui

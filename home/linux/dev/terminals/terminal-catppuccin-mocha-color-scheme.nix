@@ -61,4 +61,4 @@ let
     };
   };
 in
-catppuccinColors
+  catppuccinColors

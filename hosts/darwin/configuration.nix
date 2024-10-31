@@ -1,14 +1,16 @@
-{  pkgs, inputs, lib, meta, ... }:
-
 {
+  pkgs,
+  inputs,
+  lib,
+  meta,
+  ...
+}: {
   imports = [
     inputs.home-manager.darwinModules.home-manager
-    ../../modules/languages.nix
-    ../../modules/unfree.nix
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   networking.hostName = meta.hostname;
   networking.computerName = meta.hostname;
@@ -39,7 +41,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.clemensweber = {
     description = "clemensweber";
-    home = lib.mkForce "/Users/clemensweber"; 
+    home = lib.mkForce "/Users/clemensweber";
   };
 
   nix.gc = {

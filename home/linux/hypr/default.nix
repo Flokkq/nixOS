@@ -1,10 +1,16 @@
-{  pkgs, meta, lib, ... }: let
-  monitorUtils = import ./lib/monitor-utils.nix { inherit lib; };
-  in
 {
+  pkgs,
+  meta,
+  lib,
+  ...
+}: let
+  monitorUtils = import ./utils.nix {inherit lib;};
+
+  primaryMonitor = monitorUtils.getPrimaryMonitor meta.monitors;
+  secondaryMonitors = monitorUtils.getSecondaryMonitors meta.monitors;
+in {
   imports = [
     ./hyprland-environment.nix
-    ./colors.nix
     ./hyprpaper.nix
     ./hypridle.nix
     ./hyprlock.nix
@@ -12,16 +18,15 @@
 
   home.packages = with pkgs; [
     swww
-    gnome.nautilus
+    libnotify
     wofi
-    hyprpaper
   ];
 
   wayland.windowManager.hyprland = {
     enable = true;
     systemdIntegration = true;
     settings = {
-    monitor = map monitorUtils.generateHyprlandMonitorConfig meta.monitors meta.monitors;
+      monitor = monitorUtils.generateHyprlandMonitorConfig meta.monitors;
 
       # ENVIRONMENT VARIABLES
       env = [
@@ -113,24 +118,23 @@
 
       bind = [
         # Launch Applications
-        "$mainMod, SPACE, exec,  wofi --show drun"
-        "$mainMod SHIFT, SPACE, exec, kitty"
-        "$mainMod, Q, killactive"
+        "$mainMod, SPACE, exec,  wofi --show drun -I -m -i"
         "$mainMod SHIFT, W, exec, web-search"
         "$mainMod SHIFT, N, exec, swaync-client -rs"
-        "$mainMod, W, exec, brave"
-        "$mainMod, S, exec, screenshootin"
+        "$mainMod SHIFT, C, exec, exit"
+        "$mainMod, Q, exec, kitty"
+        "$mainMod, C, killactive"
+        "$mainMod, B, exec, brave"
         "$mainMod, D, exec, discord"
         "$mainMod, N, exec, nautilus"
-        "$mainMod, M, exec, spotify"
-        "$mainMod SHIFT, C, exec, exit"
-      
+        "$mainMod, S, exec, spotify"
+
         # Window Management
         "$mainMod, P, pseudo"
         "$mainMod SHIFT, I, togglesplit"
-        "$mainMod, F, fullscreen"
-        "$mainMod SHIFT, F, fullscreen"
-      
+        "$mainMod, M, fullscreen, 1"
+        "$mainMod SHIFT, M, fullscreen, 0"
+
         # Move Focus
         "$mainMod, H, movefocus, l"
         "$mainMod, L, movefocus, r"
@@ -150,7 +154,7 @@
         "$mainMod SHIFT, L, movewindow, r"
         "$mainMod SHIFT, K, movewindow, u"
         "$mainMod SHIFT, J, movewindow, d"
-      
+
         # Workspaces
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -173,18 +177,16 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
-      
+
         # Workspace Navigation with Mouse
         "$mainMod, mouse_down, workspace, e+1"
         "$mainMod, mouse_up, workspace, e-1"
-       
-        # Other      
+
+        # Other
         "$mainMod, ENTER, togglespecialworkspace"
         "$mainMod SHIFT, ENTER, movetoworkspace,special"
-
-        "ALT, TAB, exec, cyclenext & bringactivetotop"
       ];
-      
+
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
@@ -199,5 +201,4 @@
       # additional non-Nix-configurable settings
     '';
   };
-
 }

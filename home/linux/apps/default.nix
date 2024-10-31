@@ -1,7 +1,4 @@
-
-{ ... }:
-
-{
+{...}: {
   imports = [
     ./communication
     ./music

@@ -1,15 +1,18 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  meta,
+  ...
+}: {
   programs.zsh = {
     enable = true;
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
-        "git" 
-	"colored-man-pages"
-      ]; 
+      plugins = [
+        "git"
+        "colored-man-pages"
+      ];
       # theme = "norm"; # Set your preferred theme
     };
 
@@ -47,10 +50,7 @@
 
       speedtest = "curl -o /dev/null cachefly.cachefly.net/250mb.test";
 
-      reloadzsh = "source $HOME/.zshrc";
-      editzsh = "nvim /etc/nixos/modules/home-manager/shells/zsh.nix";
-
-      rebuildnix = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --impure --flake ~/nixos-config/#default";
+      rebuildnix = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --impure --flake ~/nixOS/#${meta.name}";
     };
 
     # Custom initialization
@@ -62,7 +62,7 @@
       setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
       eval "$(starship init zsh)"
     '';
-  
+
     plugins = [
       {
         name = "zsh-autosuggestions";
@@ -85,4 +85,3 @@
     ];
   };
 }
-

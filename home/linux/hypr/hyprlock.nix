@@ -1,10 +1,13 @@
-{ pkgs, lib, meta, ... }:
-
-let
-  monitorUtils = import ./lib/monitor-utils.nix { inherit lib; };
-  primaryMonitor = builtins.elemAt (builtins.filter (m: m.primary) meta.monitors) 0;
-in
 {
+  pkgs,
+  lib,
+  meta,
+  ...
+}: let
+  monitorUtils = import ./utils.nix {inherit lib;};
+
+  primaryMonitor = monitorUtils.getPrimaryMonitor meta.monitors;
+in {
   home.packages = with pkgs; [
     hyprlock
   ];
@@ -12,7 +15,7 @@ in
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
         monitor =
-        path = ~/nixos-config/home/pictures/bridge.png 
+        path = ${toString ../../../wallpapers/_1.png}
         blur_passes = 3
         contrast = 0.8916
         brightness = 0.8172
@@ -27,7 +30,7 @@ in
     }
 
     input-field {
-        monitor = ${primaryMonitor.name}
+        monitor = ${primaryMonitor}
         size = 250, 60
         outline_thickness = 2
         dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
@@ -46,7 +49,7 @@ in
     }
 
     label {
-        monitor = ${primaryMonitor.name}
+        monitor = ${primaryMonitor}
         text = cmd[update:1000] echo "$(date +"%-I:%M%p")"
         color = rgba(255, 255, 255, 0.6)
         font_size = 120
@@ -57,7 +60,7 @@ in
     }
 
     label {
-        monitor = ${primaryMonitor.name}
+        monitor = ${primaryMonitor}
         text = Hi there, $USER
         color = rgba(255, 255, 255, 0.6)
         font_size = 25
@@ -68,8 +71,8 @@ in
     }
 
     label {
-        monitor = ${primaryMonitor.name}
-        text = cmd[update:1000] echo "$(~/Documents/Scripts/whatsong.sh)" 
+        monitor = ${primaryMonitor}
+        text = cmd[update:1000] echo "$(~/Documents/Scripts/whatsong.sh)"
         color = rgba(255, 255, 255, 0.6)
         font_size = 18
         font_family = JetBrainsMono, Font Awesome 6 Free Solid

@@ -1,13 +1,23 @@
-{  pkgs, meta, lib, ... }: let
-    monitorUtils = import ./lib/monitor-utils.nix { inherit lib; };
-  in
 {
+  pkgs,
+  meta,
+  lib,
+  ...
+}: let
+  monitorUtils = import ./lib/utils.nix {inherit lib;};
+
+  # Automatically set wallpaper for each monitor
+  wallpaperConfig = lib.concatStringsSep "\n" (map (
+      monitor: "wallpaper = ${monitor.name},${toString ../../../wallpapers/_1.png}"
+    )
+    meta.monitors);
+in {
   home.packages = with pkgs; [
     hyprpaper
   ];
 
   home.file.".config/hypr/hyprpaper.conf".text = ''
-    preload = ~/nixos-config/home/pictures/bridge.png
-    ${monitorUtils.generateHyprlandMonitorConfig meta.monitors}
+    preload = ${toString ../../../wallpapers/_1.png}
+    ${wallpaperConfig}
   '';
 }
