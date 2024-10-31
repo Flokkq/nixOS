@@ -108,6 +108,8 @@
       zip
       unzip
       distrobox
+      vesktop
+      binsider
     ];
   };
 
