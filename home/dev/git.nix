@@ -7,5 +7,9 @@
     enable = true;
     userName = "Flokkq";
     userEmail = "webcla21@htl-kaindorf.at";
+
+      extraConfig = {
+          credential.helper = "!gh auth git-credential";
+      };
   };
 }
