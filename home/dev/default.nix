@@ -11,6 +11,8 @@
     ./git.nix
     ./tmux.nix
     ./zoxide.nix
+    ./direnv.nix
+    ./vscode.nix
   ];
 
   home.packages = with pkgs; [
