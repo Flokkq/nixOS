@@ -109,7 +109,7 @@
         ];
       }
       {
-        name = "MacBook-Pro-von-Clemens";
+        name = "cornflower-scientist";
         system = "darwin";
         monitors = [
           /*
