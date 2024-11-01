@@ -95,7 +95,7 @@
    reboot
    ```
 
-   > ![IMPORTANT]
+   > [!IMPORTANT]
    > You will be asked to set a password for the root user. Make sure to remember it, as you will need it later.
 
 ---

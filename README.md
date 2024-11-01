@@ -27,7 +27,7 @@ See [./hosts](./hosts) for details of each host.
 | **Bar**                     | [Waybar][Waybar]                                  | [SketchyBar][SketchyBar]                |
 | **Application Launcher**    | [Wofi][Wofi]                                      | [Raycast][Raycast]                      |
 | **Display Manager**         | [Greetd][Greetd]                                  | Native macOS                            |
-| **Color Scheme**            | [Catppuccin][Catppuccin] + [Rosepine][Rosepine]   | Default macOS                           |
+| **Color Scheme**            | [Catppuccin][Catppuccin]                          | Default macOS                           |
 | **System resource monitor** | [Btop][Btop]                                      | [Btop][Btop]                            |
 | **File Manager**            | [Nautilus][Nautilus]                              | Finder                                  |
 | **Shell**                   | [Zsh][Zsh]                                        | [Zsh][Zsh]                              |
