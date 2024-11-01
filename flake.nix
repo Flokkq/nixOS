@@ -178,7 +178,6 @@
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.backupfileextension = "bak";
             home-manager.users.clemensweber = import ./hosts/darwin/home.nix;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {

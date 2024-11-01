@@ -6,7 +6,7 @@
   ];
 
   home.packages = with pkgs; [
-    _1password-gui
+    # _1password-gui
     # rpi-imager -- currently broken
     wireshark
     # ghidra
