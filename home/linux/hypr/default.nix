@@ -195,6 +195,10 @@ in {
       windowrulev2 = [
         "suppressevent maximize, class:.*"
       ];
+
+      windowrule = [
+        "float,class:.waypaper-wrapped"
+      ];
     };
 
     extraConfig = ''

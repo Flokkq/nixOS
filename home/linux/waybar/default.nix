@@ -201,6 +201,7 @@ with lib; {
           format = "🛑";
           tooltip = true;
           tooltip-format = "Power";
+          on-click = "sleep 0.1 && loginctl lock-session && hyprlock";
         };
 
         "clock#date" = {
@@ -224,13 +225,14 @@ with lib; {
 
         "custom/wallpaper" = {
           format = "🎨";
-          on-click = "sleep 0.1 && waypaper-engine next-image"; # TODO
+          on-click = "sleep 0.1 && waypaper --random";
+          on-click-right = "sleep 0.1 && waypaper";
         };
 
         "custom/notification" = {
           format = "🔔";
-          on-click = "sleep 0.1 && swaync-client -rs && swaync-client -t"; # TODO
           tooltip-format = "Notifications";
+          on-click = "sleep && swaync-client -rs && swaync-client -t";
         };
 
         "hyprland/workspaces" = {
