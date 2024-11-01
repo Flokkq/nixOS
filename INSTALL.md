@@ -95,9 +95,8 @@
    reboot
    ```
 
-   > [!IMPORTANT]
-   > You will be asked to set a password for the root user. Make sure to remember it, as you will need it later.
-
+> [!IMPORTANT]
+> You will be asked to set a password for the root user. Make sure to remember it, as you will need it later. 
 ---
 
 ### **Using This Flake for Configuration**
