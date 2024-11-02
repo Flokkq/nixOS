@@ -6,10 +6,10 @@
   ];
 
   home.packages = with pkgs; [
-    # _1password-gui
-    # rpi-imager -- currently broken
+    _1password-gui
+    rpi-imager 
     wireshark
-    # ghidra
-    # burpsuite
+    ghidra
+    burpsuite
   ];
 }
