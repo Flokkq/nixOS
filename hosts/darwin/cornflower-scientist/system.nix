@@ -26,9 +26,8 @@
         autohide = true;
         mru-spaces = false; # disable rearragne spaces based on most recent use
         show-recents = false; # disable recent apps
-        static-only = false; # disable open apps
+        static-only = true; # disable open apps
         showhidden = true;
-
 
         magnification = true;
         largesize = 76;
@@ -52,7 +51,7 @@
 
       # customize finder
       finder = {
-        FXPreferredViewStyle = "clmv"; # columnview in finder 
+        FXPreferredViewStyle = "clmv"; # columnview in finder
         _FXShowPosixPathInTitle = true; # show full path in finder title
         AppleShowAllExtensions = true; # show all file extensions
         FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
@@ -94,6 +93,8 @@
         NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction
         NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default
         NSNavPanelExpandedStateForSaveMode2 = true;
+
+        _HIHideMenuBar = true; # hide menu bar
       };
 
       # Customize settings that not supported by nix-darwin directly
@@ -110,6 +111,75 @@
         NSGlobalDomain = {
           # Add a context menu item for showing the Web Inspector in web views
           WebKitDeveloperExtras = true;
+
+          "AppleSpacesSwitchOnActivate" = true; # This may be helpful in conjunction
+
+          # Adding keyboard shortcuts for switching spaces
+          "com.apple.symbolichotkeys" = {
+            "64" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 0];
+                "type" = "standard";
+              };
+            }; # Ctrl + 1
+            "65" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 1];
+                "type" = "standard";
+              };
+            }; # Ctrl + 2
+            "66" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 2];
+                "type" = "standard";
+              };
+            }; # Ctrl + 3
+            "67" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 3];
+                "type" = "standard";
+              };
+            }; # Ctrl + 4
+            "68" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 4];
+                "type" = "standard";
+              };
+            }; # Ctrl + 5
+            "69" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 5];
+                "type" = "standard";
+              };
+            }; # Ctrl + 6
+            "70" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 6];
+                "type" = "standard";
+              };
+            }; # Ctrl + 7
+            "71" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 7];
+                "type" = "standard";
+              };
+            }; # Ctrl + 8
+            "72" = {
+              "enabled" = true;
+              "value" = {
+                "parameters" = [1048576 8];
+                "type" = "standard";
+              };
+            }; # Ctrl + 9
+          };
         };
         "com.apple.finder" = {
           ShowExternalHardDrivesOnDesktop = true;
