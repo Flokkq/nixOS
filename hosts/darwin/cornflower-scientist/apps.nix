@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   ##########################################################################
   #
   #  Install all apps and packages here.
@@ -28,7 +32,28 @@
     neofetch
     jq
     typioca
+    mkalias
   ];
+
+  system.activationScripts.applications.text = let
+    env = pkgs.buildEnv {
+      name = "system-applications";
+      paths = config.environment.systemPackages;
+      pathsToLink = "/Applications";
+    };
+  in
+    pkgs.lib.mkForce ''
+      # Set up applications.
+      echo "setting up /Applications..." >&2
+      rm -rf /Applications/Nix\ Apps
+      mkdir -p /Applications/Nix\ Apps
+      find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+      while read src; do
+        app_name=$(basename "$src")
+        echo "copying $src" >&2
+        ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+      done
+    '';
 
   # TODO To make this work, homebrew need to be installed manually, see https://brew.sh
   #
@@ -38,7 +63,8 @@
     enable = true;
 
     onActivation = {
-      autoUpdate = false;
+      autoUpdate = true;
+      upgrade = true;
       # 'zap': uninstalls all formulae(and related files) not listed here.
       cleanup = "zap";
     };
@@ -61,10 +87,13 @@
     brews = [
       "httpie"
       "lua"
+      "mas"
       "switchaudio-osx"
       "nowplaying-cli"
+
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
+
       "FelixKratz/formulae/sketchybar"
       "FelixKratz/formulae/borders"
     ];
