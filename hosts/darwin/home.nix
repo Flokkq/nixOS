@@ -5,8 +5,8 @@
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
-  home.username = "clemensweber";
-  home.homeDirectory = "/Users/clemensweber";
+  home.username = "flokkq";
+  home.homeDirectory = "/Users/flokkq";
 
   home.packages = [];
 

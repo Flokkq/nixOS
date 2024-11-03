@@ -16,7 +16,7 @@
   networking.computerName = meta.hostname;
   system.defaults.smb.NetBIOSName = meta.hostname;
 
-  nix.settings.trusted-users = ["clemensweber"];
+  nix.settings.trusted-users = ["flokkq"];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -39,9 +39,9 @@
   nix.package = pkgs.nix;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.clemensweber = {
-    description = "clemensweber";
-    home = lib.mkForce "/Users/clemensweber";
+  users.users.flokkq = {
+    description = "flokkq";
+    home = lib.mkForce "/Users/flokkq";
   };
 
   nix.gc = {

@@ -178,7 +178,7 @@
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
-            home-manager.users.clemensweber = import ./hosts/darwin/home.nix;
+            home-manager.users.flokkq = import ./hosts/darwin/home.nix;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
