@@ -50,6 +50,7 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs = {
@@ -62,6 +63,7 @@
     hyprland-plugins,
     catppuccin,
     spicetify-nix,
+    nix-homebrew,
     ...
   } @ inputs: let
     systems = [
@@ -175,6 +177,15 @@
           ./hosts/darwin/${host.name}/default.nix
           ./hosts/darwin/configuration.nix
 
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = "flokkq";
+              autoMigrate = true;
+            };
+          }
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
