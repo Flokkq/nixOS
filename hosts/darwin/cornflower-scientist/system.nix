@@ -26,8 +26,8 @@
         autohide = true;
         mru-spaces = false; # disable rearragne spaces based on most recent use
         show-recents = false; # disable recent apps
-        static-only = true; # disable open apps
-        showhidden = true;
+        static-only = false; # disable open apps
+        showhidden = false;
 
         magnification = true;
         largesize = 76;
@@ -39,7 +39,7 @@
         ];
 
         persistent-others = [
-          "~/Downloads"
+          "/Users/Flokkq/Downloads"
         ];
 
         # customize Hot Corners
