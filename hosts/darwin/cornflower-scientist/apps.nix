@@ -105,6 +105,7 @@
 
       "FelixKratz/formulae/sketchybar"
       "FelixKratz/formulae/borders"
+      "FelixKratz/formulae/svim"
     ];
 
     # `brew install --cask`

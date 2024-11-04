@@ -5,5 +5,6 @@
     ./wm
     ./jankyborders
     ./sketchybar
+    ./svim
   ];
 }
