@@ -33,6 +33,8 @@
     jq
     typioca
     mkalias
+    iterm2
+    vesktop
   ];
 
   system.activationScripts.applications.text = let
@@ -75,6 +77,13 @@
     # For details, see https://github.com/mas-cli/mas
     masApps = {
       Xcode = 497799835;
+      GoodNotes = 1444383602;
+      _1Password = 1333542190; # broken nixpkgs binary
+      Excel = 462058435;
+      Word = 462054704;
+      PowerPoint = 462062816;
+      WhatsApp = 310633997;
+      ParallelsDesktop = 1085114709;
     };
 
     taps = [
@@ -100,8 +109,13 @@
 
     # `brew install --cask`
     casks = [
-      # "wireshark"
       "sf-symbols"
+      "google-chrome"
+      "alt-tab"
+      "docker"
+      "ghidra" # broken nixpkgs binarry
+      "balenaetcher" 
+      "sublime-text" # no nixpkgs darwin binary
     ];
   };
 }
