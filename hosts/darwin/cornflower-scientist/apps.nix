@@ -35,6 +35,8 @@
     mkalias
     iterm2
     vesktop
+    gcc
+    gnumake
   ];
 
   system.activationScripts.applications.text = let
@@ -111,6 +113,8 @@
     # `brew install --cask`
     casks = [
       "sf-symbols"
+      "font-sf-mono"
+      "font-sf-pro"
       "google-chrome"
       "alt-tab"
       "docker"

@@ -4,7 +4,9 @@
   lib,
   meta,
   ...
-}: {
+}: let
+  customFonts = import ./fonts.nix {inherit lib pkgs;};
+in {
   imports = [
     inputs.home-manager.darwinModules.home-manager
   ];
@@ -29,6 +31,7 @@
 
   fonts.packages = [
     pkgs.nerdfonts
+    customFonts.sketchybarAppFont
   ];
 
   # List packages installed in system profile. To search, run:
