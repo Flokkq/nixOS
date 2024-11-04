@@ -1,5 +1,6 @@
 {...}: {
   imports = [
     ./music
+    ./communication
   ];
 }
