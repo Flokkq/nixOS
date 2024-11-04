@@ -115,7 +115,7 @@
       "alt-tab"
       "docker"
       "ghidra" # broken nixpkgs binarry
-      "balenaetcher" 
+      "balenaetcher"
       "sublime-text" # no nixpkgs darwin binary
     ];
   };
