@@ -78,6 +78,7 @@ return {
 			local servers = {
 				-- LSP Servers
 				rust_analyzer = {},
+                tinymist={},
 				clangd = {},
 				rnix_lsp = {},
 				gopls = {},
