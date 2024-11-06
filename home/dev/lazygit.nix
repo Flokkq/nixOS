@@ -7,7 +7,7 @@
     enable = true;
     settings = {
       git = {
-        extraCommitArgs = "--signoff";
+        commit.signOff = true;
       };
     };
   };
