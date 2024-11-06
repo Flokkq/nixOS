@@ -34,7 +34,7 @@ in {
     keyMode = "vi";
     newSession = true;
     secureSocket = true;
-    shortcut = "C-D";
+    shortcut = "C-w";
 
     plugins = with pkgs.tmuxPlugins; [
       catppuccin
@@ -95,10 +95,6 @@ in {
       set -as terminal-features ",xterm-256color:RGB"
       # set-option -sa terminal-overrides ",xterm*:Tc"
       set -g mouse on
-
-      unbind C-b
-      set -g prefix C-W
-      bind C-W send-prefix
 
       # Vim style pane selection
       bind h select-pane -L
