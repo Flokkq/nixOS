@@ -1,12 +1,14 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     lazygit
   ];
 
-  home.file.".config/lazygit/config.yml".text = ''
-    git:
-      extraCommitArgs: "--signoff"
-  '';
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      git = {
+        extraCommitArgs = "--signoff";
+      };
+    };
+  };
 }

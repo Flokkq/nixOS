@@ -22,7 +22,7 @@
         template = "${pkgs.writeText "dco-signoff-template" ''
 
 
-        Signed-off-by: ${config.programs.git.userName} <${config.programs.git.userEmail}>
+          Signed-off-by: ${config.programs.git.userName} <${config.programs.git.userEmail}>
         ''}";
       };
       pull = {
