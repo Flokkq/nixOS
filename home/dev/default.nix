@@ -18,5 +18,7 @@
 
   home.packages = with pkgs; [
     pipes-rs
+    gpg-tui
+    gnupg
   ];
 }
