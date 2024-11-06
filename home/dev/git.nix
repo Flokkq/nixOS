@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, config, ... }: 
+{
   home.packages = with pkgs; [
     git
   ];
@@ -14,11 +15,9 @@
       core = {
         editor = "nvim";
       };
-      # url = {
-      #   "git@github.com:" = {
-      #     insteadOf = "https://github.com/";
-      #   };
-      # };
+      commit = {
+        template = "${pkgs.writeText "dco-signoff-template" ''\n\nSigned-off-by: ${config.programs.git.userName} <${config.programs.git.userEmail}>\n''}";
+      };
       pull = {
         rebase = true;
       };
