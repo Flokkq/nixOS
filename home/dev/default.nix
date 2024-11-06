@@ -13,10 +13,10 @@
     ./zoxide.nix
     ./direnv.nix
     ./vscode.nix
+    ./lazygit.nix
   ];
 
   home.packages = with pkgs; [
-    lazygit
     pipes-rs
   ];
 }
