@@ -34,8 +34,8 @@
       tree = "eza --tree";
 
       e = "nvim";
-
       cat = "bat";
+      lg = "lazygit";
 
       git = "LC_ALL=en_US git";
       gs = "git status";
