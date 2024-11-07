@@ -11,7 +11,6 @@
     enable = true;
     userName = "Flokkq";
     userEmail = "webcla21@htl-kaindorf.at";
-    signing.key = "0xC8A75B77C0DB31B9";
     signing.signByDefault = true;
     ignores = ["*~" ".DS_Store" ".direnv"];
     extraConfig = {
