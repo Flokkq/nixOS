@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: 0 10 * * 1
   workflow_dispatch: null
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
