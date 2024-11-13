@@ -1,6 +1,10 @@
-{...}: {
+{ pkgs, ...}: {
   imports = [
-    # ./brave.nix
+     ./brave.nix
     ./schizofox.nix
+  ];
+
+  home.packages = with pkgs; [
+    google-chrome
   ];
 }

@@ -110,6 +110,7 @@
       distrobox
       vesktop
       binsider
+      wl-clipboard-rs
     ];
   };
 
