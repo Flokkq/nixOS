@@ -10,5 +10,6 @@
     wireshark
     postman
     jetbrains.idea-ultimate
+    jetbrains.datagrip
   ];
 }
