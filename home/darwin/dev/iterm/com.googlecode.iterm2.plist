@@ -4,16 +4,6 @@
 <dict>
 	<key>AllowClipboardAccess</key>
 	<true/>
-	<key>AppleAntiAliasingThreshold</key>
-	<integer>1</integer>
-	<key>ApplePressAndHoldEnabled</key>
-	<false/>
-	<key>AppleScrollAnimationEnabled</key>
-	<integer>0</integer>
-	<key>AppleSmoothFixedFontsSizeThreshold</key>
-	<integer>1</integer>
-	<key>AppleWindowTabbingMode</key>
-	<string>manual</string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>catppuccin-frappe</key>
@@ -1549,6 +1539,10 @@
 	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
+	<key>NeverWarnAboutShortLivedSessions_9F28574F-6F50-4D19-AF92-9A5E3307E8C2</key>
+	<true/>
+	<key>NeverWarnAboutShortLivedSessions_9F28574F-6F50-4D19-AF92-9A5E3307E8C2_selection</key>
+	<integer>0</integer>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -3230,7 +3224,7 @@
 				<real>0.53725490196078429</real>
 			</dict>
 			<key>Log Directory</key>
-			<string>/Users/clemensweber/Library/Mobile Documents/com~apple~CloudDocs/Schule/Schule_24-25/NVSU</string>
+			<string>/Users/flokkq/Library/Mobile Documents/com~apple~CloudDocs/Schule/Schule_24-25/nvsu</string>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
