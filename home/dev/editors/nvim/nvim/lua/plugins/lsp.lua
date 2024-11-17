@@ -78,7 +78,7 @@ return {
 			local servers = {
 				-- LSP Servers
 				rust_analyzer = {},
-                tinymist={},
+				tinymist = {},
 				clangd = {},
 				rnix_lsp = {},
 				gopls = {},
@@ -114,7 +114,7 @@ return {
 				pyright = {},
 				sqlls = {},
 				tailwindcss = {},
-				tsserver = {
+				ts_ls = {
 					settings = {
 						maxTsServerMemory = 12288,
 					},
