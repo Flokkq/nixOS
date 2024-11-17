@@ -1,6 +1,6 @@
-{ pkgs, ...}: {
+{pkgs, ...}: {
   imports = [
-     ./brave.nix
+    ./brave.nix
     ./schizofox.nix
   ];
 
