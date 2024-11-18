@@ -1,8 +1,9 @@
 {...}: {
   imports = [
     ./iterm
+    ./shells
 
-    ./zsh.nix
     ./git.nix
+    # ./zellij.nix
   ];
 }

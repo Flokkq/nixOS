@@ -3,7 +3,7 @@
     ./shells
     ./editors
     ./btop
-    ./zellij
+    # ./zellij
     ./neofetch
     ./bat
     ./yazi

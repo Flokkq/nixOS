@@ -49,8 +49,6 @@
       gd = "git diff";
 
       speedtest = "curl -o /dev/null cachefly.cachefly.net/250mb.test";
-
-      rebuildnix = "sudo NIXPKGS_ALLOW_UNFREE=1 nixos-rebuild switch --impure --flake ~/nixOS/#${meta.name}";
     };
 
     # Custom initialization

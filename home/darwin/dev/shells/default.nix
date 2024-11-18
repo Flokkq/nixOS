@@ -5,8 +5,8 @@
   ...
 }: {
   programs.zsh = {
-    enable = true;
-    # Custom initialization
+    shellAliases.rebuildnix = "NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --impure --flake ~/developer/nixOS/#${meta.name}";
+
     initExtra = ''
       export PATH=/opt/homebrew/bin:$PATH
       export PATH=/run/current-system/sw/bin:$PATH
