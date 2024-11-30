@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   home = {
     sessionVariables = {
       BROWSER = "brave";

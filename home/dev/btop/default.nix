@@ -1,8 +1,4 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    btop
-  ];
-
+{...}: {
   home.file.".config/btop/themes" = {
     source = ./themes;
   };

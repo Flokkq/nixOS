@@ -1,12 +1,4 @@
-{
-  gst_all_1,
-  pkgs,
-  ...
-}: {
-  home.packages = with pkgs; [
-    gnome.nautilus
-  ];
-
+{gst_all_1, ...}: {
   nixpkgs.overlays = [
     (self: super: {
       gnome = super.gnome.overrideScope' (gself: gsuper: {

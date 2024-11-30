@@ -1,14 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{...}: let
   colors = import ./terminal-catppuccin-mocha-color-scheme.nix;
 in {
-  home.packages = with pkgs; [
-    kitty
-  ];
-
   programs.kitty = {
     enable = true;
     settings = {

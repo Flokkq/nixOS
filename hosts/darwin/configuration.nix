@@ -9,6 +9,8 @@
 in {
   imports = [
     inputs.home-manager.darwinModules.home-manager
+    ../../modules
+    ../../modules/languages.nix
   ];
 
   nixpkgs.hostPlatform = "aarch64-darwin";

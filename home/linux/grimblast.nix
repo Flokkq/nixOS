@@ -17,10 +17,6 @@
         early_exit=true
       '';
     };
-    packages = with pkgs; [
-      grimblast # screenshot grabber
-      swappy # screenshot editor
-    ];
   };
   wayland.windowManager.hyprland = {
     settings = {

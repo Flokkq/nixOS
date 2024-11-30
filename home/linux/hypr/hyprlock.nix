@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   meta,
   ...
@@ -8,10 +7,6 @@
 
   primaryMonitor = monitorUtils.getPrimaryMonitor meta.monitors;
 in {
-  home.packages = with pkgs; [
-    hyprlock
-  ];
-
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
         monitor =

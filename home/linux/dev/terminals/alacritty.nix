@@ -1,14 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{...}: let
   colors = import ./terminal-catppuccin-mocha-color-scheme.nix;
 in {
-  home.packages = with pkgs; [
-    alacritty
-  ];
-
   home.file.".config/alacritty/alacritty.toml".text = ''
     [env]
     TERM = "xterm-256color"

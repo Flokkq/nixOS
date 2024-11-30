@@ -3,6 +3,8 @@
     # tools
     eza
     oh-my-zsh
+    zsh
+    starship
     fzf
     ripgrep
     cloc
@@ -14,9 +16,27 @@
     unzip
     distrobox
     yad
+    gnupg
+    direnv
+    git
+    zoxide
+    bat
+    neofetch
 
     # tui
     typioca
     binsider
+    pipes-rs
+    gpg-tui
+    tmux
+    lazygit
+    btop
+    neovim
+    yazi
+    zellij
+
+    # gui
+    jetbrains.idea-ultimate
+    jetbrains.datagrip
   ];
 }

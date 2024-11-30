@@ -9,6 +9,7 @@
     inputs.catppuccin.nixosModules.catppuccin
 
     ../../modules
+    ../../modules/linux
     ../../modules/languages.nix
     ../../modules/unfree.nix
     ../../modules/yubikey.nix

@@ -1,12 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  home.packages = with pkgs; [
-    bat
-  ];
-
+{...}: {
   home.file.".config/bat/themes/mocha.tmTheme".source = ./mocha.tmTheme;
 
   home.sessionVariables = {

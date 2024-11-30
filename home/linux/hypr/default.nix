@@ -1,5 +1,4 @@
 {
-  pkgs,
   meta,
   lib,
   ...
@@ -14,12 +13,6 @@ in {
     ./hyprpaper.nix
     ./hypridle.nix
     ./hyprlock.nix
-  ];
-
-  home.packages = with pkgs; [
-    swww
-    libnotify
-    wofi
   ];
 
   wayland.windowManager.hyprland = {

@@ -1,21 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-with lib; {
-  home.packages = with pkgs; [
-    waybar
-
-    pavucontrol
-    wlogout
-    xsensors
-    grim
-    hyprpicker
-    waypaper
-    playerctl
-  ];
-
+{...}: {
   home.file.".config/waybar/modules" = {
     source = ./modules;
   };
