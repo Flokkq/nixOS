@@ -8,5 +8,6 @@
     ./services.nix
     ./systemd.nix
     ./hardware.nix
+    ./kernel.nix
   ];
 }
