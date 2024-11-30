@@ -13,12 +13,9 @@
     ../../modules/languages.nix
     ../../modules/unfree.nix
     ../../modules/yubikey.nix
-  ];
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.useOSProber = true;
+    ../../nixos/linux
+  ];
 
   # Use the dynamically set hostname
   networking.hostName = meta.hostname;
