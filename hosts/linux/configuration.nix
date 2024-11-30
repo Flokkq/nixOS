@@ -18,9 +18,6 @@
     ../../nixos/linux/media/pipewire.nix
   ];
 
-  # Enable CUPS to print documents
-  services.printing.enable = true;
-
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
