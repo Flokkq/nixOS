@@ -15,6 +15,7 @@
     ../../modules/yubikey.nix
 
     ../../nixos/linux
+    ../../nixos/linux/media/pipewire.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -41,19 +42,6 @@
 
   # Enable GVfs
   services.gvfs.enable = true;
-
-  # Enable sound with pipewire.
-  # sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    wireplumber.enable = true;
-  };
 
   xdg.portal.enable = true;
 
