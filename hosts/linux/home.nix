@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   lib,
   ...
 }: {
@@ -23,37 +22,6 @@
       after = ["writeBoundary" "createXdgUserDirectories"];
       before = [];
       data = '''';
-    };
-  };
-
-  # Set global font configurations
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = ["Hack nerd Font"];
-      sansSerif = ["Hack nerd Font"];
-      serif = ["Hack nerd Font"];
-    };
-  };
-
-  # Set GTK theme for the user
-  gtk = {
-    enable = true;
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-
-    cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-    };
-
-    catppuccin = {
-      enable = true;
-      flavor = "mocha";
-      accent = "pink";
-      size = "standard";
-      tweaks = ["normal"];
     };
   };
 
