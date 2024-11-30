@@ -7,5 +7,6 @@
     air
     nodejs
     yarn
+    nil
   ];
 }

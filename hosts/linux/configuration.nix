@@ -7,6 +7,10 @@
   imports = [
     inputs.home-manager.nixosModules.default
     inputs.catppuccin.nixosModules.catppuccin
+
+    ../../modules/languages.nix
+    ../../modules/unfree.nix
+    ../../modules/yubikey.nix
   ];
 
   # Bootloader.
