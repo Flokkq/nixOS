@@ -18,8 +18,6 @@
     ../../nixos/linux/media/pipewire.nix
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # Enable CUPS to print documents
   services.printing.enable = true;
 
@@ -44,9 +42,6 @@
 
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   fonts.packages = [
     pkgs.nerdfonts

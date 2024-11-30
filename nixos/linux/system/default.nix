@@ -1,5 +1,7 @@
 {...}: {
   imports = [
+    ./nix
+
     ./bootloader.nix
     ./localization.nix
     ./virtualization.nix
