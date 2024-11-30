@@ -1,5 +1,6 @@
 {...}: {
-    imports = [
-        ./bootloader.nix
-    ];
+  imports = [
+    ./bootloader.nix
+    ./localization.nix
+  ];
 }
