@@ -19,8 +19,6 @@
     ../../nixos/linux/media/pipewire.nix
   ];
 
-  xdg.portal.enable = true;
-
   networking.firewall.enable = false;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

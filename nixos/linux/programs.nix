@@ -1,5 +1,9 @@
 # Programs Configuration
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs = {
     partition-manager.enable = true;
 
