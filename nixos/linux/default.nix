@@ -4,6 +4,7 @@
     ./hardware
     ./customization
     ./security
+    ./hardened
 
     ./programs.nix
   ];
