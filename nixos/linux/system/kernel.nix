@@ -12,8 +12,9 @@
     # consoleLogLevel = 4;
 
     # The Linux kernel does not have Rust language support enabled by default.
-    # Enable experimental Rust support (for kernel versions >=6.7): 
-    /* kernelPatches = [
+    # Enable experimental Rust support (for kernel versions >=6.7):
+    /*
+       kernelPatches = [
       {
         name = "Rust Support";
         patch = null;
@@ -21,8 +22,8 @@
           rust = true;
         };
       }
-    ]; */
-   
+    ];
+    */
 
     kernelParams = [
       "quiet" # Reduces boot output messages for a cleaner boot screen
