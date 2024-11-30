@@ -19,11 +19,6 @@
     ../../nixos/linux/media/pipewire.nix
   ];
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   xdg.portal.enable = true;
 
   networking.firewall.enable = false;
@@ -37,9 +32,6 @@
   };
 
   security.sudo.wheelNeedsPassword = false;
-
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   fonts.packages = [
     pkgs.nerdfonts
