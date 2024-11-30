@@ -1,5 +1,7 @@
 {...}: {
   imports = [
-        ./firewall.nix
+    ./firewall.nix
+    ./auditd.nix
+    ./antivirus.nix
   ];
 }
