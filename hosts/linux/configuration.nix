@@ -19,8 +19,6 @@
     ../../nixos/linux/media/pipewire.nix
   ];
 
-  networking.firewall.enable = false;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."flokkq" = {
     isNormalUser = true;
