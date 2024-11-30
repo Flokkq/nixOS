@@ -142,8 +142,8 @@
         modules = [
           disko.nixosModules.disko
 
-          ./hosts/linux/cerulean-statistician/hardware-configuration.nix
-          ./hosts/linux/cerulean-statistician/disko-config.nix
+          ./hosts/linux/${host.name}/hardware-configuration.nix
+          ./hosts/linux/${host.name}/disko-config.nix
 
           ./hosts/linux/configuration.nix
           home-manager.nixosModules.home-manager
