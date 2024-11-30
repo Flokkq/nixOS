@@ -20,15 +20,6 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Virtualisation
-  virtualisation.docker.enable = true;
-  virtualisation.libvirtd.enable = true;
-  virtualisation.podman = {
-    enable = true;
-  };
-
-  programs.virt-manager.enable = true;
-
   # Enable CUPS to print documents
   services.printing.enable = true;
 
