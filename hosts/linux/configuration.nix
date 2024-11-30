@@ -17,6 +17,9 @@
     ../../nixos/linux
     ../../nixos/linux/media/pipewire.nix
     ../../nixos/common/containers/docker.nix
+
+    # TODO: fix drivers
+    ../../nixos/linux/hardware/gpu/nvidia.nix
   ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
