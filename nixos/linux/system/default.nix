@@ -3,5 +3,6 @@
     ./bootloader.nix
     ./localization.nix
     ./virtualization.nix
+    ./services.nix
   ];
 }

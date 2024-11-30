@@ -23,16 +23,10 @@
   # Enable CUPS to print documents
   services.printing.enable = true;
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
   };
-
-  # Enable GVfs
-  services.gvfs.enable = true;
 
   xdg.portal.enable = true;
 
@@ -64,17 +58,6 @@
 
   environment.sessionVariables = {
     # Session variables can be added here if needed
-  };
-
-  services.greetd = {
-    enable = true;
-    vt = 1;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
-        user = "greeter";
-      };
-    };
   };
 
   systemd.services.greetd.serviceConfig = {
