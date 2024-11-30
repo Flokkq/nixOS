@@ -17,13 +17,8 @@
     ../../nixos/linux
   ];
 
-  # Use the dynamically set hostname
-  networking.hostName = meta.hostname;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Enable networking
-  networking.networkmanager.enable = true;
 
   time.timeZone = meta.timeZone or "Europe/Vienna";
 
@@ -41,9 +36,6 @@
     LC_TELEPHONE = "de_AT.UTF-8";
     LC_TIME = "de_AT.UTF-8";
   };
-
-  # Enable Bluetooth
-  hardware.bluetooth.enable = true;
 
   # Virtualisation
   virtualisation.docker.enable = true;
