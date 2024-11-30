@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   meta,
   ...
@@ -26,20 +25,7 @@
     hashedPassword = "$6$roAT/Ee8qQqCf88u$33jo8ikm2KdYNMvv88YJQUFXhNEo8P6Gm2pLRqGKgUCz/E0.TcYeG58duD7DlnvH6prqxXh42jmjyFIzxyOk90";
     extraGroups = ["networkmanager" "wheel" "docker"];
   };
-
   security.sudo.wheelNeedsPassword = false;
-
-  fonts.packages = [
-    pkgs.nerdfonts
-  ];
-
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = [
-  ];
-
-  environment.sessionVariables = {
-    # Session variables can be added here if needed
-  };
 
   system.stateVersion = "24.05";
 }
