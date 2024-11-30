@@ -14,6 +14,7 @@
     ../../modules/unfree.nix
     ../../modules/yubikey.nix
 
+    ../../nixos/common
     ../../nixos/linux
     ../../nixos/linux/media/pipewire.nix
   ];

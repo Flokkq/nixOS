@@ -26,16 +26,6 @@
     };
   };
 
-  # Set global font configurations
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = ["Hack nerd Font"];
-      sansSerif = ["Hack nerd Font"];
-      serif = ["Hack nerd Font"];
-    };
-  };
-
   # Set GTK theme for the user
   gtk = {
     enable = true;
