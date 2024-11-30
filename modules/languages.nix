@@ -8,5 +8,6 @@
     nodejs
     yarn
     nil
+    alejandra
   ];
 }

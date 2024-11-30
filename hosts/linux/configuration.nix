@@ -8,6 +8,7 @@
     inputs.home-manager.nixosModules.default
     inputs.catppuccin.nixosModules.catppuccin
 
+    ../../modules
     ../../modules/languages.nix
     ../../modules/unfree.nix
     ../../modules/yubikey.nix
@@ -92,30 +93,6 @@
     description = meta.hostname;
     hashedPassword = "$6$roAT/Ee8qQqCf88u$33jo8ikm2KdYNMvv88YJQUFXhNEo8P6Gm2pLRqGKgUCz/E0.TcYeG58duD7DlnvH6prqxXh42jmjyFIzxyOk90";
     extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with pkgs; [
-      eza
-      oh-my-zsh
-      fzf
-      ripgrep
-      cloc
-      docker
-      bat
-      xclip
-      xorg.xev
-      gh
-      yad
-      gcc
-      xdg-desktop-portal
-      grim
-      jq
-      typioca
-      zip
-      unzip
-      distrobox
-      vesktop
-      binsider
-      wl-clipboard-rs
-    ];
   };
 
   security.sudo.wheelNeedsPassword = false;
@@ -132,8 +109,6 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = [
-    pkgs.nerdfonts
-    pkgs.xdg-desktop-portal-hyprland
   ];
 
   environment.sessionVariables = {
