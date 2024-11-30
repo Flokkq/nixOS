@@ -7,5 +7,6 @@
     ./virtualization.nix
     ./services.nix
     ./systemd.nix
+    ./hardware.nix
   ];
 }
