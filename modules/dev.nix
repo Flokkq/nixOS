@@ -14,8 +14,6 @@
     jq
     zip
     unzip
-    distrobox
-    yad
     gnupg
     direnv
     git
