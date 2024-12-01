@@ -8,6 +8,7 @@
     ghidra
     burpsuite
     nautilus
+    wireguard-ui
 
     # waybar
     waybar

@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  ext,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -46,13 +45,13 @@
     masApps = {
       Xcode = 497799835;
       GoodNotes = 1444383602;
-      # _1Password = 1333542190; # what the heck is that
       Excel = 462058435;
       Word = 462054704;
       PowerPoint = 462062816;
       WhatsApp = 310633997;
       ParallelsDesktop = 1085114709;
       KeyNote = 409183694;
+      WireGuard = 1451685025;
     };
 
     taps = [
@@ -68,6 +67,7 @@
       "mas"
       "switchaudio-osx"
       "nowplaying-cli"
+      "wireguard-tools"
 
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
@@ -82,7 +82,6 @@
       "sf-symbols"
       "font-sf-mono"
       "font-sf-pro"
-      # "google-chrome"
       "alt-tab"
       "docker"
       "ghidra" # broken nixpkgs binarry
@@ -95,6 +94,8 @@
       "chatgpt"
       "homerow"
       "burp-suite"
+      "karabiner-elements"
+      "anydesk"
     ];
   };
 }
