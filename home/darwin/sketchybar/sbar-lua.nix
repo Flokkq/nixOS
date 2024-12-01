@@ -13,7 +13,6 @@ pkgs.stdenv.mkDerivation rec {
   buildInputs = [pkgs.makeWrapper pkgs.lua pkgs.gcc pkgs.readline];
   installPhase = ''
     export INSTALL_DIR=$out/share/lua/5.4
-    echo "Installing to: $INSTALL_DIR" | tee /tmp/install-log.txt
     make install INSTALL_DIR=$INSTALL_DIR
   '';
 }
