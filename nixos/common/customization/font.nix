@@ -32,7 +32,7 @@
     };
 
     packages = with pkgs; [
-      nerdfonts
+      nerd-fonts.hack
     ];
   };
 }

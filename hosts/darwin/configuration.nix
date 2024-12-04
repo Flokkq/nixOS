@@ -32,13 +32,8 @@ in {
   time.timeZone = "Europe/Vienna";
 
   fonts.packages = [
-    pkgs.nerdfonts
+    pkgs.nerd-fonts.hack
     customFonts.sketchybarAppFont
-  ];
-
-  # List packages installed in system profile. To search, run:
-  environment.systemPackages = [
-    pkgs.nerdfonts
   ];
 
   nix.package = pkgs.nix;
