@@ -12,6 +12,7 @@ launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist >
 
 sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
@@ -41,6 +42,22 @@ yabai -m config external_bar               all:40:0       \
                 left_padding               8              \
                 right_padding              8              \
                 window_gap                 10
+
+# Mission-control desktop labels
+yabai -m space 1 --label code
+yabai -m space 2 --label web
+yabai -m space 3 --label discord
+yabai -m space 4 --label re
+yabai -m space 5 --label media
+
+# Automaticly move appls to designated space
+yabai -m rule --add app="^iTerm2$" space=code
+yabai -m rule --add app="^Google Chrome$" space=web
+yabai -m rule --add app="^(Vesktop|Discord)$" space=discord
+yabai -m rule --add app="^(ida64|Ghidra)$" space=re
+yabai -m rule --add app="^(IntelliJ IDEA|DataGrip)$" space=re
+yabai -m rule --add app="^Transmission$" space=media
+yabai -m rule --add app="^Spotify$" space=media
 
 # Exclude problematic apps from being managed:
 yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off
