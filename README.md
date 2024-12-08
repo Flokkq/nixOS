@@ -27,11 +27,11 @@ See [./hosts](./hosts) for details of each host.
 | **Bar**                     | [Waybar][Waybar]                                  | [SketchyBar][SketchyBar]                |
 | **Application Launcher**    | [Wofi][Wofi]                                      | [Raycast][Raycast]                      |
 | **Display Manager**         | [Greetd][Greetd]                                  | Native macOS                            |
-| **Color Scheme**            | [Catppuccin][Catppuccin]                          | Default macOS                           |
+| **Color Scheme**            | [Catppuccin][Catppuccin]                          | Default macOS + [Catppuccin][Catppuccin]|
 | **System resource monitor** | [Btop][Btop]                                      | [Btop][Btop]                            |
 | **File Manager**            | [Nautilus][Nautilus]                              | Finder                                  |
 | **Shell**                   | [Zsh][Zsh]                                        | [Zsh][Zsh]                              |
-| **Music Player**            | [Spicetify][Spicetify]                            | Spotify                                 |
+| **Music Player**            | [Spicetify][Spicetify]                            | [Spicetify][Spicetify]                  |
 | **Text Editor**             | [Neovim][Neovim]                                  | [Neovim][Neovim]                        |
 | **Fonts**                   | [Nerd fonts][Nerd fonts]                          | [Nerd fonts][Nerd fonts]                |
 
