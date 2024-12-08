@@ -36,5 +36,6 @@
     # gui
     jetbrains.idea-ultimate
     jetbrains.datagrip
+    vscode
   ];
 }
