@@ -96,6 +96,7 @@
       "burp-suite"
       "karabiner-elements"
       "anydesk"
+      "wireshark"
     ];
   };
 }

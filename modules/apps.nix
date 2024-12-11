@@ -4,7 +4,6 @@
     discord
     zathura
     postman
-    wireshark
     google-chrome
   ];
 }
