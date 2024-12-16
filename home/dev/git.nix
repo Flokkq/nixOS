@@ -13,6 +13,10 @@
       core = {
         editor = "nvim";
       };
+      push = {autoSetupRemote = true;};
+      init = {
+        defaultBranch = "main";
+      };
       commit = {
         template = "${pkgs.writeText "dco-signoff-template" ''
 
