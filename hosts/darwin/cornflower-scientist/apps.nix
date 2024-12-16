@@ -97,6 +97,7 @@
       "karabiner-elements"
       "anydesk"
       "wireshark"
+      "figma"
     ];
   };
 }
