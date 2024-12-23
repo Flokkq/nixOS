@@ -5,6 +5,8 @@
 </p>
 
 <p align="center">
+	<a href="https://github.com/Flokkq/nixos/actions">
+        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Flokkq/smd/main.yaml?style=for-the-badge&logo=starship&color=DD7878&logoColor=D9E0EE&labelColor=302D41">
 	<a href="https://github.com/flokkq/nixOS/stargazers">
 		<img alt="Stargazers" src="https://img.shields.io/github/stars/flokkq/nixOS?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
     <a href="https://nixos.org/">
