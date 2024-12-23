@@ -136,7 +136,18 @@
    hosts = [
      {
        name = "template";
-       monitors = [];
+       monitors = [
+          {
+            name = "eDP-1";
+            dimensions = "1920x1080";
+            position = "auto";
+            scale = 1;
+            framerate = 74.97;
+            transform = 0;
+            primary = true; # must be set for onne external monitor
+            internal = false; # iff it is a laptop display
+          }
+       ];
        system = "linux";
      }
    ];
