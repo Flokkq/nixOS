@@ -28,7 +28,7 @@
       la = "eza -A";
       tree = "eza --tree";
 
-      e = "nvim";
+      e = "nvim .";
       cat = "bat";
       lg = "lazygit";
 
