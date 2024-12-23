@@ -33,15 +33,7 @@
    scp disko-config.nix nixos@nixos:/tmp/disko-config.nix
    ```
 
-4. **Create the Secret Key File**
-
-   Save your password to `/tmp/secret.key`:
-
-   ```bash
-   echo 'my-password' > /tmp/secret.key
-   ```
-
-5. **Run Disko to Create the Partition Table**
+4. **Run Disko to Create the Partition Table**
 
    Use Disko to set up the partitions as specified in `disko-config.nix`:
 
@@ -49,49 +41,53 @@
    sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/disko-config.nix
    ```
 
-6. **Generate NixOS Configuration Without Filesystems**
+5. **Generate NixOS Configuration Without Filesystems**
 
    Create a base NixOS configuration without filesystem definitions:
 
    ```bash
-   nixos-generate-config --no-filesystems --root /mnt
+   sudo nixos-generate-config --no-filesystems --root /mnt
    ```
 
-7. **Move Configuration Files to the Target Directory**
+6. **Move Configuration Files to the Target Directory**
 
    Transfer system and Disko configuration files to the appropriate directory:
 
    ```bash
-   mv /tmp/disk-config.nix /mnt/etc/nixos
+   sudo mv /tmp/disk-config.nix /mnt/etc/nixos
    ```
 
-8. **Import Disko Configuration**
+7. **Copy base configuration file**
 
-   When editing `configuration.nix`, add the Disko NixOS module and `disk-config.nix` to the imports section.
+   Transfer the base configuration file to the target NixOS machine using `scp`:
 
-   Open the file with:
+   The config just imports the generated hardware-configuration and disko.
+
+    ```nix
+    _: {
+      imports = [
+        # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
+        ./disko-config.nix
+      ];
+
+      boot.loader.systemdboot.enable = true;
+      boot.loader.efi.canTouchEfiVariables = true;
+    }
+     ```
 
    ```bash
-   sudoedit /mnt/etc/nixos/configuration.nix
+   scp hosts/linux/base-configuration.nix nixos@nixos:/tmp/configuration.nix
+   sudo mv /tmp/configuration.nix /mnt/etc/nixos/configuration.nix
    ```
 
-   Add the following import lines:
-
-   ```nix
-   imports =
-   [ # Include the results of the hardware scan.
-     ./hardware-configuration.nix
-     "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
-     ./disk-config.nix
-   ];
-   ```
-
-9. **Install NixOS and Reboot**
+8. **Install NixOS and Reboot**
 
    Proceed with the NixOS installation and reboot:
 
    ```bash
-   nixos-install
+   sudo nixos-install
    reboot
    ```
 
@@ -141,12 +137,12 @@
      {
        name = "template";
        monitors = [];
-       cursor = 64;
+       system = "linux";
      }
    ];
    ```
 
-   Leave `monitors` empty initially. Define values for `name`, `mode` (choose `"simple"` or `"advanced"`), `wallpaper`, and `cursor` (64 is recommended).
+   Leave `monitors` empty initially. Define values for `name`, `system` (choose `"darwin"` or `"linux"`)
 
 4. **Rebuild the System**
 
@@ -178,3 +174,19 @@
 ### **Darwin Installation Steps:**
 
 For Darwin (macOS), the installation process is simpler and handled through `nix-darwin`. Detailed steps can be found in the official [nix-darwin documentation](https://github.com/LnL7/nix-darwin).
+
+After following these steps make sure to add your machine to the configuration.
+
+Open `flake.nix` and add a new entry to the `hosts` array using the existing template as a guide:
+
+```nix
+   hosts = [
+     {
+       name = "template";
+       monitors = [];
+       system = "linux";
+     }
+   ];
+```
+
+Leave `monitors` empty. Define values for `name`, `system` (choose `"darwin"` or `"linux"`)
