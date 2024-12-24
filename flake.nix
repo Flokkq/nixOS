@@ -20,6 +20,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    impermanence.url = "github:nix-community/impermanence";
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -60,6 +62,7 @@
     nixpkgs,
     home-manager,
     disko,
+impermanence,
     hyprland-plugins,
     catppuccin,
     spicetify-nix,
@@ -158,6 +161,7 @@
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
+          impermanence.nixosModules.impermanence
 
           ./hosts/linux/${host.name}/hardware-configuration.nix
           ./hosts/linux/${host.name}/disko-config.nix
