@@ -17,3 +17,5 @@ jobs:
             auto-optimise-store = true
             experimental-features = nix-command flakes
       - run: nix flake check
+      - name: Deadnix Check
+        run: nix run github:astro/deadnix -- --check
