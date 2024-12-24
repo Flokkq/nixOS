@@ -14,10 +14,10 @@ repos:
     hooks:
       - id: gitleaks
 
-  - repo: https://github.com/kamadorueda/alejandra
-    rev: 3.1.0
-    hooks:
-      - id: alejandra
+  # - repo: https://github.com/kamadorueda/alejandra
+  #   rev: 3.1.0
+  #   hooks:
+  #     - id: alejandra
 
   - repo: https://github.com/astro/deadnix
     rev: v1.2.1
