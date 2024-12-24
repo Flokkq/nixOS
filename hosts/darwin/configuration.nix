@@ -5,7 +5,7 @@
   meta,
   ...
 }: let
-  customFonts = import ./fonts.nix {inherit lib pkgs;};
+  customFonts = import ./fonts.nix {inherit pkgs;};
 in {
   imports = [
     inputs.home-manager.darwinModules.home-manager
