@@ -14,7 +14,6 @@
         group = "colord";
         mode = "u=rwx,g=rx,o=";
       }
-      "/home/flokkq/developer"
     ];
     files = [
       "/etc/machine-id"
