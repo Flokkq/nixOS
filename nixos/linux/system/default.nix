@@ -9,6 +9,7 @@
     ./systemd.nix
     ./hardware.nix
     ./impermanence.nix
+    ./sops.nix
     # ./kernel.nix
   ];
 }
