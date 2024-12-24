@@ -62,7 +62,7 @@
     nixpkgs,
     home-manager,
     disko,
-impermanence,
+    impermanence,
     hyprland-plugins,
     catppuccin,
     spicetify-nix,

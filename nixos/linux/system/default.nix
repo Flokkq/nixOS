@@ -8,7 +8,7 @@
     ./services.nix
     ./systemd.nix
     ./hardware.nix
-    ./impermanence.nix 
+    ./impermanence.nix
     # ./kernel.nix
   ];
 }
