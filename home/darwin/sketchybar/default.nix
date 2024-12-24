@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   sketchybarLua = import ./sbar-lua.nix {inherit pkgs;};
 in {
   home.packages = with pkgs; [

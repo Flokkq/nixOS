@@ -1,7 +1,4 @@
-{
-  meta,
-  ...
-}: {
+{meta, ...}: {
   programs.zsh = {
     shellAliases.rebuildnix = "NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --impure --flake ~/developer/nixOS/#${meta.name}";
 

@@ -1,6 +1,4 @@
-{
-  pkgs,
-}: {
+{pkgs}: {
   sketchybarAppFont = pkgs.stdenv.mkDerivation {
     pname = "sketchybar-app-font";
     version = "2.0.5";
