@@ -1,0 +1,24 @@
+keys:
+  # - &cerulean_statistician_key age1xxxx...
+  # - &heliotrope_secretary_key age1yyyy...
+  - &cornflower_scientist_key age1l349judyl2mh27enlqam4437m4lkwrgu83nh7f9d3hqfz46c9cqsyjg4m2
+
+
+creation_rules:
+  # # Rule for cerulean-statistician
+  # - path_regex: hosts/linux/cerulean-statistician/secrets\.nix$
+  #   key_groups:
+  #     - age:
+  #         - *cerulean_statistician_key
+  #
+  # # Rule for heliotrope-secretary
+  # - path_regex: hosts/linux/heliotrope-secretary/secrets\.nix$
+  #   key_groups:
+  #     - age:
+  #         - *heliotrope_secretary_key
+
+  # Rule for cornflower-scientist
+  - path_regex: hosts/darwin/cornflower-scientist/secrets\.nix$
+    key_groups:
+      - age:
+          - *cornflower_scientist_key
