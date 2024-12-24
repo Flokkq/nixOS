@@ -114,111 +114,112 @@
 
           "AppleSpacesSwitchOnActivate" = true; # This may be helpful in conjunction
 
-          # Adding keyboard shortcuts for switching spaces
           "com.apple.symbolichotkeys" = {
-            "64" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 0];
-                "type" = "standard";
+            AppleSymbolicHotKeys = {
+              "118" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 18 262144];
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 1
-            "65" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 1];
-                "type" = "standard";
+              "119" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 19 262144]; # Ctrl+2
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 2
-            "66" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 2];
-                "type" = "standard";
+              "120" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 20 262144]; # Ctrl+3
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 3
-            "67" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 3];
-                "type" = "standard";
+              "121" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 21 262144]; # Ctrl+4
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 4
-            "68" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 4];
-                "type" = "standard";
+              "122" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 23 262144]; # Ctrl+5
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 5
-            "69" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 5];
-                "type" = "standard";
+              "123" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 22 262144]; # Ctrl+6
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 6
-            "70" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 6];
-                "type" = "standard";
+              "124" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 26 262144]; # Ctrl+7
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 7
-            "71" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 7];
-                "type" = "standard";
+              "125" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 28 262144]; # Ctrl+8
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 8
-            "72" = {
-              "enabled" = true;
-              "value" = {
-                "parameters" = [1048576 8];
-                "type" = "standard";
+              "126" = {
+                enabled = true;
+                value = {
+                  parameters = [65535 25 262144]; # Ctrl+9
+                  type = "standard";
+                };
               };
-            }; # Ctrl + 9
+            };
           };
+          "com.apple.finder" = {
+            ShowExternalHardDrivesOnDesktop = true;
+            ShowHardDrivesOnDesktop = true;
+            ShowMountedServersOnDesktop = true;
+            ShowRemovableMediaOnDesktop = true;
+            _FXSortFoldersFirst = true;
+            # When performing a search, search the current folder by default
+            FXDefaultSearchScope = "SCcf";
+          };
+          "com.apple.desktopservices" = {
+            # Avoid creating .DS_Store files on network or USB volumes
+            DSDontWriteNetworkStores = true;
+            DSDontWriteUSBStores = true;
+          };
+          "com.apple.spaces" = {
+            "spans-displays" = 0; # Display have seperate spaces
+          };
+          "com.apple.WindowManager" = {
+            EnableStandardClickToShowDesktop = 0; # Click wallpaper to reveal desktop
+            StandardHideDesktopIcons = 0; # Show items on desktop
+            HideDesktop = 0; # Do not hide items on desktop & stage manager
+            StageManagerHideWidgets = 0;
+            StandardHideWidgets = 0;
+          };
+          "com.apple.screensaver" = {
+            # Require password immediately after sleep or screen saver begins
+            askForPassword = 1;
+            askForPasswordDelay = 0;
+          };
+          "com.apple.screencapture" = {
+            location = "~/Desktop";
+            type = "png";
+          };
+          "com.apple.AdLib" = {
+            allowApplePersonalizedAdvertising = false;
+          };
+          # Prevent Photos from opening automatically when devices are plugged in
+          "com.apple.ImageCapture".disableHotPlug = true;
         };
-        "com.apple.finder" = {
-          ShowExternalHardDrivesOnDesktop = true;
-          ShowHardDrivesOnDesktop = true;
-          ShowMountedServersOnDesktop = true;
-          ShowRemovableMediaOnDesktop = true;
-          _FXSortFoldersFirst = true;
-          # When performing a search, search the current folder by default
-          FXDefaultSearchScope = "SCcf";
-        };
-        "com.apple.desktopservices" = {
-          # Avoid creating .DS_Store files on network or USB volumes
-          DSDontWriteNetworkStores = true;
-          DSDontWriteUSBStores = true;
-        };
-        "com.apple.spaces" = {
-          "spans-displays" = 0; # Display have seperate spaces
-        };
-        "com.apple.WindowManager" = {
-          EnableStandardClickToShowDesktop = 0; # Click wallpaper to reveal desktop
-          StandardHideDesktopIcons = 0; # Show items on desktop
-          HideDesktop = 0; # Do not hide items on desktop & stage manager
-          StageManagerHideWidgets = 0;
-          StandardHideWidgets = 0;
-        };
-        "com.apple.screensaver" = {
-          # Require password immediately after sleep or screen saver begins
-          askForPassword = 1;
-          askForPasswordDelay = 0;
-        };
-        "com.apple.screencapture" = {
-          location = "~/Desktop";
-          type = "png";
-        };
-        "com.apple.AdLib" = {
-          allowApplePersonalizedAdvertising = false;
-        };
-        # Prevent Photos from opening automatically when devices are plugged in
-        "com.apple.ImageCapture".disableHotPlug = true;
       };
 
       loginwindow = {
