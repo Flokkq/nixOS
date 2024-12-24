@@ -1,7 +1,5 @@
 {
   pkgs,
-  inputs,
-  lib,
   ...
 }: let
   sketchybarLua = import ./sbar-lua.nix {inherit pkgs;};

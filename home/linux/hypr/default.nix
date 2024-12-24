@@ -4,9 +4,6 @@
   ...
 }: let
   monitorUtils = import ./utils.nix {inherit lib;};
-
-  primaryMonitor = monitorUtils.getPrimaryMonitor meta.monitors;
-  secondaryMonitors = monitorUtils.getSecondaryMonitors meta.monitors;
 in {
   imports = [
     ./hyprland-environment.nix

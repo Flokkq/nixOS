@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
 }: {
   sketchybarAppFont = pkgs.stdenv.mkDerivation {

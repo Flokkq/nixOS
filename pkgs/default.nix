@@ -1,3 +1,3 @@
-pkgs: {
+_pkgs: {
   # example = pkgs.callPackage ./example { };
 }

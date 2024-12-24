@@ -56,16 +56,11 @@
   };
 
   outputs = {
-    self,
     nix-darwin,
-    nixpkgs-unstable,
     nixpkgs,
     home-manager,
     disko,
     impermanence,
-    hyprland-plugins,
-    catppuccin,
-    spicetify-nix,
     nix-homebrew,
     ...
   } @ inputs: let
@@ -145,7 +140,6 @@
     forAllSystems = fn: nixpkgs.lib.genAttrs systems (system: fn {pkgs = import nixpkgs {inherit system;};});
 
     # Overlays to be used only for Linux
-    overlays = import ./overlays {inherit inputs;};
 
     forLinuxHosts = host: {
       name = host.name;

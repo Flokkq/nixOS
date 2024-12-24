@@ -31,7 +31,7 @@
   in
     lib.headDefault null primaryMonitors;
 
-  generateMirrorConfig = primaryMonitor: secondaryMonitors:
+  generateMirrorConfig = _primaryMonitor: secondaryMonitors:
     lib.concatStringsSep " " (lib.map (
         mon:
           lib.concatStringsSep "," [
