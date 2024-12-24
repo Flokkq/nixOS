@@ -111,6 +111,23 @@
         ];
       }
       {
+        name = "heliotrope-secretary";
+        system = "linux";
+        monitors = [
+          {
+            name = "LVDS-1";
+            dimensions = "1920x1080";
+            position = "auto";
+            scale = 1;
+            framerate = 60;
+            transform = 0;
+            primary = false;
+            internal = true;
+          }
+        ];
+      }
+
+      {
         name = "cornflower-scientist";
         system = "darwin";
         monitors = [
