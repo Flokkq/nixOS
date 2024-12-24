@@ -7,6 +7,7 @@ pkgs.mkShell {
 
       pkgs.nushell
       pkgs.just
+      pkgs.pre-commit
     ]
     ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
       pkgs.darwin.apple_sdk.frameworks.SystemConfiguration

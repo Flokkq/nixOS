@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/sirwart/ripsecrets
+    rev: v0.1.8
+    hooks:
+      - id: ripsecrets
+
+  - repo: https://github.com/trufflesecurity/trufflehog
+    rev: v3.88.0
+    hooks:
+      - id: trufflehog
+
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.22.0
+    hooks:
+      - id: gitleaks
+
+  - repo: https://github.com/kamadorueda/alejandra
+    rev: 3.1.0
+    hooks:
+      - id: alejandra
+
+  - repo: https://github.com/astro/deadnix
+    rev: v1.2.1
+    hooks:
+      - id: deadnix
+        args: [--edit] # Automatically modify files
+        stages: [pre-commit]
