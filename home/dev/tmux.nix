@@ -30,7 +30,7 @@ in {
     keyMode = "vi";
     newSession = true;
     secureSocket = true;
-    shortcut = "C-w";
+    shortcut = "C-q";
 
     plugins = with pkgs.tmuxPlugins; [
       catppuccin
