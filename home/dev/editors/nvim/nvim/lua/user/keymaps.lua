@@ -238,6 +238,17 @@ nnoremap("<leader>5", function()
 	harpoon_ui.nav_file(5)
 end, { desc = "Jump to Harpoon file 5" })
 
+--Lua keymaps--
+-- Execute current lua buffer
+nnoremap("<leader>lx", function()
+	vim.cmd("source %")
+end, { desc = "Execute current lua buffer" })
+
+-- Test current lua buffer using Plenary
+nnoremap("<leader>lt", function()
+	vim.cmd("PlenaryBustedFile %")
+end, { desc = "Test current Lua buffer using Plenary" })
+
 -- Git keymaps --
 nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>", { desc = "Toggle git line blame" })
 nnoremap("<leader>gf", function()
