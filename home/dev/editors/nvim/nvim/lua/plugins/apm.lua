@@ -1,6 +1,6 @@
 return {
 	"ThePrimeagen/vim-apm",
-	lazy = true,
+	lazy = false,
 	config = function()
 		local apm = require("vim-apm")
 		apm:setup({})
