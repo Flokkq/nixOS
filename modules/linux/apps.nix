@@ -9,6 +9,8 @@
     burpsuite
     nautilus
     wireguard-ui
+    waypaper
+    swaynotificationcenter
 
     # waybar
     waybar
