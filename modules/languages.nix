@@ -9,5 +9,6 @@
     yarn
     nil
     alejandra
+    bash-language-server
   ];
 }
