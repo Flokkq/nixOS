@@ -27,5 +27,6 @@
     hypridle
     hyprlock
     hyprpaper
+    hyprutils
   ];
 }
