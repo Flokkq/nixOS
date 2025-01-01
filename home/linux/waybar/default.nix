@@ -215,7 +215,7 @@
         "custom/notification" = {
           format = "🔔";
           tooltip-format = "Notifications";
-          on-click = "sleep && swaync-client -rs && swaync-client -t";
+          on-click = "sleep 0.1 && swaync-client -rs && swaync-client -t";
         };
 
         "hyprland/workspaces" = {
