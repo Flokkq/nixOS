@@ -106,76 +106,76 @@ in {
       # Keybindings
       "$mainMod" = "SUPER";
 
-      bind = [
-        # Launch Applications
-        "$mainMod, SPACE, exec,  wofi --show drun -I -m -i"
-        "$mainMod SHIFT, W, exec, web-search"
-        "$mainMod SHIFT, N, exec, swaync-client -rs"
-        "$mainMod SHIFT, C, exec, exit"
-        "$mainMod, Q, exec, kitty"
-        "$mainMod, C, killactive"
-        "$mainMod, B, exec, brave"
-        "$mainMod, D, exec, discord"
-        "$mainMod, N, exec, nautilus"
-        "$mainMod, S, exec, spotify"
+      bind =
+        [
+          "$mainMod, E, exec,  wofi --show drun -I -m -i"
+          "$mainMod SHIFT, C, exec, exit"
+          "$mainMod SHIFT, N, exec, swaync-client -rs && swaync-client -t"
+          "$mainMod, Q, exec, kitty"
+          "$mainMod, C, killactive"
+          "$mainMod, B, exec, chrome"
+          "$mainMod, D, exec, vesktop"
+          "$mainMod, N, exec, nautilus"
+          "$mainMod, S, exec, spotify"
+          "$mainMod, P, exec, 1password"
 
-        # Window Management
-        "$mainMod, P, pseudo"
-        "$mainMod SHIFT, I, togglesplit"
-        "$mainMod, M, fullscreen, 1"
-        "$mainMod SHIFT, M, fullscreen, 0"
+          # Window Management
+          "$mainMod, P, pseudo"
+          "$mainMod SHIFT, I, togglesplit"
+          "$mainMod, M, fullscreen, 1"
+          "$mainMod SHIFT, M, fullscreen, 0"
 
-        # Move Focus
-        "$mainMod, H, movefocus, l"
-        "$mainMod, L, movefocus, r"
-        "$mainMod, K, movefocus, u"
-        "$mainMod, J, movefocus, d"
-        "$mainMod, Left, movefocus, l"
-        "$mainMod, Right, movefocus, r"
-        "$mainMod, Up, movefocus, u"
-        "$mainMod, Down, movefocus, d"
+          # Workspace Navigation with Mouse
+          "$mainMod, mouse_down, workspace, e+1"
+          "$mainMod, mouse_up, workspace, e-1"
 
-        # Move Windows
-        "$mainMod SHIFT, Left, movewindow, l"
-        "$mainMod SHIFT, Right, movewindow, r"
-        "$mainMod SHIFT, Up, movewindow, u"
-        "$mainMod SHIFT, Down, movewindow, d"
-        "$mainMod SHIFT, H, movewindow, l"
-        "$mainMod SHIFT, L, movewindow, r"
-        "$mainMod SHIFT, K, movewindow, u"
-        "$mainMod SHIFT, J, movewindow, d"
-
-        # Workspaces
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
-
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
-
-        # Workspace Navigation with Mouse
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-
-        # Other
-        "$mainMod, ENTER, togglespecialworkspace"
-        "$mainMod SHIFT, ENTER, movetoworkspace,special"
-      ];
+          # Other
+          "$mainMod, ENTER, togglespecialworkspace"
+          "$mainMod SHIFT, ENTER, movetoworkspace,special"
+        ]
+        ++ lib.concatMap (n: [
+          # Dynamically generate workspace bindings
+          "$mainMod, ${toString n}, workspace, ${toString n}"
+          "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString n}"
+        ]) (lib.range 1 9)
+        # Thats not even cleaner smh my head
+        ++ lib.concatMap (dir: [
+          "$mainMod, ${dir.k}, movefocus, ${dir.d}"
+          "$mainMod SHIFT, ${dir.k}, movewindow, ${dir.d}"
+        ]) [
+          {
+            k = "H";
+            d = "l";
+          }
+          {
+            k = "L";
+            d = "r";
+          }
+          {
+            k = "K";
+            d = "u";
+          }
+          {
+            k = "J";
+            d = "d";
+          }
+          {
+            k = "Left";
+            d = "l";
+          }
+          {
+            k = "Right";
+            d = "r";
+          }
+          {
+            k = "Up";
+            d = "u";
+          }
+          {
+            k = "Down";
+            d = "d";
+          }
+        ];
 
       bindm = [
         "$mainMod, mouse:272, movewindow"
