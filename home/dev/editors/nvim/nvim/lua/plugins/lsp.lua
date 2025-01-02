@@ -136,7 +136,15 @@ return {
 				},
 				marksman = {},
 				ocamllsp = {},
-				nil_ls = {},
+				nil_ls = {
+                    settings = {
+                        ["nil"] = {
+                            formatting = {
+                                command = { "alejandra" }, -- Use Alejandra as the formatter
+                            },
+                        },
+                    },
+                },
 				pyright = {},
 				sqlls = {},
 				tailwindcss = {},
