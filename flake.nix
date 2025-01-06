@@ -42,16 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # FlakeHub
-    catppuccin-vsc = {
-      url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-vscode-extensions = {
-      url = "github:nix-community/nix-vscode-extensions";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
