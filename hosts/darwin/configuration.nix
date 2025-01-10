@@ -4,9 +4,7 @@
   lib,
   meta,
   ...
-}: let
-  customFonts = import ./fonts.nix {inherit pkgs;};
-in {
+}: {
   imports = [
     inputs.home-manager.darwinModules.home-manager
     ../../modules
@@ -31,9 +29,9 @@ in {
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
-  fonts.packages = [
-    pkgs.nerd-fonts.hack
-    customFonts.sketchybarAppFont
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+    sketchybar-app-font
   ];
 
   nix.package = pkgs.nix;
