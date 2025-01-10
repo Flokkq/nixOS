@@ -26,6 +26,17 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  services.sketchybar = {
+    enable = true;
+    package = pkgs.sketchybar;
+  };
+
+  nixpkgs.overlays = [
+    (_final: prev: {
+      sbar-lua = prev.callPackage ../../pkgs/darwin/sbar-lua.nix {inherit pkgs;};
+    })
+  ];
+
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 

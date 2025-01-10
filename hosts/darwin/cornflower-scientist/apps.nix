@@ -6,6 +6,7 @@
   environment.systemPackages = with pkgs; [
     mkalias
     iterm2
+    lua54Packages.lua
   ];
 
   system.activationScripts.applications.text = let
@@ -72,7 +73,6 @@
       "koekeishiya/formulae/yabai"
       "koekeishiya/formulae/skhd"
 
-      "FelixKratz/formulae/sketchybar"
       "FelixKratz/formulae/borders"
       "FelixKratz/formulae/svim"
     ];

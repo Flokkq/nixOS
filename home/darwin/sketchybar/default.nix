@@ -1,10 +1,4 @@
-{pkgs, ...}: let
-  sketchybarLua = import ./sbar-lua.nix {inherit pkgs;};
-in {
-  home.packages = with pkgs; [
-    sketchybarLua
-  ];
-
+{pkgs, ...}: {
   imports = [
     ./c-binaries.nix
   ];
@@ -12,15 +6,21 @@ in {
   home.file.".config/sketchybar" = {
     source = ./sketchybar;
     recursive = true;
+    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
   };
-
-  #  home.file.".config/sketchybar/wrapper.sh".text = ''
-  #    #!/usr/bin/env bash
-  #
-  #    export SB_LUA_PATH="${sketchybarLua}/share/lua/5.4";
-  #  '';
-  #
-  # home.sessionVariables = {
-  #    SB_LUA_PATH = "${sketchybarLua}/share/lua/5.4";
-  #  };
+  home.file.".local/share/sketchybar_lua/sketchybar.so" = {
+    source = "${pkgs.sbar-lua}/lib/sketchybar.so";
+    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
+  };
+  home.file.".config/sketchybar/sketchybarrc" = {
+    text = ''
+      #!/usr/bin/env ${pkgs.lua54Packages.lua}/bin/lua
+      package.path = "./?.lua;./?/init.lua;" .. package.path
+      -- Load the sketchybar-package and prepare the helper binaries
+      require("helpers")
+      require("init")
+    '';
+    executable = true;
+    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
+  };
 }
