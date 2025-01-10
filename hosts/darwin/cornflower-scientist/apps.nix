@@ -36,7 +36,7 @@
 
     onActivation = {
       autoUpdate = false;
-      upgrade = true;
+      upgrade = false;
       # 'zap': uninstalls all formulae(and related files) not listed here.
       cleanup = "zap";
     };
