@@ -37,6 +37,11 @@
     })
   ];
 
+  system.activationScripts.postUserActivation.text = ''
+    echo >&2 "Switching wallpapers..."
+    /usr/local/bin/desktoppr "${meta.wallpaper}"
+  '';
+
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 

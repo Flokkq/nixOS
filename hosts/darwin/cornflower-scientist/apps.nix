@@ -98,6 +98,7 @@
       "anydesk"
       "wireshark"
       "figma"
+      "desktoppr"
     ];
   };
 }
