@@ -1,6 +1,3 @@
-{...}: {
-  imports = [
-    ./apps.nix
-    ./system.nix
-  ];
+_: {
+  # TOD: adds sops/agenix
 }

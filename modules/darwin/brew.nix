@@ -1,34 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
-  environment.systemPackages = with pkgs; [
-    mkalias
-    iterm2
-    lua54Packages.lua
-  ];
-
-  system.activationScripts.applications.text = let
-    env = pkgs.buildEnv {
-      name = "system-applications";
-      paths = config.environment.systemPackages;
-      pathsToLink = "/Applications";
-    };
-  in
-    pkgs.lib.mkForce ''
-      # Set up applications.
-      echo "setting up /Applications..." >&2
-      rm -rf /Applications/Nix\ Apps
-      mkdir -p /Applications/Nix\ Apps
-      find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-      while read -r src; do
-        app_name=$(basename "$src")
-        echo "copying $src" >&2
-        ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-      done
-    '';
-
+_: {
   # The apps installed by homebrew are not managed by nix, and not reproducible!
   # But on macOS, homebrew has a much larger selection of apps than nixpkgs, especially for GUI apps!
   homebrew = {
@@ -39,20 +9,6 @@
       upgrade = false;
       # 'zap': uninstalls all formulae(and related files) not listed here.
       cleanup = "zap";
-    };
-
-    # Applications to install from Mac App Store using mas.
-    # For details, see https://github.com/mas-cli/mas
-    masApps = {
-      Xcode = 497799835;
-      GoodNotes = 1444383602;
-      Excel = 462058435;
-      Word = 462054704;
-      PowerPoint = 462062816;
-      WhatsApp = 310633997;
-      ParallelsDesktop = 1085114709;
-      KeyNote = 409183694;
-      WireGuard = 1451685025;
     };
 
     taps = [

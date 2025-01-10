@@ -14,9 +14,10 @@
     ../../modules/yubikey.nix
 
     ../../nixos/common
+    ../../nixos/common/containers/docker.nix
+
     ../../nixos/linux
     ../../nixos/linux/media/pipewire.nix
-    ../../nixos/common/containers/docker.nix
 
     # TODO: fix drivers
     # ../../nixos/linux/hardware/gpu/nvidia.nix

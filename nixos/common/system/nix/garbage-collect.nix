@@ -5,11 +5,12 @@ _: {
   nix = {
     gc = {
       automatic = true;
-      dates = "weekly";
+      interval.Weekday = 7;
       options = "--delete-older-than 7d";
     };
 
     # <https://wiki.nixos.org/wiki/Storage_optimization#Optimising_the_store>
-    settings.auto-optimise-store = true;
   };
+
+  nix.optimise.automatic = true;
 }

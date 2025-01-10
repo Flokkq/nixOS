@@ -119,7 +119,6 @@
           }
         ];
       }
-
       {
         name = "cornflower-scientist";
         system = "darwin";

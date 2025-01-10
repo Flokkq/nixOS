@@ -23,12 +23,6 @@
         autohint = false;
         style = "full";
       };
-
-      defaultFonts = {
-        monospace = ["Hack nerd Font"];
-        sansSerif = ["Hack nerd Font"];
-        serif = ["Hack nerd Font"];
-      };
     };
 
     packages = with pkgs; [
