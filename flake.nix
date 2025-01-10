@@ -68,6 +68,7 @@
       {
         name = "cerulean-statistician";
         system = "linux";
+        wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
         monitors = [
           {
             name = "HDMI-A-1";
@@ -103,6 +104,7 @@
       }
       {
         name = "heliotrope-secretary";
+        wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
         system = "linux";
         monitors = [
           {
@@ -121,6 +123,7 @@
       {
         name = "cornflower-scientist";
         system = "darwin";
+        wallpaper = ./wallpapers/chillhop.png;
         monitors = [
           /*
           builtin: true
@@ -179,6 +182,7 @@
             hostname = host.name;
             system = host.system;
             monitors = host.monitors;
+            wallpaper = host.wallpaper;
           };
         };
         modules = [
