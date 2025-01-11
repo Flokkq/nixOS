@@ -6,7 +6,7 @@
 
 <p align="center">
 	<a href="https://github.com/Flokkq/nixos/actions">
-        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Flokkq/smd/main.yaml?style=for-the-badge&logo=starship&color=DD7878&logoColor=D9E0EE&labelColor=302D41">
+        <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Flokkq/nixOS/check.yml?style=for-the-badge&logo=starship&color=DD7878&logoColor=D9E0EE&labelColor=302D41">
 	<a href="https://github.com/flokkq/nixOS/stargazers">
 		<img alt="Stargazers" src="https://img.shields.io/github/stars/flokkq/nixOS?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
     <a href="https://nixos.org/">
@@ -55,8 +55,8 @@ These will guide you through the specifics of each setup.
 ## How to Deploy this Flake?
 
 > [!WARNING]
-> :red_circle: **IMPORTANT**: This configuration is still unstable, making it **UNSAFE AND NOT RECOMMENDED** for general use. Proceed at your own risk!  
-> That said, if you're feeling adventurous, you can check out the [install guide](INSTALL.md) for more details. 
+> :red_circle: **IMPORTANT**: This configuration is still unstable, making it **UNSAFE AND NOT RECOMMENDED** for general use. Proceed at your own risk!
+> That said, if you're feeling adventurous, you can check out the [install guide](INSTALL.md) for more details.
 
 [Hyprland]: https://github.com/hyprwm/Hyprland
 [Yabai]: https://github.com/koekeishiya/yabai
