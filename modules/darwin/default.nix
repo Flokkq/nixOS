@@ -8,5 +8,6 @@
     mkalias
     iterm2
     lua54Packages.lua
+    dockutil
   ];
 }

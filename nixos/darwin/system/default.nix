@@ -7,11 +7,11 @@
 _: {
   imports = [
     ./nix
+    ./dock
 
     ./activation.nix
     ./services.nix
     ./localization.nix
-    ./dock.nix
     ./finder.nix
     ./trackpad.nix
     ./login.nix
