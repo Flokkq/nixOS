@@ -9,5 +9,10 @@
     iterm2
     lua54Packages.lua
     dockutil
+
+    skhd
+    yabai
+    jankyborders
+    sketchybar
   ];
 }
