@@ -45,14 +45,5 @@
     '';
   };
 in {
-  home.packages = with pkgs; [
-    cpuLoadBinary
-    networkLoadBinary
-    menusBinary
-  ];
-
-  # Use home.file to reference binaries within $HOME
-  home.file.".config/sketchybar/helpers/event_providers/cpu_load/bin/cpu_load".source = "${cpuLoadBinary}/bin/cpu_load";
-  home.file.".config/sketchybar/helpers/event_providers/network_load/bin/network_load".source = "${networkLoadBinary}/bin/network_load";
-  home.file.".config/sketchybar/helpers/menus/bin/menus".source = "${menusBinary}/bin/menus";
+  inherit cpuLoadBinary networkLoadBinary menusBinary;
 }
