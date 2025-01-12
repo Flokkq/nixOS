@@ -23,6 +23,6 @@
   services.skhd = {
     enable = true;
     package = pkgs.skhd;
-    skhdConfig = builtins.readFile ../../../home/darwin/wm/yabairc;
+    skhdConfig = builtins.readFile ../../../home/darwin/wm/skhdrc;
   };
 }
