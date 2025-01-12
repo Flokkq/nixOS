@@ -221,6 +221,11 @@
     # Define formatter for Linux and macOS
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
+    overlays = forAllSystems (system:
+      import ./overlays {
+        inherit inputs system;
+      });
+
     templates = {
       rust-default = {
         description = "Default Rust template";

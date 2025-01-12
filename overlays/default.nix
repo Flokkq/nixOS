@@ -1,7 +1,22 @@
 # This file defines overlays
-{inputs, ...}: {
+{
+  inputs,
+  system,
+  ...
+}: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs final.pkgs;
+
+  # System-specific packages from `pkgs/nixos/default.nix` or `pkgs/darwin/default.nix`
+  systemAdditions = final: _prev:
+    import
+    ../pkgs/${
+      if system == "x86_64-linux" || system == "aarch64-linux"
+      then "nixos"
+      else "darwin"
+    }/default.nix {
+      pkgs = final.pkgs;
+    };
 
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
