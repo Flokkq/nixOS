@@ -26,10 +26,6 @@ _: {
       "nowplaying-cli"
       "wireguard-tools"
 
-      "koekeishiya/formulae/yabai"
-      "koekeishiya/formulae/skhd"
-
-      "FelixKratz/formulae/borders"
       "FelixKratz/formulae/svim"
     ];
 
