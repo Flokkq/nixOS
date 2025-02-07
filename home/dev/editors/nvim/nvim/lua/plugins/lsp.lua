@@ -78,6 +78,14 @@ return {
 			local servers = {
 				-- LSP Servers
 				rust_analyzer = {},
+				zls = {
+					capabilities = capabilities,
+					on_attach = on_attach,
+					cmd = { "zls" },
+					filetypes = { "zig", "zir" },
+					root_dir = require("lspconfig.util").root_pattern("zls.json", "build.zig", ".git"),
+					single_file_support = true,
+				},
 				tinymist = {},
 				clangd = {},
 				rnix_lsp = {},
@@ -137,14 +145,14 @@ return {
 				marksman = {},
 				ocamllsp = {},
 				nil_ls = {
-                    settings = {
-                        ["nil"] = {
-                            formatting = {
-                                command = { "alejandra" }, -- Use Alejandra as the formatter
-                            },
-                        },
-                    },
-                },
+					settings = {
+						["nil"] = {
+							formatting = {
+								command = { "alejandra" }, -- Use Alejandra as the formatter
+							},
+						},
+					},
+				},
 				pyright = {},
 				sqlls = {},
 				tailwindcss = {},
