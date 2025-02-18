@@ -13,6 +13,12 @@
       allowBitmaps = false;
       allowType1 = false; # Poor rendering
 
+      defaultFonts = {
+        monospace = ["Hack nerd Font"];
+        sansSerif = ["Hack nerd Font"];
+        serif = ["Hack nerd Font"];
+      };
+
       subpixel = {
         # rgba = "rgb";
         lcdfilter = "default";

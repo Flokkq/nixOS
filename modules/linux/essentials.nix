@@ -5,6 +5,7 @@
     swappy
     xorg.xev
     kanata
+    alsa-utils
 
     # gui
     xdg-desktop-portal-hyprland

@@ -20,6 +20,7 @@
     zoxide
     bat
     neofetch
+    delta
 
     # tui
     typioca
