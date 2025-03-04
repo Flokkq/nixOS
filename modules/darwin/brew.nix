@@ -51,6 +51,7 @@ _: {
       "wireshark"
       "figma"
       "desktoppr"
+      "ghostty"
     ];
   };
 }
