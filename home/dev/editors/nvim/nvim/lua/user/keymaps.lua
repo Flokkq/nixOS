@@ -348,10 +348,6 @@ nnoremap("<leader>oc", function()
 	require("copilot.panel").open({})
 end, { desc = "Open Copilot panel" })
 
--- nvim-ufo keybinds
-nnoremap("zR", require("ufo").openAllFolds, { desc = "Open all folds" })
-nnoremap("zM", require("ufo").closeAllFolds, { desc = "Close all folds" })
-
 -- Insert --
 -- Map jj to <esc>
 inoremap("jj", "<esc>", { desc = "Map jj to escape" })
