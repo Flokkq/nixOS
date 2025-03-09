@@ -1,11 +1,5 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{lib, ...}: {
   imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
-
     ../../home
     ../../home/linux
   ];

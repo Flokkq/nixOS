@@ -5,7 +5,6 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.default
-    inputs.catppuccin.nixosModules.catppuccin
 
     ../../modules
     ../../modules/linux

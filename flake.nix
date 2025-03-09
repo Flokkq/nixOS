@@ -28,10 +28,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
-
     schizofox = {
       url = "github:schizofox/schizofox/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,6 +65,7 @@
         name = "cerulean-statistician";
         system = "linux";
         wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
+        theme = import ./themes/catppuccin.nix {};
         monitors = [
           {
             name = "HDMI-A-1";
@@ -105,6 +102,7 @@
       {
         name = "heliotrope-secretary";
         wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
+        theme = import ./themes/catppuccin.nix {};
         system = "linux";
         monitors = [
           {
@@ -123,6 +121,7 @@
         name = "cornflower-scientist";
         system = "darwin";
         wallpaper = ./wallpapers/chillhop.png;
+        theme = import ./themes/everforest.nix {};
         monitors = [
           /*
           builtin: true
@@ -145,6 +144,8 @@
             hostname = host.name;
             system = host.system;
             monitors = host.monitors;
+            wallpaper = host.wallpaper;
+            theme = host.theme;
           };
         };
         system = "x86_64-linux";
@@ -156,6 +157,7 @@
           ./hosts/linux/${host.name}/disko-config.nix
 
           ./hosts/linux/configuration.nix
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -182,6 +184,7 @@
             system = host.system;
             monitors = host.monitors;
             wallpaper = host.wallpaper;
+            theme = host.theme;
           };
         };
         modules = [

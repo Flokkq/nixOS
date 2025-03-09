@@ -2,7 +2,6 @@
   imports = [
     ./shells
     ./editors
-    ./btop
     # ./zellij
     ./neofetch
     ./bat
@@ -13,5 +12,6 @@
     ./zoxide.nix
     ./direnv.nix
     ./lazygit.nix
+    ./btop.nix
   ];
 }
