@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./music
-    ./dooit
+    # ./dooit
 
     ./zathura.nix
   ];
