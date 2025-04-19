@@ -52,6 +52,7 @@ _: {
       "figma"
       "desktoppr"
       "ghostty"
+      "slack"
     ];
   };
 }
