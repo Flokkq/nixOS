@@ -2,14 +2,6 @@
   xsession.windowManager.bspwm = {
     enable = true;
 
-    extraConfig = ''
-      # Launch polybar
-      ${pkgs.polybar}/bin/polybar main &
-
-      # Start sxhkd
-      ${pkgs.sxhkd}/bin/sxhkd &
-    '';
-
     settings = {
       border_width = 2;
       window_gap = 10;
@@ -32,8 +24,20 @@
     };
 
     startupPrograms = [
+      "${pkgs.picom}/bin/picom"
       "${pkgs.sxhkd}/bin/sxhkd"
-      "${pkgs.polybar}/bin/polybar main"
+      "${pkgs.kitty}/bin/kitty"
+      "${pkgs.networkmanagerapplet}/bin/nm-applet"
+      # "${pkgs.polybar}/bin/polybar main"
     ];
+
+    extraConfig = ''
+      sudo mount -a
+    '';
   };
+
+  home.file.".xinitrc".text = ''
+    exec bspwm
+    xsetroot -cursor_name left_ptr
+  '';
 }

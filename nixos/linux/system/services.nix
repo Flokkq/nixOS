@@ -7,7 +7,7 @@
   startupCmd =
     if meta.system.desktop == "wayland"
     then "Hyprland"
-    else "bspwm";
+    else "startx";
   enable_xorg =
     meta.system.desktop == "xorg";
 in {
@@ -61,25 +61,21 @@ in {
     freeSwapThreshold = 9;
   };
 
+  services.picom.enable = enable_xorg;
   services.xserver = {
     enable = enable_xorg;
     layout = "us";
     xkbOptions = "eurosign:e";
-    desktopManager.xfce = {
-      enable = enable_xorg;
-      enableXfwm = false;
-    };
-    windowManager.bspwm.enable = enable_xorg;
-    windowManager.bspwm.package = "${pkgs.bspwm}";
-    windowManager.bspwm.configFile = "/home/user/dotfiles/common/bspwm/bspwmrc";
-    windowManager.bspwm.sxhkd.configFile = "/home/user/dotfiles/common/bspwm/sxhkdrc";
-    desktopManager.xterm.enable = false;
 
-    displayManager.lightdm = {
+    windowManager.bspwm = {
       enable = enable_xorg;
-      autoLogin.enable = true;
-      autoLogin.user = "user";
+      package = pkgs.bspwm;
     };
+
+    displayManager.lightdm.enable = false;
+    displayManager.startx.enable = true;
+
+    desktopManager.xterm.enable = false;
   };
   services.xrdp.defaultWindowManager = "bspwm";
 }

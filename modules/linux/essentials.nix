@@ -10,5 +10,10 @@
     # gui
     xdg-desktop-portal-hyprland
     xdg-desktop-portal
+
+    xorg.xcursorthemes
+    xorg.xinit
+    xorg.xinput
+    picom
   ];
 }
