@@ -10,11 +10,7 @@
   # System-specific packages from `pkgs/nixos/default.nix` or `pkgs/darwin/default.nix`
   systemAdditions = final: _prev:
     import
-    ../pkgs/${
-      if system == "x86_64-linux" || system == "aarch64-linux"
-      then "nixos"
-      else "darwin"
-    }/default.nix {
+    ../pkgs/${system}/default.nix {
       pkgs = final.pkgs;
     };
 

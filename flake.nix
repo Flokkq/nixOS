@@ -168,7 +168,12 @@
             };
           }
         ];
-        # overlays = [ overlays ];
+        # overlays = [
+        #   (import ./overlays {
+        #     inherit inputs;
+        #     system = host.system.os;
+        #   })
+        # ];
       };
     };
 
@@ -209,22 +214,23 @@
             };
           }
         ];
+        # overlays = [
+        #   (import ./overlays {
+        #     inherit inputs;
+        #     system = host.system.os;
+        #   })
+        # ];
       };
     };
   in {
-    nixosConfigurations = builtins.listToAttrs (map forLinuxHosts (builtins.filter (h: h.system == "linux") hosts));
-    darwinConfigurations = builtins.listToAttrs (map forDarwinHosts (builtins.filter (h: h.system == "darwin") hosts));
+    nixosConfigurations = builtins.listToAttrs (map forLinuxHosts (builtins.filter (h: h.system.os == "linux") hosts));
+    darwinConfigurations = builtins.listToAttrs (map forDarwinHosts (builtins.filter (h: h.system.os == "darwin") hosts));
 
     # Use modules for both macOS and Linux
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
 
     # Define formatter for Linux and macOS
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
-
-    overlays = forAllSystems (system:
-      import ./overlays {
-        inherit inputs system;
-      });
 
     templates = {
       rust-default = {
