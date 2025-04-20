@@ -81,7 +81,7 @@
             internal = false;
           }
           {
-            name = "DP-2";
+            name = "DP-1";
             dimensions = "2560x1440";
             position = "auto";
             scale = 1;
