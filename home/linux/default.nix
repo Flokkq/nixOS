@@ -1,14 +1,10 @@
-{...}: {
+{meta, ...}: {
   imports = [
-    ./hypr
-    ./waybar
+    ./${meta.system.desktop}
     ./dev
     ./apps
-    ./swaync
 
     ./nautilus.nix
-    ./grimblast.nix
-    ./avizo.nix
     ./gtk.nix
   ];
 }

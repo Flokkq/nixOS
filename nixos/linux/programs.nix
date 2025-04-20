@@ -2,6 +2,7 @@
 {
   pkgs,
   inputs,
+  meta,
   ...
 }: {
   programs = {
@@ -24,7 +25,13 @@
       pinentryPackage = pkgs.pinentry-gnome3;
     };
 
-    hyprland.enable = true;
-    hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    hyprland = {
+      enable =
+        if meta.system.desktop == "wayland"
+        then true
+        else false;
+      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+    };
   };
 }

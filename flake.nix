@@ -67,7 +67,10 @@
     hosts = [
       {
         name = "cerulean-statistician";
-        system = "linux";
+        system = {
+          os = "linux";
+          desktop = "wayland";
+        };
         wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
         monitors = [
           {
@@ -105,7 +108,10 @@
       {
         name = "heliotrope-secretary";
         wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
-        system = "linux";
+        system = {
+          os = "linux";
+          desktop = "xorg";
+        };
         monitors = [
           {
             name = "LVDS-1";
@@ -121,7 +127,10 @@
       }
       {
         name = "cornflower-scientist";
-        system = "darwin";
+        system = {
+          os = "darwin";
+          desktop = "bsp";
+        };
         wallpaper = ./wallpapers/chillhop.png;
         monitors = [
           /*
