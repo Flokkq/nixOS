@@ -3,7 +3,7 @@
     gcc
     gnumake
     rustup
-    go_1_22
+    go_1_24
     air
     nodejs
     yarn
