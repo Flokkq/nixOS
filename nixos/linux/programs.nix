@@ -26,10 +26,7 @@
     };
 
     hyprland = {
-      enable =
-        if meta.system.desktop == "wayland"
-        then true
-        else false;
+      enable = meta.system.desktop == "wayland";
       package = inputs.hyprland.packages."${pkgs.system}".hyprland;
       portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     };

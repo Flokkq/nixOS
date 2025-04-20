@@ -1,5 +1,16 @@
 # Services Configuration
-{pkgs, ...}: {
+{
+  pkgs,
+  meta,
+  ...
+}: let
+  startupCmd =
+    if meta.system.desktop == "wayland"
+    then "Hyprland"
+    else "bspwm";
+  enable_xorg =
+    meta.system.desktop == "xorg";
+in {
   # For programs like gparted (that requires root permission) to work
   # <https://wiki.nixos.org/wiki/Polkit>
   security.polkit.enable = true;
@@ -35,7 +46,7 @@
     vt = 1;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd ${startupCmd}";
         user = "greeter";
       };
     };
@@ -49,4 +60,26 @@
     freeMemThreshold = 3;
     freeSwapThreshold = 9;
   };
+
+  services.xserver = {
+    enable = enable_xorg;
+    layout = "us";
+    xkbOptions = "eurosign:e";
+    desktopManager.xfce = {
+      enable = enable_xorg;
+      enableXfwm = false;
+    };
+    windowManager.bspwm.enable = enable_xorg;
+    windowManager.bspwm.package = "${pkgs.bspwm}";
+    windowManager.bspwm.configFile = "/home/user/dotfiles/common/bspwm/bspwmrc";
+    windowManager.bspwm.sxhkd.configFile = "/home/user/dotfiles/common/bspwm/sxhkdrc";
+    desktopManager.xterm.enable = false;
+
+    displayManager.lightdm = {
+      enable = enable_xorg;
+      autoLogin.enable = true;
+      autoLogin.user = "user";
+    };
+  };
+  services.xrdp.defaultWindowManager = "bspwm";
 }
