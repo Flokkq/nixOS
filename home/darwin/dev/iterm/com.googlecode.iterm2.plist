@@ -2850,6 +2850,10 @@
 	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
+	<key>QuickPasteBytesPerCall</key>
+	<integer>506</integer>
+	<key>QuickPasteDelayBetweenCalls</key>
+	<real>0.015151514671742916</real>
 	<key>QuitWhenAllWindowsClosed</key>
 	<true/>
 	<key>ShowPaneTitles</key>
