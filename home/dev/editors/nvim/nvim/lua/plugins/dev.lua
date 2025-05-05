@@ -1,8 +1,8 @@
 return {
-	-- {
-	-- 	dir = "~/developer/present.nvim",
-	-- 	config = function()
-	-- 		require("present")
-	-- 	end,
-	-- },
+	{
+		dir = "~/developer/todo.nvim",
+		config = function()
+			require("todo")
+		end,
+	},
 }
