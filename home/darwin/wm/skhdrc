@@ -79,5 +79,16 @@ alt - 7 : yabai -m space --space 7;
 alt - 8 : yabai -m space --space 8;
 alt - 9 : yabai -m space --space 9;
 
+# hotkeys
+alt - e : osascript -e 'tell application "System Events" to key code 49 using {command down}'
+alt + shift - c : osascript -e 'tell application "System Events" to log out'
+alt - q : open -a iTerm
+alt - c : yabai -m window --close
+alt - b : open -a "Google Chrome"
+alt - d : open -a Vesktop
+alt - n : open -a Finder
+alt - s : open -a Spotify
+alt - p : open -a "1Password"
+
 # restart Yabai
 alt + cmd - r : yabai --restart-service
