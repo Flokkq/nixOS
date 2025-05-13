@@ -48,6 +48,7 @@
 
     # Custom initialization
     initExtra = ''
+      export MANPAGER='nvim +Man!'
       DISABLE_UNTRACKED_FILES_DIRTY="true"
       HISTSIZE=999999999
       SAVEHIST=999999999
