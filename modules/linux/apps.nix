@@ -29,5 +29,6 @@
     hyprlock
     hyprpaper
     hyprutils
+    hyprcursor
   ];
 }
