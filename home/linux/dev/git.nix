@@ -1,7 +1,7 @@
 {meta, ...}: let
   signingKey =
     if meta.name == "cerulean-statistician"
-    then "0xD27BE92E6E47B02E"
+    then "0xAD95B5A6E8B4ABFB"
     else if meta.name == "heliotrope-secretary"
     then "0x0F3BD0224A3D4F46"
     else "";

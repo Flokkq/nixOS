@@ -21,7 +21,7 @@
 
             # NixOS root partition
             nixos_root = {
-              size = "160G";
+              size = "400G";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -32,7 +32,7 @@
             # Windows partition
             windows = {
               type = "0700";
-              size = "300G";
+              size = "1375G";
               content = {
                 type = "filesystem";
                 format = "ntfs";

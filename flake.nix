@@ -69,7 +69,7 @@
         name = "cerulean-statistician";
         system = {
           os = "linux";
-          desktop = "xorg";
+          desktop = "wayland";
         };
         wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
         monitors = [
@@ -110,7 +110,7 @@
         wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
         system = {
           os = "linux";
-          desktop = "xorg";
+          desktop = "wayland";
         };
         monitors = [
           {
