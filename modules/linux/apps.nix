@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    obs-studio
     kitty
     alacritty
     _1password-gui

@@ -53,6 +53,8 @@ _: {
       "desktoppr"
       "ghostty"
       "slack"
+      "obs"
+      "godot"
     ];
   };
 }
