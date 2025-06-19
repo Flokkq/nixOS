@@ -131,7 +131,7 @@
           os = "darwin";
           desktop = "bsp";
         };
-        wallpaper = ./wallpapers/chillhop.png;
+        wallpaper = ./wallpapers/nixos.png;
         monitors = [
           /*
           builtin: true
