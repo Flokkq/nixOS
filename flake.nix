@@ -71,12 +71,12 @@
           os = "linux";
           desktop = "wayland";
         };
-        wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
+        wallpaper = ./wallpapers/nixos.png;
         monitors = [
           {
-            name = "HDMI-A-1";
+            name = "HDMI-A-2";
             dimensions = "1920x1080";
-            position = "auto";
+            position = "0x0";
             scale = 1;
             framerate = 74.97;
             transform = 0;
@@ -86,7 +86,7 @@
           {
             name = "DP-1";
             dimensions = "2560x1440";
-            position = "auto";
+            position = "1920x0";
             scale = 1;
             framerate = 143.86;
             transform = 0;
@@ -94,9 +94,9 @@
             internal = false;
           }
           {
-            name = "HDMI-A-2";
+            name = "HDMI-A-1";
             dimensions = "1920x1080";
-            position = "auto";
+            position = "4480x0";
             scale = 1;
             framerate = 74.97;
             transform = 0;
