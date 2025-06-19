@@ -18,6 +18,7 @@
     ];
     files = [
       "/etc/machine-id"
+      "/var/lib/dbus/machine-id"
       {
         file = "/var/keys/secret_file";
         parentDirectory = {mode = "u=rwx,g=,o=";};
