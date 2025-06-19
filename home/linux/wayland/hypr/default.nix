@@ -125,8 +125,8 @@ in {
           "$mainMod, U, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
           "$mainMod, A, exec, pavucontrol"
 
-          "$mainMod, X, exec, grimblast save screen"
-          "$mainMod SHIFT, X, exec, grimblast save area"
+          "$mainMod, X, exec, grimblast save screen - | swappy -f -"
+          "$mainMod SHIFT, X, exec, grimblast save area - | swappy -f -"
 
           "$mainMod SHIFT, B, exec, blueman-manager"
           "$mainMod, W, exec, nm-connection-editor"
