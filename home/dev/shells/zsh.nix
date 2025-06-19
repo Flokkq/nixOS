@@ -42,6 +42,7 @@
       gl = "git pull";
       gb = "git blame --color-lines";
       gd = "git diff";
+      gcl = "git clone";
 
       speedtest = "curl -o /dev/null cachefly.cachefly.net/250mb.test";
     };
