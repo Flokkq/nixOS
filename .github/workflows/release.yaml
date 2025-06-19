@@ -3,7 +3,7 @@ name: Generate Changelog
 on:
   push:
     tags:
-      - "v*.*.*"  
+      - "v*.*.*"
 
 permissions:
   contents: write
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
 
       - name: Set Up Git
         run: |
@@ -28,7 +28,7 @@ jobs:
         uses: orhun/git-cliff-action@main
         id: git-cliff
         with:
-          config: cliff.toml   
+          config: cliff.toml
           args: -vv --latest --no-exec --github-repo ${{ github.repository }}
 
       - name: Display Generated Changelog
@@ -42,4 +42,4 @@ jobs:
           body: ${{ steps.git-cliff.outputs.content }}
           draft: false
           prerelease: true
-          token: ${{ secrets.GH_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
