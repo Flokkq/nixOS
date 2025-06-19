@@ -95,7 +95,7 @@
 
       # Deprecated, use hardware.nvidia-container-toolkit.enable instead
       enableNvidia = false;
-      storageDriver = "btrfs";
+      storageDriver = "overlay2";
 
       # Extra packages to add to PATH for the docker daemon process
       extraPackages = with pkgs; [

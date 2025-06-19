@@ -32,6 +32,7 @@
       "nowatchdog" # Disables kernel watchdog timers, preventing potential resets due to perceived hangs
       "pcie_aspm=off" # Disables Active State Power Management (ASPM) for PCIe devices
       "logo.nologo" # Disables the display of the kernel logo during boot
+      "systemd.unified_cgroup_hierarchy=1" # required for docker
       /*
       "splash" # Enables a splash screen during boot
       "split_lock_detect=off" # Disables detection of split lock operations

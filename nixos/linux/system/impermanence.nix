@@ -8,6 +8,7 @@
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
+      "/var/lib/docker"
       {
         directory = "/var/lib/colord";
         user = "colord";
