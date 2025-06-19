@@ -99,8 +99,9 @@ in {
         "waybar &"
         "hyprpaper --config ~/.config/hypr/hyprpaper.conf &"
         "hypridle --config ~/.config/hypr/hypridle.conf"
-        "brave"
-        "kitty"
+        "[workspace 2 silent] kitty"
+        "[workspace 1 silent] vesktop"
+        "[workspace 3 silent] google-chrome-stable"
       ];
 
       # Keybindings
@@ -197,10 +198,24 @@ in {
 
       windowrulev2 = [
         "suppressevent maximize, class:.*"
+        "workspace 2, class:kitty"
+        "workspace 3, class:Google-chrome"
+        "workspace 1, class:vesktop"
+        "workspace 4, class:Spotify"
+        "workspace 5, class:Gimp"
+        "workspace 5, class:.*ghidra.*"
       ];
 
       windowrule = [
         "float,class:.waypaper-wrapped"
+        "float,class:waypaper"
+        "float,class:Raspberry Pi Imager"
+        "move, 2, class:kitty"
+        "move, 3, class:Google-chrome"
+        "move, 1, class:vesktop"
+        "move, 4, class:Spotify"
+        "move, 5, class:Gimp"
+        "move, 5, class:.*ghidra.*"
       ];
     };
 
