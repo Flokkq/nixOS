@@ -1,6 +1,16 @@
 # Changelog
 
 
+## [0.1.1](https://github.com/Flokkq/https://github.com/Flokkq/nixos/compare/v0.1.0..v0.1.1) - 2025-06-19
+
+
+
+
+### 🔧 Chores
+
+- *(ci)* Update release workflow to use gh internal auth token - ([8f18d07](https://github.com/Flokkq/https://github.com/Flokkq/nixos/commit/8f18d07f170da0a439fe1566dd4a50b3ac9a3fca))
+
+
 ## [0.1.0](https://github.com/Flokkq/https://github.com/Flokkq/nixos/compare/v0.0.1..v0.1.0) - 2025-06-19
 
 
@@ -213,6 +223,7 @@
 
 ### 🔧 Chores
 
+- *(release)* Prepare for v0.1.0 - ([b11b89c](https://github.com/Flokkq/https://github.com/Flokkq/nixos/commit/b11b89c6bbfe6096b6f14eb36f58ede9c1bff20c))
 - *(reinstall)* Reinstall creulean statistician - ([2a0ab9e](https://github.com/Flokkq/https://github.com/Flokkq/nixos/commit/2a0ab9ef6d7771c05211c8a3f19b666881bdc7aa))
 - *(deps)* Add obs and goto - ([42ff240](https://github.com/Flokkq/https://github.com/Flokkq/nixos/commit/42ff2407e4f6874759921df7ab4db8cd16e4c2c5))
 - *(deps)* Bump flake.lock - ([54ae5a5](https://github.com/Flokkq/https://github.com/Flokkq/nixos/commit/54ae5a5d5d486ca6739506e7e45ce5b41646d410))
