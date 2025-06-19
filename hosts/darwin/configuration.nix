@@ -19,6 +19,7 @@
     description = "flokkq";
     home = lib.mkForce "/Users/flokkq";
   };
+  system.primaryUser = "flokkq";
 
   nix.settings.trusted-users = ["flokkq"];
 
