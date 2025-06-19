@@ -108,7 +108,7 @@ in {
 
       bind =
         [
-          "$mainMod, E, exec,  wofi --show drun -I -m -i"
+          "$mainMod, E, exec,  wofi --show drun"
           "$mainMod SHIFT, C, exec, exit"
           "$mainMod SHIFT, N, exec, swaync-client -rs && swaync-client -t"
           "$mainMod, Q, exec, kitty"
