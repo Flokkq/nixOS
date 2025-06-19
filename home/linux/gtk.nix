@@ -1,14 +1,14 @@
-{pkgs, ...}: {
+_: {
   gtk = {
     enable = true;
 
-    cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Ice";
-    };
-
     catppuccin = {
       enable = true;
+      cursor = {
+        enable = true;
+        accent = "lavender";
+      };
+      icon.enable = true;
       flavor = "mocha";
       accent = "pink";
       size = "standard";
