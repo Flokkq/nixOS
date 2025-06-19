@@ -27,6 +27,7 @@ _: {
       hide_search = false;
       parse_search = false;
       insensitive = true;
+      "run-always_parse_args" = true;
 
       hide_scroll = true;
       no_actions = true;

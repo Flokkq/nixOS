@@ -2,10 +2,13 @@
   environment.systemPackages = with pkgs; [
     wl-clipboard-rs
     grimblast
+    slurp
     swappy
     xorg.xev
     kanata
     alsa-utils
+    networkmanagerapplet
+    pulseaudio
 
     # gui
     xdg-desktop-portal-hyprland

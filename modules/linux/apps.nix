@@ -12,6 +12,7 @@
     wireguard-ui
     waypaper
     swaynotificationcenter
+    gimp
 
     # waybar
     waybar

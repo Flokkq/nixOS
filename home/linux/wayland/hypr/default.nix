@@ -109,19 +109,32 @@ in {
       bind =
         [
           "$mainMod, E, exec,  wofi --show drun"
-          "$mainMod SHIFT, C, exec, exit"
+          "$mainMod SHIFT, E, exec,  wofi --show=run"
           "$mainMod SHIFT, N, exec, swaync-client -rs && swaync-client -t"
           "$mainMod, Q, exec, kitty"
           "$mainMod, C, killactive"
-          "$mainMod, B, exec, chrome"
+          "$mainMod, B, exec, google-chrome-stable"
           "$mainMod, D, exec, vesktop"
-          "$mainMod, N, exec, nautilus"
+          "$mainMod, F, exec, nautilus"
           "$mainMod, S, exec, spotify"
           "$mainMod, P, exec, 1password"
+          "$mainMod, G, exec, gimp"
+
+          "$mainMod, V, exec, pactl set-sink-mute   @DEFAULT_SINK@ toggle"
+          "$mainMod, U, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+          "$mainMod, A, exec, pavucontrol"
+
+          "$mainMod, X, exec, grimblast save screen"
+          "$mainMod SHIFT, X, exec, grimblast save area"
+
+          "$mainMod SHIFT, B, exec, blueman-manager"
+          "$mainMod, W, exec, nm-connection-editor"
+
+          "$mainMod SHIFT, C, exec, pidof hyprlock || hyprlock"
 
           # Window Management
-          "$mainMod, P, pseudo"
-          "$mainMod SHIFT, I, togglesplit"
+          "$mainMod, SHIFT P, pseudo"
+          "$mainMod, T, togglesplit"
           "$mainMod, M, fullscreen, 1"
           "$mainMod SHIFT, M, fullscreen, 0"
 
