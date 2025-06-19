@@ -6,5 +6,6 @@ _: {
 
     ./avizo.nix
     ./grimblast.nix
+    ./waypaper.nix
   ];
 }
