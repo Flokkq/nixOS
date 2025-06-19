@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.waybar = {
     enable = true;
     style = builtins.readFile ./styles.css;
@@ -24,16 +24,14 @@
           "clock"
         ];
 
-        "hyprland/window" = {
-          format = "{}";
-        };
-
         "hyprland/workspaces" = {
           "disable-scroll" = true;
           "all-outputs" = true;
           "on-click" = "activate";
+
+          "active-only" = false;
           persistent_workspaces = {
-            "1" = [];
+            "*" = [1 2 3 4 5 6 8 9];
           };
         };
 
@@ -44,13 +42,19 @@
           "format-ka" = "GE";
         };
 
+        "hyprland/window" = {
+          "format" = "{}";
+          max-length = 60;
+          ellipsize = "end";
+        };
+
         tray = {
           "icon-size" = 16;
           spacing = 10;
         };
 
         clock = {
-          format = "{: %R   %d/%m}";
+          format = " {:%R  %d/%m}";
           "tooltip-format" = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
         };
 
@@ -58,9 +62,9 @@
           format = "{icon} {volume}%";
           tooltip = false;
           "format-muted" = " Muted";
-          "on-click" = "pamixer -t";
-          "on-scroll-up" = "pamixer -i 5";
-          "on-scroll-down" = "pamixer -d 5";
+          "on-click" = "${pkgs.pamixer}/bin/pamixer -t";
+          "on-scroll-up" = "${pkgs.pamixer}/bin/pamixer -i 5";
+          "on-scroll-down" = "${pkgs.pamixer}/bin/pamixer -d 5";
           "scroll-step" = 5;
           "format-icons" = {
             headphone = "";
@@ -77,9 +81,9 @@
           format = "{format_source}";
           "format-source" = "🎙{volume}%";
           "format-source-muted" = "🎙Muted";
-          "on-click" = "pamixer --default-source -t";
-          "on-scroll-up" = "pamixer --default-source -i 5";
-          "on-scroll-down" = "pamixer --default-source -d 5";
+          "on-click" = "${pkgs.pamixer}/bin/pamixer --default-source -t";
+          "on-scroll-up" = "${pkgs.pamixer}/bin/pamixer --default-source -i 5";
+          "on-scroll-down" = "${pkgs.pamixer}/bin/pamixer --default-source -d 5";
           "scroll-step" = 5;
         };
       }
