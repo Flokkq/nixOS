@@ -5,6 +5,5 @@
     zathura
     postman
     google-chrome
-    ghostty
   ];
 }

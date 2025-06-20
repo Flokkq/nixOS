@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     obs-studio
     kitty
+    ghostty
     alacritty
     _1password-gui
     rpi-imager
