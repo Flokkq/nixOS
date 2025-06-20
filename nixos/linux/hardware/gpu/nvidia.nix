@@ -46,6 +46,11 @@
       nvidiaPersistenced = true;
     };
 
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [mesa.drivers];
+    };
+
     # Required for Nvidia support in containers (Docker, Podman, etc.)
     nvidia-container-toolkit = {
       enable = true;
