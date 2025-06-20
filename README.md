@@ -25,7 +25,7 @@ See [./hosts](./hosts) for details of each host.
 |                             | NixOS (Wayland)                                   | macOS                                  |
 | --------------------------- | :------------------------------------------------ | :-------------------------------------- |
 | **Window Manager**          | [Hyprland][Hyprland]                              | [Yabai][Yabai]                          |
-| **Terminal Emulator**       | [Tmux][Tmux] + [Kitty][Kitty]                     | [Tmux][Tmux] + [iTerm][iTerm]           |
+| **Terminal Emulator**       | [Tmux][Tmux] + [Ghostty][Ghostty]                 | [Tmux][Tmux] + [Ghostty][Ghostty]   |
 | **Bar**                     | [Waybar][Waybar]                                  | [SketchyBar][SketchyBar]                |
 | **Application Launcher**    | [Wofi][Wofi]                                      | [Raycast][Raycast]                      |
 | **Display Manager**         | [Greetd][Greetd]                                  | Native macOS                            |
@@ -76,3 +76,4 @@ These will guide you through the specifics of each setup.
 [Spicetify]: https://github.com/khanhas/spicetify-cli
 [Neovim]: https://github.com/neovim/neovim
 [Nerd fonts]: https://github.com/ryanoasis/nerd-fonts
+[Ghostty]: https://ghostty.org

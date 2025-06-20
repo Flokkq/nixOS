@@ -82,7 +82,7 @@ alt - 9 : yabai -m space --space 9;
 # hotkeys
 alt - e : osascript -e 'tell application "System Events" to key code 49 using {command down}'
 alt + shift - c : osascript -e 'tell application "System Events" to log out'
-alt - q : open -a iTerm
+alt - q : open -a ghostty
 alt - c : yabai -m window --close
 alt - b : open -a "Google Chrome"
 alt - d : open -a Vesktop

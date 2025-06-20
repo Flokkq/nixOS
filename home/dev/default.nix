@@ -13,5 +13,6 @@
     ./zoxide.nix
     ./direnv.nix
     ./lazygit.nix
+    ./ghostty.nix
   ];
 }

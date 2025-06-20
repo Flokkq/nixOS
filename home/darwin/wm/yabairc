@@ -51,7 +51,7 @@ yabai -m space 4 --label re
 yabai -m space 5 --label media
 
 # Automaticly move appls to designated space
-yabai -m rule --add app="^iTerm2$" space=code
+yabai -m rule --add app="^ghostty$" space=code
 yabai -m rule --add app="^Google Chrome$" space=web
 yabai -m rule --add app="^(Vesktop|Discord)$" space=discord
 yabai -m rule --add app="^(ida64|Ghidra)$" space=re

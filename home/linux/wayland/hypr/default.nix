@@ -99,7 +99,7 @@ in {
         "waybar &"
         "hyprpaper --config ~/.config/hypr/hyprpaper.conf &"
         "hypridle --config ~/.config/hypr/hypridle.conf"
-        "[workspace 2 silent] kitty"
+        "[workspace 2 silent] ghostty"
         "[workspace 1 silent] vesktop"
         "[workspace 3 silent] google-chrome-stable"
       ];
@@ -112,7 +112,7 @@ in {
           "$mainMod, E, exec,  wofi --show drun"
           "$mainMod SHIFT, E, exec,  wofi --show=run"
           "$mainMod SHIFT, N, exec, swaync-client -rs && swaync-client -t"
-          "$mainMod, Q, exec, kitty"
+          "$mainMod, Q, exec, ghostty"
           "$mainMod, C, killactive"
           "$mainMod, B, exec, google-chrome-stable"
           "$mainMod, D, exec, vesktop"
@@ -198,7 +198,7 @@ in {
 
       windowrulev2 = [
         "suppressevent maximize, class:.*"
-        "workspace 2, class:kitty"
+        "workspace 2, class:ghostty"
         "workspace 3, class:Google-chrome"
         "workspace 1, class:vesktop"
         "workspace 4, class:Spotify"
@@ -210,7 +210,7 @@ in {
         "float,class:.waypaper-wrapped"
         "float,class:waypaper"
         "float,class:Raspberry Pi Imager"
-        "move, 2, class:kitty"
+        "move, 2, class:ghostty"
         "move, 3, class:Google-chrome"
         "move, 1, class:vesktop"
         "move, 4, class:Spotify"

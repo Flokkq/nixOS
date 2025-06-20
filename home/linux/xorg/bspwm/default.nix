@@ -26,7 +26,7 @@
     startupPrograms = [
       "${pkgs.picom}/bin/picom"
       "${pkgs.sxhkd}/bin/sxhkd"
-      "${pkgs.kitty}/bin/kitty"
+      "${pkgs.ghostty}/bin/ghostty"
       "${pkgs.networkmanagerapplet}/bin/nm-applet"
       # "${pkgs.polybar}/bin/polybar main"
     ];
