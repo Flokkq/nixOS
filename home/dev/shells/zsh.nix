@@ -43,6 +43,9 @@
       gb = "git blame --color-lines";
       gd = "git diff";
       gcl = "git clone";
+      gao = "git add origin";
+      gro = "git remove origin";
+      grv = "git remote -v";
 
       speedtest = "curl -o /dev/null cachefly.cachefly.net/250mb.test";
     };
