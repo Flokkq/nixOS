@@ -1,7 +1,7 @@
 {...}: {
   home = {
     sessionVariables = {
-      BROWSER = "brave";
+      BROWSER = "google-chrome-stable";
       TERMINAL = "ghostty";
       GBM_BACKEND = "nvidia-drm";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
