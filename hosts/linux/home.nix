@@ -5,7 +5,9 @@
 }: {
   imports = [
     inputs.catppuccin.homeManagerModules.catppuccin
+    inputs.sops-nix.homeManagerModules.sops
 
+    ../../sops.nix
     ../../home
     ../../home/linux
   ];

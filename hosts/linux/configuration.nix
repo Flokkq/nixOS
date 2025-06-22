@@ -7,6 +7,8 @@
     inputs.home-manager.nixosModules.default
     inputs.catppuccin.nixosModules.catppuccin
 
+    ../../sops.nix
+
     ../../modules
     ../../modules/linux
     ../../modules/languages.nix

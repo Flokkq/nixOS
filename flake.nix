@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -55,6 +60,7 @@
     disko,
     impermanence,
     nix-homebrew,
+    sops-nix,
     ...
   } @ inputs: let
     systems = [
@@ -160,6 +166,7 @@
         modules = [
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
+          sops-nix.nixosModules.sops
 
           ./hosts/linux/${host.name}/hardware-configuration.nix
           ./hosts/linux/${host.name}/disko-config.nix

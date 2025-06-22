@@ -1,0 +1,18 @@
+keys:
+  - &user       'age14g6maplq4445n7d3eurz2syyq2ze7e2aj22ksnn484cmcnz65pds0cw7vm'
+  - &cornflower ''
+  - &cerulean   'age1p2xaj77eystqd0e8dfl89acuag2zz6wgzpk6gjz254a796m3hqws9d00xn'
+  - &heliotrope ''
+
+creation_rules:
+  - path_regex: 'hosts/darwin/cornflower-scientist/secrets.yaml'
+    key_groups:
+      - age: [ *user, *cornflower ]
+
+  - path_regex: 'hosts/linux/cerulean-statistician/secrets.yaml'
+    key_groups:
+      - age: [ *user, *cerulean ]
+
+  - path_regex: 'hosts/linux/heliotrope-secretary/secrets.yaml'
+    key_groups:
+      - age: [ *user, *heliotrope ]
