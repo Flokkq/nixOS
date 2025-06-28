@@ -39,6 +39,26 @@ See [./hosts](./hosts) for details of each host.
 | **Text Editor**             | [Neovim][Neovim]                                     | [Neovim][Neovim]                                     | [Neovim][Neovim]                        |
 | **Fonts**                   | [Nerd fonts][Nerd fonts]                             | [Nerd fonts][Nerd fonts]                             | [Nerd fonts][Nerd fonts]                |
 
+<details>
+    <summary>Hyprland showcase</summary>
+    <video controls src=".media/hyprland.mp4" width="800">
+        Your browser does not support the video tag.
+    </video>
+</details>
+
+
+<details>
+    <summary>Bspwm showcase</summary>
+    <p>Still WIP :/</p>
+</details>
+
+<details>
+    <summary>MacOS showcase</summary>
+    <video controls src=".media/darwin.mp4" width="800">
+        Your browser does not support the video tag.
+    </video>
+</details>
+
 ## Documentation
 
 For detailed, platform-specific documentation, refer to the following:
