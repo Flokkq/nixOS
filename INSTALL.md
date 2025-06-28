@@ -1,5 +1,8 @@
 ### **NixOS Installation Steps**
 
+> [!NOTE]
+> I *think* this works for everyone?
+
 1. **Set a Password for the NixOS User**
 
    To enable `scp` and other remote utilities, set a password for the NixOS user:
@@ -72,8 +75,10 @@
         ./disko-config.nix
       ];
 
-      boot.loader.systemdboot.enable = true;
+      boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
+
+      system.stateVersion = "24.05";
     }
      ```
 
@@ -136,6 +141,11 @@
    hosts = [
      {
        name = "template";
+       wallpaper = ./wallpapers/nixos.png;
+       system = {
+         os = "linux"; # darwin | linux
+         desktop = "wayland"; # linux: wayland | xorg
+       };
        monitors = [
           {
             name = "eDP-1";
@@ -148,12 +158,11 @@
             internal = false; # iff it is a laptop display
           }
        ];
-       system = "linux";
      }
    ];
    ```
 
-   Leave `monitors` empty initially. Define values for `name`, `system` (choose `"darwin"` or `"linux"`)
+   `monitors` can be left empty initially. Define values for `name`, `system`, `wallpaper`
 
 4. **Rebuild the System**
 
@@ -184,7 +193,12 @@
 
 ### **Darwin Installation Steps:**
 
+1. **Initial Installation**
+
+
 For Darwin (macOS), the installation process is simpler and handled through `nix-darwin`. Detailed steps can be found in the official [nix-darwin documentation](https://github.com/LnL7/nix-darwin).
+
+2. **Adding a machine**
 
 After following these steps make sure to add your machine to the configuration.
 
@@ -194,10 +208,30 @@ Open `flake.nix` and add a new entry to the `hosts` array using the existing tem
    hosts = [
      {
        name = "template";
+       wallpaper = ./wallpapers/nixos.png;
+       system = {
+         os = "linux"; # darwin | linux
+         desktop = "yabai"; # not in use
+       };
        monitors = [];
-       system = "linux";
      }
    ];
 ```
 
-Leave `monitors` empty. Define values for `name`, `system` (choose `"darwin"` or `"linux"`)
+Leave `monitors` empty
+
+3. **First Rebuild**
+
+After that you can rebuild the system with
+
+```bash
+    sudo NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --impure --flake ~/developer/nixOS/#<hostname>
+```
+
+Replace `<hostname>` with the name specified in `flake.nix`.
+
+Following rebuilds can be triggered with
+
+```bash
+    rebuildnix
+```
