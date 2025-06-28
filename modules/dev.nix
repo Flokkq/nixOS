@@ -21,6 +21,7 @@
     bat
     neofetch
     delta
+    ffmpeg
 
     # tui
     typioca
