@@ -10,7 +10,7 @@
     ../../../modules/yubikey.nix
 
     ../../../nixos/common
-    ../../../nixos/common/containers/podman.nix
+    # ../../../nixos/common/containers/podman.nix
 
     ../../../nixos/linux
     ../../../nixos/linux/media/pipewire.nix
