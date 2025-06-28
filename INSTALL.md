@@ -57,9 +57,9 @@
    sudo mv /tmp/disk-config.nix /mnt/etc/nixos
    ```
 
-7. **Copy base configuration file**
+7. **Copy install configuration file**
 
-   Transfer the base configuration file to the target NixOS machine using `scp`:
+   Transfer the install configuration file to the target NixOS machine using `scp`:
 
    The config just imports the generated hardware-configuration and disko.
 
@@ -78,7 +78,7 @@
      ```
 
    ```bash
-   scp hosts/linux/base-configuration.nix nixos@nixos:/tmp/configuration.nix
+   scp hosts/linux/install-configuration.nix nixos@nixos:/tmp/configuration.nix
    sudo mv /tmp/configuration.nix /mnt/etc/nixos/configuration.nix
    ```
 
@@ -92,7 +92,7 @@
    ```
 
 > [!IMPORTANT]
-> You will be asked to set a password for the root user. Make sure to remember it, as you will need it later. 
+> You will be asked to set a password for the root user. Make sure to remember it, as you will need it later.
 ---
 
 ### **Using This Flake for Configuration**
@@ -102,7 +102,7 @@
    After rebooting, log in with the following credentials:
 
    - **Username**: `root`
-   - **Password**: `<flokkq-is-cool>` 
+   - **Password**: `<flokkq-is-cool>`
 
 1. **Install Git**
 
@@ -180,7 +180,7 @@
    rebuildnix
    ```
 
---- 
+---
 
 ### **Darwin Installation Steps:**
 

@@ -164,7 +164,8 @@
           ./hosts/linux/${host.name}/hardware-configuration.nix
           ./hosts/linux/${host.name}/disko-config.nix
 
-          ./hosts/linux/configuration.nix
+          ./hosts/linux/base-configuration.nix
+          ./hosts/linux/${host.name}/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
