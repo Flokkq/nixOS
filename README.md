@@ -17,45 +17,41 @@ This repository is home to the nix code that builds my systems:
 
 1. NixOS Desktop: NixOS with home-manager, hyprland, etc.
 2. MacBook-Pro 2021: nix-darwin sharing the same home-manager configuration with NixOS Desktop.
+3. Lenovo IdeaPad Y500-2013: experimental x86-64 sometimes CTF machine.
+4. Why are there no 14" frameworks?!
 
 See [./hosts](./hosts) for details of each host.
 
 ## Components
 
-|                             | NixOS (Wayland)                                   | macOS                                  |
-| --------------------------- | :------------------------------------------------ | :-------------------------------------- |
-| **Window Manager**          | [Hyprland][Hyprland]                              | [Yabai][Yabai]                          |
-| **Terminal Emulator**       | [Tmux][Tmux] + [Ghostty][Ghostty]                 | [Tmux][Tmux] + [Ghostty][Ghostty]   |
-| **Bar**                     | [Waybar][Waybar]                                  | [SketchyBar][SketchyBar]                |
-| **Application Launcher**    | [Wofi][Wofi]                                      | [Raycast][Raycast]                      |
-| **Display Manager**         | [Greetd][Greetd]                                  | Native macOS                            |
-| **Color Scheme**            | [Catppuccin][Catppuccin]                          | Default macOS + [Catppuccin][Catppuccin]|
-| **System resource monitor** | [Btop][Btop]                                      | [Btop][Btop]                            |
-| **File Manager**            | [Nautilus][Nautilus]                              | Finder                                  |
-| **Shell**                   | [Zsh][Zsh]                                        | [Zsh][Zsh]                              |
-| **Music Player**            | [Spicetify][Spicetify]                            | [Spicetify][Spicetify]                  |
-| **Text Editor**             | [Neovim][Neovim]                                  | [Neovim][Neovim]                        |
-| **Fonts**                   | [Nerd fonts][Nerd fonts]                          | [Nerd fonts][Nerd fonts]                |
-
-## Future Improvements and Known Issues
-
-This configuration is a work in progress. Several components, particularly on the darwin side, are still incomplete. Whilst linux is almost done Waybar and Hyprland are prone to random crashes, and many configurations could be significantly improved.
-
-If you're interested in the ongoing development or want to see what's planned, please check out the [Issues](https://github.com/flokkq/dotfiles/issues) page. Suggestions are welcome!
+|                             | NixOS (Wayland)                                      | NixOS (Xorg)                                         | macOS                                   |
+| --------------------------- | :--------------------------------------------------- | :--------------------------------------------------- | :-------------------------------------- |
+| **Window Manager**          | [Hyprland][Hyprland]                                 | [Bspwm][Bspwm]                                       | [Yabai][Yabai]                          |
+| **Terminal Emulator**       | [Tmux][Tmux] + [Ghostty][Ghostty]                    | [Tmux][Tmux] + [Ghostty][Ghostty]                    | [Tmux][Tmux] + [Ghostty][Ghostty]       |
+| **Bar**                     | [Waybar][Waybar]                                     | [Polybar][Polybar]                                   | [SketchyBar][SketchyBar]                |
+| **Application Launcher**    | [Wofi][Wofi]                                         | [Rofi][Rofi]                                         | [Raycast][Raycast]                      |
+| **Display Manager**         | [Greetd][Greetd]                                     | [Greetd][Greetd]                                     | Native macOS                            |
+| **Color Scheme**            | [Catppuccin][Catppuccin]                             | [Catppuccin][Catppuccin]                             | Default macOS + [Catppuccin][Catppuccin]|
+| **System resource monitor** | [Btop][Btop]                                         | [Btop][Btop]                                         | [Btop][Btop]                            |
+| **File Manager**            | [Nautilus][Nautilus]                                 | [Nautilus][Nautilus]                                 | Finder                                  |
+| **Shell**                   | [Zsh][Zsh]                                           | [Zsh][Zsh]                                           | [Zsh][Zsh]                              |
+| **Music Player**            | [Spicetify][Spicetify]                               | [Spicetify][Spicetify]                               | [Spicetify][Spicetify]                  |
+| **Text Editor**             | [Neovim][Neovim]                                     | [Neovim][Neovim]                                     | [Neovim][Neovim]                        |
+| **Fonts**                   | [Nerd fonts][Nerd fonts]                             | [Nerd fonts][Nerd fonts]                             | [Nerd fonts][Nerd fonts]                |
 
 ## Documentation
 
 For detailed, platform-specific documentation, refer to the following:
 
-- [Linux documentation](/hosts/linux/README.md)
-- [Darwin (macOS) documentation](/hosts/darwin/README.md)
+- [Linux documentation](hosts/linux/README.md)
+- [Darwin (macOS) documentation](hosts/darwin/README.md)
 
 These will guide you through the specifics of each setup.
 
 ## How to Deploy this Flake?
 
 > [!WARNING]
-> :red_circle: **IMPORTANT**: This configuration is still unstable, making it **UNSAFE AND NOT RECOMMENDED** for general use. Proceed at your own risk!
+> :red_circle: **IMPORTANT**: This configuration is for myself, making it **NOT RECOMMENDED** for general use.
 > That said, if you're feeling adventurous, you can check out the [install guide](INSTALL.md) for more details.
 
 [Hyprland]: https://github.com/hyprwm/Hyprland
@@ -77,3 +73,6 @@ These will guide you through the specifics of each setup.
 [Neovim]: https://github.com/neovim/neovim
 [Nerd fonts]: https://github.com/ryanoasis/nerd-fonts
 [Ghostty]: https://ghostty.org
+[Bspwm]: https://github.com/baskerville/bspwm
+[Polybar]: https://github.com/polybar/polybar
+[Rofi]: https://github.com/davatorium/rofi
