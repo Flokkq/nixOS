@@ -11,5 +11,6 @@ _: {
     ParallelsDesktop = 1085114709;
     KeyNote = 409183694;
     WireGuard = 1451685025;
+    KimaiBar = 1630718030;
   };
 }

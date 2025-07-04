@@ -55,6 +55,9 @@ _: {
       "slack"
       "obs"
       "godot"
+      "gimp"
+      "postman"
+      "linear-linear"
     ];
   };
 }
