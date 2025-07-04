@@ -86,6 +86,8 @@ return {
 					root_dir = require("lspconfig.util").root_pattern("zls.json", "build.zig", ".git"),
 					single_file_support = true,
 				},
+				roslyn = {},
+				csharp_ls = {},
 				tinymist = {},
 				clangd = {},
 				rnix_lsp = {},
