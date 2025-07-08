@@ -28,6 +28,8 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    textfox.url = "github:adriankarlen/textfox";
+
     catppuccin = {
       url = "github:catppuccin/nix";
     };

@@ -1,5 +1,6 @@
 {...}: {
   imports = [
-    ./schizofox.nix
+    # ./schizofox.nix
+    ./textfox.nix
   ];
 }
