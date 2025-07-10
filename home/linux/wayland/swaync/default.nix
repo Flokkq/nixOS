@@ -13,7 +13,7 @@
         positionX = "right";
         positionY = "top";
         widgets = [
-          #"buttons-grid" #disable for now, not sure I like the extra clutter
+          "buttons-grid"
           "title"
           "dnd"
           "notifications"
@@ -28,7 +28,7 @@
             }
             {
               label = "󱩌";
-              command = "notify-desktop NightLight";
+              command = "${lib.getExe pkgs.notify-desktop} NightLight";
             }
             {
               label = "󰍹";
@@ -40,12 +40,11 @@
             }
             {
               label = "󰀝";
-              command = "notify-desktop AirplaneMode";
+              command = "${lib.getExe pkgs.notify-desktop} AirplaneMode";
             }
-            # 󰀞
             {
               label = "󰐥";
-              command = "${lib.getExe pkgs.wlogout} --buttons-per-row 5 --no-span";
+              command = "pidof ${lib.getExe pkgs.hyprlock} || ${lib.getExe pkgs.hyprlock}";
             }
           ];
           title = {
