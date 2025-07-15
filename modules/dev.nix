@@ -37,6 +37,7 @@
 
     # gui
     jetbrains.idea-ultimate
+    jetbrains.rider
     jetbrains.datagrip
     vscode
   ];
