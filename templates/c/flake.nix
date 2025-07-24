@@ -1,5 +1,5 @@
 {
-  description = "Basic Go flake";
+  description = "Basic C flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -21,9 +21,10 @@
           devShells.default = mkShell rec {
             buildInputs =
               [
-                go
+                llvmPackages_19.clang-tools
+                gcc
                 make
-                go-migrate
+                pkg-config
                 openssl
               ]
               ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [

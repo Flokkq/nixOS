@@ -1,39 +1,31 @@
 {
-  description = "Basic Rust flake";
+  description = "Basic Go flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    rust-overlay.url = "github:oxalica/rust-overlay";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
     nixpkgs,
-    rust-overlay,
     flake-utils,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
-        overlays = [(import rust-overlay)];
         pkgs = import nixpkgs {
-          inherit system overlays;
+          inherit system;
         };
       in
         with pkgs; {
-          packages.default = rust-bin.selectLatestNightlyWith (toolchain:
-            toolchain.default.override {
-              extensions = ["rust-src" "rust-analyzer"];
-              targets = [];
-            });
-
           devShells.default = mkShell rec {
             buildInputs =
               [
-                packages.default
-                pkg-config
+                go
+                make
+                go-migrate
                 openssl
-                bunyan-rs
+                pkg-config
               ]
               ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
                 darwin.apple_sdk.frameworks.SystemConfiguration
