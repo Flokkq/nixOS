@@ -142,6 +142,8 @@
       }
     ];
 
+    lib = import ./lib inputs;
+
     # Function to generate configurations for all systems
     forAllSystems = fn: nixpkgs.lib.genAttrs systems (system: fn {pkgs = import nixpkgs {inherit system;};});
 
@@ -244,26 +246,6 @@
     # Define formatter for Linux and macOS
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
-    templates = {
-      rust-default = {
-        description = "Default Rust template";
-        path = ./templates/rust/default;
-      };
-
-      go-default = {
-        description = "Default Go template";
-        path = ./templates/go/default;
-      };
-
-      go-nethttp = {
-        description = "Go template with net/http package";
-        path = ./templates/go/nethttp;
-      };
-
-      c-default = {
-        description = "Simple Hello World written in C";
-        path = ./templates/c/default;
-      };
-    };
+    templates = import ./templates {inherit lib;};
   };
 }
