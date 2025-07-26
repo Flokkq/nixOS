@@ -4,7 +4,7 @@ _: {
   # Configure QT themes to resemble GTK themes
   qt = {
     enable = true;
-    platformTheme = "gtk2";
-    style = "gtk2";
+    # platformTheme = "gtk2";
+    # style = "gtk2";
   };
 }

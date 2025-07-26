@@ -39,8 +39,8 @@ in {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 2;
-        "col.active_border" = "0xaa7287fd";
-        "col.inactive_border" = "0xaa414550";
+        "col.active_border" = lib.mkDefault "0xaa7287fd";
+        "col.inactive_border" = lib.mkDefault "0xaa414550";
         resize_on_border = false;
         allow_tearing = false;
         layout = "dwindle";
@@ -84,7 +84,7 @@ in {
 
       misc = {
         force_default_wallpaper = -1;
-        disable_hyprland_logo = false;
+        disable_hyprland_logo = true;
       };
 
       gestures = {

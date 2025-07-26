@@ -4,7 +4,8 @@
   ...
 }: {
   imports = [
-    inputs.catppuccin.homeManagerModules.catppuccin
+    # inputs.catppuccin.homeManagerModules.catppuccin
+    # inputs.stylix.homeManagerModules.stylix
 
     ../../home
     ../../home/linux

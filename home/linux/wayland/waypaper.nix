@@ -4,7 +4,7 @@
     language = en
     folder = ${../../../wallpapers}
     monitors = All
-    wallpaper = ${meta.wallpaper}
+    wallpaper = ${meta.theme.wallpaper}
     show_path_in_tooltip = True
     backend = hyprpaper
     fill = fill

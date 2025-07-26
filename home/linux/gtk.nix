@@ -2,18 +2,18 @@ _: {
   gtk = {
     enable = true;
 
-    catppuccin = {
-      enable = true;
-      cursor = {
-        enable = true;
-        accent = "lavender";
-      };
-      icon.enable = true;
-      flavor = "mocha";
-      accent = "pink";
-      size = "standard";
-      tweaks = ["normal"];
-    };
+    # catppuccin = {
+    #   enable = true;
+    #   cursor = {
+    #     enable = true;
+    #     accent = "lavender";
+    #   };
+    #   icon.enable = true;
+    #   flavor = "mocha";
+    #   accent = "pink";
+    #   size = "standard";
+    #   tweaks = ["normal"];
+    # };
 
     gtk3 = {
       bookmarks = [

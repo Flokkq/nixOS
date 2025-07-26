@@ -18,6 +18,7 @@
       wireguard-ui
       waypaper
       swaynotificationcenter
+      screenkey
       gimp
 
       # waybar

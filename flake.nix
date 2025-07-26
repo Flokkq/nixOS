@@ -30,12 +30,13 @@
 
     textfox.url = "github:adriankarlen/textfox";
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-    };
-
     schizofox = {
       url = "github:schizofox/schizofox/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -57,6 +58,7 @@
     disko,
     impermanence,
     nix-homebrew,
+    stylix,
     ...
   } @ inputs: let
     systems = [
@@ -66,6 +68,15 @@
       "x86_64-darwin"
     ];
 
+    pkgsForLib = import inputs.nixpkgs {
+      system = builtins.currentSystem;
+    };
+
+    lib = import ./lib {
+      inputs = inputs;
+      pkgs = pkgsForLib;
+    };
+
     hosts = [
       {
         name = "cerulean-statistician";
@@ -73,7 +84,7 @@
           os = "linux";
           desktop = "wayland";
         };
-        wallpaper = ./wallpapers/nixos.png;
+        theme = lib.getTheme "catppuccin-mocha";
         monitors = [
           {
             name = "HDMI-A-2";
@@ -109,7 +120,7 @@
       }
       {
         name = "heliotrope-secretary";
-        wallpaper = ./wallpapers/wallhaven-rrljjq.jpg;
+        theme = lib.getTheme "catppuccin-mocha";
         system = {
           os = "linux";
           desktop = "wayland";
@@ -133,7 +144,7 @@
           os = "darwin";
           desktop = "bsp";
         };
-        wallpaper = ./wallpapers/nixos.png;
+        theme = lib.getTheme "catppuccin-mocha";
         monitors = [
           /*
           builtin: true
@@ -141,8 +152,6 @@
         ];
       }
     ];
-
-    lib = import ./lib inputs;
 
     # Function to generate configurations for all systems
     forAllSystems = fn: nixpkgs.lib.genAttrs systems (system: fn {pkgs = import nixpkgs {inherit system;};});
@@ -158,12 +167,14 @@
             hostname = host.name;
             system = host.system;
             monitors = host.monitors;
+            theme = host.theme;
           };
         };
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
+          stylix.nixosModules.stylix
 
           ./hosts/linux/${host.name}/hardware-configuration.nix
           ./hosts/linux/${host.name}/disko-config.nix
@@ -200,7 +211,7 @@
             hostname = host.name;
             system = host.system;
             monitors = host.monitors;
-            wallpaper = host.wallpaper;
+            theme = host.theme;
           };
         };
         modules = [
