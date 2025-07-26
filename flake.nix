@@ -162,7 +162,7 @@
       name = host.name;
       value = nixpkgs.lib.nixosSystem {
         specialArgs = {
-          inherit inputs;
+          inherit inputs lib;
           meta = {
             hostname = host.name;
             system = host.system;
@@ -189,6 +189,7 @@
             home-manager.users.flokkq = import ./hosts/linux/home.nix;
             home-manager.extraSpecialArgs = {
               inherit inputs;
+              nixlib = lib;
               meta = host;
             };
           }
@@ -206,7 +207,7 @@
       name = host.name;
       value = nix-darwin.lib.darwinSystem {
         specialArgs = {
-          inherit inputs;
+          inherit inputs lib;
           meta = {
             hostname = host.name;
             system = host.system;
@@ -235,6 +236,7 @@
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {
               inherit inputs;
+              nixlib = lib;
               meta = host;
             };
           }

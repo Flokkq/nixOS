@@ -1,11 +1,10 @@
 {
   meta,
   lib,
+  nixlib,
   pkgs,
   ...
-}: let
-  monitorUtils = import ./utils.nix {inherit lib;};
-in {
+}: {
   imports = [
     ./hyprland-environment.nix
     ./hyprpaper.nix
@@ -17,7 +16,7 @@ in {
     enable = true;
     systemdIntegration = true;
     settings = {
-      monitor = monitorUtils.generateHyprlandMonitorConfig meta.monitors;
+      monitor = nixlib.generateHyprlandMonitorConfig meta.monitors;
 
       # ENVIRONMENT VARIABLES
       env = [

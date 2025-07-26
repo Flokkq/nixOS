@@ -1,11 +1,9 @@
 {
-  lib,
+  nixlib,
   meta,
   ...
 }: let
-  monitorUtils = import ./utils.nix {inherit lib;};
-
-  primaryMonitor = monitorUtils.getPrimaryMonitor meta.monitors;
+  primaryMonitor = nixlib.getPrimaryMonitor meta.monitors;
 in {
   home.file.".config/hypr/hyprlock.conf".text = ''
     background {
