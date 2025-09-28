@@ -33,8 +33,19 @@
     pname = "menus";
     version = "1.0";
     src = ./sketchybar/helpers;
-    buildInputs = [pkgs.clang pkgs.gnumake pkgs.darwin.apple_sdk.frameworks.Carbon pkgs.darwin.apple_sdk.frameworks.SkyLight];
-    NIX_CFLAGS_COMPILE = "-F${pkgs.darwin.apple_sdk.frameworks.Carbon} -F${pkgs.darwin.apple_sdk.frameworks.SkyLight}";
+
+    nativeBuildInputs = [pkgs.clang pkgs.gnumake];
+
+    NIX_CFLAGS_COMPILE = ''
+      -F$SDKROOT/System/Library/Frameworks
+      -F$SDKROOT/System/Library/PrivateFrameworks
+    '';
+
+    NIX_LDFLAGS = ''
+      -framework Carbon
+      -framework SkyLight
+    '';
+
     buildPhase = ''
       cd menus
       make
