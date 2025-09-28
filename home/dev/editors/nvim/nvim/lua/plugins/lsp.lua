@@ -156,7 +156,12 @@ return {
 					},
 				},
 				pyright = {},
-				sqlls = {},
+				sqls = {
+					filetypes = { "sql", "rust" },
+					on_attach = function(client, bufnr)
+						require("sqls").on_attach(client, bufnr)
+					end,
+				},
 				tailwindcss = {},
 				ts_ls = {
 					settings = {
@@ -235,7 +240,7 @@ return {
 				async = true,
 				timeout_ms = 500,
 				lsp_fallback = true,
-                stop_after_first = true,
+				stop_after_first = true,
 			},
 			formatters_by_ft = {
 				javascript = { "prettierd", "prettier" },
