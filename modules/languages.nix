@@ -10,5 +10,6 @@
     nil
     alejandra
     bash-language-server
+    lua-language-server
   ];
 }

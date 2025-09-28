@@ -1,6 +1,6 @@
 {...}: {
   imports = [
     ./system
-    ./stylix.nix
+    ./customization
   ];
 }

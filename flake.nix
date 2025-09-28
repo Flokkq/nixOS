@@ -40,10 +40,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # spicetify-nix = {
+    #   url = "github:Gerg-L/spicetify-nix";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
 
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
@@ -216,6 +216,7 @@
           };
         };
         modules = [
+          stylix.darwinModules.stylix
           ./hosts/darwin/${host.name}/default.nix
           ./hosts/darwin/configuration.nix
 

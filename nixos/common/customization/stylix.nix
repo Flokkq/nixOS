@@ -9,7 +9,6 @@
       base16Scheme = meta.theme.scheme;
       polarity = lib.mkDefault (meta.theme.polarity or "dark");
       image = meta.theme.wallpaper;
-      cursor = meta.theme.cursor or {};
       fonts = lib.mkMerge [
         (meta.theme.fonts or {})
         {
