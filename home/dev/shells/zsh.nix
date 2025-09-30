@@ -54,9 +54,13 @@
     initExtra = ''
       export MANPAGER='nvim +Man!'
       export XDG_CONFIG_HOME="$HOME/.config"
+      export EDITOR="nvim"
       DISABLE_UNTRACKED_FILES_DIRTY="true"
       HISTSIZE=999999999
       SAVEHIST=999999999
+
+      zle -N edit-command-line
+      bindkey '^e' edit-command-line
 
       setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
       eval "$(starship init zsh)"
