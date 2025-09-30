@@ -35,7 +35,7 @@ _: {
       "font-sf-mono"
       "font-sf-pro"
       "alt-tab"
-      "docker"
+      "docker-desktop"
       "ghidra" # broken nixpkgs binarry
       "balenaetcher"
       "sublime-text" # no nixpkgs darwin binary
@@ -48,7 +48,7 @@ _: {
       "burp-suite"
       "karabiner-elements"
       "anydesk"
-      "wireshark"
+      "wireshark-app"
       "figma"
       "desktoppr"
       "ghostty"
