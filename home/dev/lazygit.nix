@@ -4,6 +4,7 @@
     settings = {
       git = {
         commit.signOff = true;
+        overrideGpg = true;
       };
     };
   };
