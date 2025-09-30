@@ -15,8 +15,8 @@
 
 This repository is home to the nix code that builds my systems:
 
-1. NixOS Desktop: NixOS with home-manager, hyprland, etc.
-2. MacBook-Pro 2021: nix-darwin sharing the same home-manager configuration with NixOS Desktop.
+1. NixOS Desktop: NixOS with impermanence, hyprland, etc.
+2. MacBook-Pro 2021: nix-darwin sharing the same configuration.
 3. Lenovo IdeaPad Y500-2013: experimental x86-64 sometimes CTF machine.
 4. Why are there no 14" frameworks?!
 
