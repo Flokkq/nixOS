@@ -30,7 +30,7 @@ jobs:
       matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
     runs-on: ${{ matrix.runner }}
     env:
-      PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+      GH_PAT: ${{ secrets.GH_PAT }}
       MIRROR_REPO: flokkq/dotfiles-mirror
       BRANCH: ${{ matrix.name }}
     steps:
@@ -49,7 +49,7 @@ jobs:
           set -euxo pipefail
           host="${{ matrix.name }}"
           os="${{ matrix.os }}"
-          user="flokkq"   # add more users here if needed
+          user="flokkq"
 
           mkdir -p out
 
@@ -58,13 +58,10 @@ jobs:
           SYS_OUT="$(readlink -f result)"
 
           if [ "$os" = "darwin" ]; then
-            # --- macOS mapping ---
-            # /etc
             if [ -d "${SYS_OUT}/etc" ]; then
               mkdir -p out/etc
               rsync -a "${SYS_OUT}/etc/" "out/etc/"
             fi
-            # /Library/LaunchDaemons + /Library/LaunchAgents
             if [ -d "${SYS_OUT}/sw/Library/LaunchDaemons" ]; then
               mkdir -p "out/Library/LaunchDaemons"
               rsync -a "${SYS_OUT}/sw/Library/LaunchDaemons/" "out/Library/LaunchDaemons/"
@@ -73,19 +70,15 @@ jobs:
               mkdir -p "out/Library/LaunchAgents"
               rsync -a "${SYS_OUT}/sw/Library/LaunchAgents/" "out/Library/LaunchAgents/"
             fi
-            # user LaunchAgents (~/Library/LaunchAgents)
             if [ -d "${SYS_OUT}/user/Library/LaunchAgents" ]; then
               mkdir -p "out/Users/${user}/Library/LaunchAgents"
               rsync -a "${SYS_OUT}/user/Library/LaunchAgents/" "out/Users/${user}/Library/LaunchAgents/"
             fi
           else
-            # --- Linux (NixOS) mapping ---
-            # /etc (covers rendered declarative config, incl. systemd links etc.)
             if [ -d "${SYS_OUT}/etc" ]; then
               mkdir -p out/etc
               rsync -a "${SYS_OUT}/etc/" "out/etc/"
             fi
-            # Optional: mirror auxiliary trees from the closure (reference view)
             if [ -d "${SYS_OUT}/sw/lib/systemd" ]; then
               mkdir -p "out/usr/lib/systemd"
               rsync -a "${SYS_OUT}/sw/lib/systemd/" "out/usr/lib/systemd/"
@@ -100,7 +93,6 @@ jobs:
             fi
           fi
 
-          # 2) Home-Manager: map home-files to OS-typical home path
           if nix eval --json ".#ci.hmActivation.${host}.${user}" >/dev/null 2>&1; then
             nix build --print-out-paths ".#ci.hmActivation.${host}.${user}"
             HM_OUT="$(readlink -f result)"
@@ -113,7 +105,6 @@ jobs:
                 rsync -a "${HM_OUT}/home-files/" "out/home/${user}/"
               fi
             fi
-            # Darwin HM user agents (if present as a separate link)
             if [ "$os" = "darwin" ] && [ -d "${HM_OUT}/LaunchAgents" ]; then
               mkdir -p "out/Users/${user}/Library/LaunchAgents"
               rsync -a "${HM_OUT}/LaunchAgents/" "out/Users/${user}/Library/LaunchAgents/"
@@ -129,7 +120,7 @@ jobs:
         run: |
           set -euxo pipefail
           rm -rf mirror-repo
-          git clone --no-checkout "https://x-access-token:${PUSH_TOKEN}@github.com/${MIRROR_REPO}.git" mirror-repo
+          git clone --no-checkout "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git" mirror-repo
           cd mirror-repo
           if ! git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
             git checkout --orphan "${BRANCH}"
