@@ -69,6 +69,7 @@
     ];
 
     pkgsForLib = import inputs.nixpkgs {
+      # cpu does not matter here since we only use it to build the lib
       system = "x86_64-linux";
     };
 
