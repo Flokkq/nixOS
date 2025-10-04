@@ -1,57 +1,157 @@
-name: Mirror Home Manager Config
+name: mirror per-host raw config
 
 on:
   schedule:
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
   workflow_dispatch: {}
 
 jobs:
-  mirror-home-manager:
+  plan:
     runs-on: ubuntu-latest
-    env:
-      USER: root
-      HOME: /home/root
-      NIX_PATH: "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs"
-      NIXPKGS_ALLOW_UNFREE: 1
-      NIX_FLAKE_ALLOW_DIRTY: 1
+    outputs:
+      matrix: ${{ steps.mk-matrix.outputs.matrix }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with: { clean: true }
+      - uses: cachix/install-nix-action@v31
         with:
-          clean: true
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            sandbox = false
+      - id: mk-matrix
+        run: |
+          HOSTS="$(nix eval --json .#ci.hosts)"
+          echo "matrix={\"include\":${HOSTS}}" >> "$GITHUB_OUTPUT"
 
-      - name: Install Nix with flake support
-        uses: cachix/install-nix-action@v31
+  mirror:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
+    env:
+      PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+      MIRROR_REPO: flokkq/dotfiles-mirror
+      BRANCH: ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { clean: true }
+      - uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
             sandbox = false
 
-      - name: Setup Nix channel
+      - name: Build system + HM outputs (rootfs layout)
+        id: build
+        shell: bash
         run: |
-          nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
-          nix-channel --update
+          set -euxo pipefail
+          host="${{ matrix.name }}"
+          os="${{ matrix.os }}"
+          user="flokkq"   # add more users here if needed
 
-      - name: Activate Home Manager config
-        run: |
-          nix build --impure .#homeConfigurations.flokkq.activationPackage
+          mkdir -p out
 
-      - name: Clone mirror repository
-        env:
-          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
-        run: |
-          git clone https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/flokkq/dotfiles-mirror.git mirror-repo
+          # 1) Build system closure
+          nix build --print-out-paths ".#ci.systemOut.${host}"
+          SYS_OUT="$(readlink -f result)"
 
-      - name: Copy config directories to mirror repository
-        run: |
-          rm -rf mirror-repo/.config
-          cp -rL result/home-files mirror-repo/
+          if [ "$os" = "darwin" ]; then
+            # --- macOS mapping ---
+            # /etc
+            if [ -d "${SYS_OUT}/etc" ]; then
+              mkdir -p out/etc
+              rsync -a "${SYS_OUT}/etc/" "out/etc/"
+            fi
+            # /Library/LaunchDaemons + /Library/LaunchAgents
+            if [ -d "${SYS_OUT}/sw/Library/LaunchDaemons" ]; then
+              mkdir -p "out/Library/LaunchDaemons"
+              rsync -a "${SYS_OUT}/sw/Library/LaunchDaemons/" "out/Library/LaunchDaemons/"
+            fi
+            if [ -d "${SYS_OUT}/sw/Library/LaunchAgents" ]; then
+              mkdir -p "out/Library/LaunchAgents"
+              rsync -a "${SYS_OUT}/sw/Library/LaunchAgents/" "out/Library/LaunchAgents/"
+            fi
+            # user LaunchAgents (~/Library/LaunchAgents)
+            if [ -d "${SYS_OUT}/user/Library/LaunchAgents" ]; then
+              mkdir -p "out/Users/${user}/Library/LaunchAgents"
+              rsync -a "${SYS_OUT}/user/Library/LaunchAgents/" "out/Users/${user}/Library/LaunchAgents/"
+            fi
+          else
+            # --- Linux (NixOS) mapping ---
+            # /etc (covers rendered declarative config, incl. systemd links etc.)
+            if [ -d "${SYS_OUT}/etc" ]; then
+              mkdir -p out/etc
+              rsync -a "${SYS_OUT}/etc/" "out/etc/"
+            fi
+            # Optional: mirror auxiliary trees from the closure (reference view)
+            if [ -d "${SYS_OUT}/sw/lib/systemd" ]; then
+              mkdir -p "out/usr/lib/systemd"
+              rsync -a "${SYS_OUT}/sw/lib/systemd/" "out/usr/lib/systemd/"
+            fi
+            if [ -d "${SYS_OUT}/sw/share/systemd" ]; then
+              mkdir -p "out/usr/share/systemd"
+              rsync -a "${SYS_OUT}/sw/share/systemd/" "out/usr/share/systemd/"
+            fi
+            if [ -d "${SYS_OUT}/lib/udev" ]; then
+              mkdir -p "out/lib/udev"
+              rsync -a "${SYS_OUT}/lib/udev/" "out/lib/udev/"
+            fi
+          fi
 
-      - name: Commit and push changes
+          # 2) Home-Manager: map home-files to OS-typical home path
+          if nix eval --json ".#ci.hmActivation.${host}.${user}" >/dev/null 2>&1; then
+            nix build --print-out-paths ".#ci.hmActivation.${host}.${user}"
+            HM_OUT="$(readlink -f result)"
+            if [ -d "${HM_OUT}/home-files" ]; then
+              if [ "$os" = "darwin" ]; then
+                mkdir -p "out/Users/${user}"
+                rsync -a "${HM_OUT}/home-files/" "out/Users/${user}/"
+              else
+                mkdir -p "out/home/${user}"
+                rsync -a "${HM_OUT}/home-files/" "out/home/${user}/"
+              fi
+            fi
+            # Darwin HM user agents (if present as a separate link)
+            if [ "$os" = "darwin" ] && [ -d "${HM_OUT}/LaunchAgents" ]; then
+              mkdir -p "out/Users/${user}/Library/LaunchAgents"
+              rsync -a "${HM_OUT}/LaunchAgents/" "out/Users/${user}/Library/LaunchAgents/"
+            fi
+          fi
+
+          # 3) Provenance
+          cp -a flake.lock out/ || true
+
+          echo "OUT_DIR=$PWD/out" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare mirror branch
         run: |
+          set -euxo pipefail
+          rm -rf mirror-repo
+          git clone --no-checkout "https://x-access-token:${PUSH_TOKEN}@github.com/${MIRROR_REPO}.git" mirror-repo
+          cd mirror-repo
+          if ! git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
+            git checkout --orphan "${BRANCH}"
+            rm -rf .
+          else
+            git checkout "${BRANCH}"
+            git pull --ff-only origin "${BRANCH}" || true
+          fi
+
+      - name: Sync files
+        run: |
+          set -euxo pipefail
+          cd mirror-repo
+          rm -rf ./* .[^.] .??* || true
+          rsync -a "${{ steps.build.outputs.OUT_DIR }}/" ./
+
+      - name: Commit & push
+        run: |
+          set -euxo pipefail
           cd mirror-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "chore(update): weekly mirror" || echo "No changes to commit"
-          git push origin main
+          git add -A
+          git commit -m "chore(${BRANCH}): weekly mirror" || echo "No changes to commit"
+          git push origin "${BRANCH}"

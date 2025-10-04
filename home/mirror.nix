@@ -1,12 +1,23 @@
-{ inputs, lib, ... }:
-let
-  defaultModules = import ./default.nix { inherit inputs lib; };
-  linuxModules   = import ./linux   { inherit inputs lib; };
+{
+  inputs,
+  lib,
+  ...
+}: let
+  defaultModules = import ./default.nix {inherit inputs lib;};
+  linuxModules = import ./linux {inherit inputs lib;};
 in {
   imports = builtins.concatLists [
-    [ inputs.catppuccin.homeManagerModules.catppuccin ]
-    (if builtins.isList defaultModules then defaultModules else [ defaultModules ])
-    (if builtins.isList linuxModules then linuxModules else [ linuxModules ])
+    [inputs.catppuccin.homeManagerModules.catppuccin]
+    (
+      if builtins.isList defaultModules
+      then defaultModules
+      else [defaultModules]
+    )
+    (
+      if builtins.isList linuxModules
+      then linuxModules
+      else [linuxModules]
+    )
   ];
 
   home.username = "root";

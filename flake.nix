@@ -69,7 +69,7 @@
     ];
 
     pkgsForLib = import inputs.nixpkgs {
-      system = builtins.currentSystem;
+      system = "x86_64-linux";
     };
 
     lib = import ./lib {
@@ -250,7 +250,7 @@
         # ];
       };
     };
-  in {
+  in rec {
     nixosConfigurations = builtins.listToAttrs (map forLinuxHosts (builtins.filter (h: h.system.os == "linux") hosts));
     darwinConfigurations = builtins.listToAttrs (map forDarwinHosts (builtins.filter (h: h.system.os == "darwin") hosts));
 
@@ -267,16 +267,42 @@
         inherit inputs system;
       });
 
-    homeConfigurations = {
-      flokkq = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {system = "x86_64-linux";};
-        modules = [
-          (import ./home/mirror.nix {
-            inherit inputs;
-            lib = nixpkgs.lib;
+    ci = {
+      hosts =
+        map (h: {
+          name = h.name;
+          os = h.system.os;
+          runner =
+            if h.system.os == "darwin"
+            then "macos-latest"
+            else "ubuntu-latest";
+        })
+        hosts;
+
+      systemOut = builtins.listToAttrs (map (h: {
+          name = h.name;
+          value =
+            if h.system.os == "darwin"
+            then (darwinConfigurations.${h.name}.system)
+            else (nixosConfigurations.${h.name}.config.system.build.toplevel);
+        })
+        hosts);
+
+      hmActivation = builtins.listToAttrs (map (h: {
+            name = h.name;
+            value = let
+              hmPkg = user: let
+                cfg =
+                  if h.system.os == "darwin"
+                  then darwinConfigurations.${h.name}.config
+                  else nixosConfigurations.${h.name}.config;
+              in (cfg.home-manager.users.${user}.home.activationPackage or
+         cfg.home-manager.users.${user}.activationPackage);
+            in {
+              flokkq = hmPkg "flokkq";
+            };
           })
-        ];
-      };
+        hosts);
     };
   };
 }
