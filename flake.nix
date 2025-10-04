@@ -261,5 +261,22 @@
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
     templates = import ./templates {inherit lib;};
+
+    overlays = forAllSystems (system:
+      import ./overlays {
+        inherit inputs system;
+      });
+
+    homeConfigurations = {
+      flokkq = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {system = "x86_64-linux";};
+        modules = [
+          (import ./home/mirror.nix {
+            inherit inputs;
+            lib = nixpkgs.lib;
+          })
+        ];
+      };
+    };
   };
 }

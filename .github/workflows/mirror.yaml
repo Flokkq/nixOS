@@ -1,0 +1,57 @@
+name: Mirror Home Manager Config
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'
+  workflow_dispatch: {}
+
+jobs:
+  mirror-home-manager:
+    runs-on: ubuntu-latest
+    env:
+      USER: root
+      HOME: /home/root
+      NIX_PATH: "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixpkgs"
+      NIXPKGS_ALLOW_UNFREE: 1
+      NIX_FLAKE_ALLOW_DIRTY: 1
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          clean: true
+
+      - name: Install Nix with flake support
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            sandbox = false
+
+      - name: Setup Nix channel
+        run: |
+          nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
+          nix-channel --update
+
+      - name: Activate Home Manager config
+        run: |
+          nix build --impure .#homeConfigurations.flokkq.activationPackage
+
+      - name: Clone mirror repository
+        env:
+          PUSH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+        run: |
+          git clone https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/flokkq/dotfiles-mirror.git mirror-repo
+
+      - name: Copy config directories to mirror repository
+        run: |
+          rm -rf mirror-repo/.config
+          cp -rL result/home-files mirror-repo/
+
+      - name: Commit and push changes
+        run: |
+          cd mirror-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "chore(update): weekly mirror" || echo "No changes to commit"
+          git push origin main
