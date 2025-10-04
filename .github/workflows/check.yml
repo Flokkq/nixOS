@@ -3,7 +3,6 @@ name: Check
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-
   checks:
     name: Check expressions
     runs-on: ubuntu-latest
@@ -18,4 +17,4 @@ jobs:
             experimental-features = nix-command flakes
       - run: nix flake check
       - name: Deadnix Check
-        run: nix run github:astro/deadnix -c
+        run: nix run github:astro/deadnix -- -f
