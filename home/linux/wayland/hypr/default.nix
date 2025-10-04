@@ -7,7 +7,6 @@
 }: {
   imports = [
     ./hyprland-environment.nix
-    ./hyprpaper.nix
     ./hypridle.nix
     ./hyprlock.nix
   ];
