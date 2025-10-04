@@ -88,6 +88,9 @@ in {
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
       bind-key -r a run-shell "tmux new-window 'nohup zathura $(find ~ -type f -name "*.pdf" | fzf)'"
+      bind -r e display-popup -E -w 100% -h 100% "sh -lc 'tmux list-sessions -F \"#{session_name}\" \
+        | fzf --reverse --exit-0 --select-1 \
+        | xargs -r tmux switch-client -t'"
 
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
