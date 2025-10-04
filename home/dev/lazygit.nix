@@ -1,4 +1,8 @@
-_: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.lazygit = {
     enable = true;
     settings = {
@@ -10,11 +14,13 @@ _: {
   };
 
   # lazygit changed the location of its config file.
-  # Until NixOS supports the new location, we hardlink it here.
-  home.file.".config/lazygit/config.yml".text = ''
-    git:
-      commit:
-        signOff: true
-      overrideGpg: true
-  '';
+  # Until nix-darwin supports the new location, we hardlink it here.
+  home.file = lib.mkIf pkgs.stdenv.isDarwin {
+    ".config/lazygit/config.yml".text = ''
+      git:
+        commit:
+          signOff: true
+        overrideGpg: true
+    '';
+  };
 }

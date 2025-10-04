@@ -16,26 +16,6 @@
       lxcfs.enable = true;
     };
 
-    # Daemon to manage containers
-    # using the lxc command line tool
-    lxd = {
-      enable = false;
-      package = pkgs.lxd-lts;
-      agent.enable = true;
-      # Enables various settings to avoid common pitfalls when
-      # running containers requiring many file operations.
-      # Fixes errors like “Too many open files”
-      # or “neighbour: ndisc_cache: neighbor table overflow!”.
-      # See https://lxd.readthedocs.io/en/latest/production-setup/ for details.
-      recommendedSysctlSettings = true;
-
-      # Experimental LXD UI
-      ui = {
-        enable = true;
-        package = pkgs.lxd-ui;
-      };
-    };
-
     libvirtd = {
       enable = true;
 
