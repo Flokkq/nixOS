@@ -31,7 +31,7 @@ See [./hosts](./hosts) for details of each host.
 | **Bar**                     | [Waybar][Waybar]                                     | [Polybar][Polybar]                                   | [SketchyBar][SketchyBar]                |
 | **Application Launcher**    | [Wofi][Wofi]                                         | [Rofi][Rofi]                                         | [Raycast][Raycast]                      |
 | **Display Manager**         | [Greetd][Greetd]                                     | [Greetd][Greetd]                                     | Native macOS                            |
-| **Color Scheme**            | [Catppuccin][Catppuccin]                             | [Catppuccin][Catppuccin]                             | Default macOS + [Catppuccin][Catppuccin]|
+| **Color Scheme**            | [Stylix][Stylix]                             | [Stylix][Stylix]                             | Default macOS + [Stylix][Stylix]|
 | **System resource monitor** | [Btop][Btop]                                         | [Btop][Btop]                                         | [Btop][Btop]                            |
 | **File Manager**            | [Nautilus][Nautilus]                                 | [Nautilus][Nautilus]                                 | Finder                                  |
 | **Shell**                   | [Zsh][Zsh]                                           | [Zsh][Zsh]                                           | [Zsh][Zsh]                              |
@@ -96,3 +96,4 @@ These will guide you through the specifics of each setup.
 [Bspwm]: https://github.com/baskerville/bspwm
 [Polybar]: https://github.com/polybar/polybar
 [Rofi]: https://github.com/davatorium/rofi
+[Stylix]: https://github.com/nix-community/stylix
