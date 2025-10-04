@@ -17,7 +17,7 @@ jobs:
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
-            sandbox = false
+            sandbox = true
       - id: mk-matrix
         run: |
           HOSTS="$(nix eval --json .#ci.hosts)"
@@ -40,7 +40,7 @@ jobs:
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
-            sandbox = false
+            sandbox = true
 
       - name: Build system + HM outputs (rootfs layout)
         id: build
@@ -53,7 +53,6 @@ jobs:
 
           mkdir -p out
 
-          # 1) Build system closure
           nix build --print-out-paths ".#ci.systemOut.${host}"
           SYS_OUT="$(readlink -f result)"
 
@@ -111,7 +110,6 @@ jobs:
             fi
           fi
 
-          # 3) Provenance
           cp -a flake.lock out/ || true
 
           echo "OUT_DIR=$PWD/out" >> "$GITHUB_OUTPUT"
