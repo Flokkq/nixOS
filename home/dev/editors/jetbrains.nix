@@ -1,4 +1,4 @@
-{ ...}: {
+{...}: {
   home.file.".ideavimrc".text = ''
     let mapleader = ' '
     nnoremap <leader> <Nop>
