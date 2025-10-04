@@ -35,6 +35,7 @@ _: {
       "font-sf-mono"
       "font-sf-pro"
       "alt-tab"
+      "docker"
       "docker-desktop"
       "ghidra" # broken nixpkgs binarry
       "balenaetcher"
