@@ -69,7 +69,8 @@
     ];
 
     pkgsForLib = import inputs.nixpkgs {
-      system = builtins.currentSystem;
+      # cpu does not matter here since we only use it to build the lib
+      system = "x86_64-linux";
     };
 
     lib = import ./lib {
@@ -250,7 +251,7 @@
         # ];
       };
     };
-  in {
+  in rec {
     nixosConfigurations = builtins.listToAttrs (map forLinuxHosts (builtins.filter (h: h.system.os == "linux") hosts));
     darwinConfigurations = builtins.listToAttrs (map forDarwinHosts (builtins.filter (h: h.system.os == "darwin") hosts));
 
@@ -261,5 +262,10 @@
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
     templates = import ./templates {inherit lib;};
+
+    # Used to mirror the system to a remote repo in CI
+    mirror = import ./lib/mirror.nix {
+      inherit lib hosts nixosConfigurations darwinConfigurations;
+    };
   };
 }
