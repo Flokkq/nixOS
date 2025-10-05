@@ -63,7 +63,7 @@ jobs:
       - name: Use Cachix (pull/push)
         uses: cachix/cachix-action@v14
         with:
-          name: flokkq
+          name: flokkq-dotfiles-mirror
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
       - name: Cache flake inputs
