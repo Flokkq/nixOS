@@ -53,7 +53,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with: { clean: true }
+        with:
+          clean: true
+          persist-credentials: false
+
 
       - name: Free Disk Space (Ubuntu)
         if: ${{ runner.os == 'Linux' }}
@@ -170,49 +173,49 @@ jobs:
           nix store gc || true
           nix store optimise || true
 
-      - name: Prepare mirror branch
-        shell: bash
-        run: |
-          set -euxo pipefail
-          rm -rf mirror-repo
-          git clone --filter=blob:none "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git" mirror-repo
-        # ab hier im Mirror-Repo arbeiten
-      - name: Configure mirror remote & branch
-        working-directory: mirror-repo
-        shell: bash
-        run: |
-          set -euxo pipefail
-          # defensiv: Origin exakt setzen
-          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git"
+      - name: Checkout mirror repo
+        id: mirror_co
+        uses: actions/checkout@v4
+        with:
+          repository: flokkq/dotfiles-mirror
+          token: ${{ secrets.GH_PAT }}
+          path: mirror
+          fetch-depth: 0
 
-          # vorhandenen Branch holen oder neu anlegen
-          if git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
-            git fetch origin "${BRANCH}:${BRANCH}"
-            git checkout "${BRANCH}"
+      - name: Prepare branch in mirror
+        shell: bash
+        env:
+          BRANCH: ${{ matrix.name }}
+        run: |
+          set -euxo pipefail
+          REPO_DIR="${GITHUB_WORKSPACE}/mirror"
+
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            git checkout -B "$BRANCH" "origin/$BRANCH"
           else
-            git checkout --orphan "${BRANCH}"
+            git checkout --orphan "$BRANCH"
+            git rm -rf . || true
           fi
 
-          # Arbeitsbaum leeren
           git reset --hard
           git clean -fdx
 
-      - name: Sync files
-        working-directory: mirror-repo
+      - name: Sync files into mirror worktree
         shell: bash
         run: |
           set -euxo pipefail
-          rsync -a --delete "${{ steps.build.outputs.OUT_DIR }}/" "./"
+          rsync -a --delete "${{ steps.build.outputs.OUT_DIR }}/" "${GITHUB_WORKSPACE}/mirror/"
 
-      - name: Commit & push
-        working-directory: mirror-repo
+      - name: Commit & push to mirror
         shell: bash
+        env:
+          BRANCH: ${{ matrix.name }}
         run: |
           set -euxo pipefail
+          REPO_DIR="${GITHUB_WORKSPACE}/mirror"
+
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git checkout -B "${BRANCH}"
           git add -A
           git commit -m "chore(${BRANCH}): weekly mirror" || echo "No changes to commit"
-          git push -u origin "${BRANCH}"
+          git push -u origin "$BRANCH"
