@@ -85,10 +85,6 @@
         disable_hyprland_logo = true;
       };
 
-      gestures = {
-        workspace_swipe = false;
-      };
-
       # AUTOSTART
       exec-once = [
         "systemctl --user start hyprland-session.target"
