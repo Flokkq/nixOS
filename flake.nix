@@ -251,7 +251,7 @@
         # ];
       };
     };
-  in {
+  in rec {
     nixosConfigurations = builtins.listToAttrs (map forLinuxHosts (builtins.filter (h: h.system.os == "linux") hosts));
     darwinConfigurations = builtins.listToAttrs (map forDarwinHosts (builtins.filter (h: h.system.os == "darwin") hosts));
 
@@ -262,5 +262,10 @@
     formatter = forAllSystems ({pkgs}: pkgs.alejandra);
 
     templates = import ./templates {inherit lib;};
+
+    # Used to mirror the system to a remote repo in CI
+    mirror = import ./lib/mirror.nix {
+      inherit hosts nixosConfigurations darwinConfigurations;
+    };
   };
 }

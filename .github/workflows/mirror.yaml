@@ -1,0 +1,179 @@
+name: mirror per-host raw config
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch: {}
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.mk-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { clean: true }
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            sandbox = true
+
+      - name: Cache flake inputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/nix
+            ~/.local/share/nix
+          key: ${{ runner.os }}-flake-inputs-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flake-inputs-
+
+      - id: mk-matrix
+        run: |
+          HOSTS="$(nix eval --json .#mirror.hosts)"
+          echo "matrix={\"include\":${HOSTS}}" >> "$GITHUB_OUTPUT"
+
+  mirror:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.plan.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
+    env:
+      GH_PAT: ${{ secrets.GH_PAT }}
+      MIRROR_REPO: flokkq/dotfiles-mirror
+      BRANCH: ${{ matrix.name }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with: { clean: true }
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            sandbox = true
+
+      - name: Use Cachix (pull/push)
+        uses: cachix/cachix-action@v14
+        with:
+          name: flokkq
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Cache flake inputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/nix
+            ~/.local/share/nix
+          key: ${{ runner.os }}-flake-inputs-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flake-inputs-
+
+      - name: Build system + HM outputs (rootfs layout)
+        id: build
+        shell: bash
+        run: |
+          set -euxo pipefail
+          host="${{ matrix.name }}"
+          os="${{ matrix.os }}"
+          user="flokkq"
+
+          mkdir -p out
+
+          nix build --print-out-paths ".#mirror.systemOut.${host}"
+          SYS_OUT="$(readlink -f result)"
+
+          if [ "$os" = "darwin" ]; then
+            if [ -d "${SYS_OUT}/etc" ]; then
+              mkdir -p out/etc
+              rsync -a "${SYS_OUT}/etc/" "out/etc/"
+            fi
+            if [ -d "${SYS_OUT}/sw/Library/LaunchDaemons" ]; then
+              mkdir -p "out/Library/LaunchDaemons"
+              rsync -a "${SYS_OUT}/sw/Library/LaunchDaemons/" "out/Library/LaunchDaemons/"
+            fi
+            if [ -d "${SYS_OUT}/sw/Library/LaunchAgents" ]; then
+              mkdir -p "out/Library/LaunchAgents"
+              rsync -a "${SYS_OUT}/sw/Library/LaunchAgents/" "out/Library/LaunchAgents/"
+            fi
+            if [ -d "${SYS_OUT}/user/Library/LaunchAgents" ]; then
+              mkdir -p "out/Users/${user}/Library/LaunchAgents"
+              rsync -a "${SYS_OUT}/user/Library/LaunchAgents/" "out/Users/${user}/Library/LaunchAgents/"
+            fi
+          else
+            if [ -d "${SYS_OUT}/etc" ]; then
+              mkdir -p out/etc
+              rsync -a "${SYS_OUT}/etc/" "out/etc/"
+            fi
+            if [ -d "${SYS_OUT}/sw/lib/systemd" ]; then
+              mkdir -p "out/usr/lib/systemd"
+              rsync -a "${SYS_OUT}/sw/lib/systemd/" "out/usr/lib/systemd/"
+            fi
+            if [ -d "${SYS_OUT}/sw/share/systemd" ]; then
+              mkdir -p "out/usr/share/systemd"
+              rsync -a "${SYS_OUT}/sw/share/systemd/" "out/usr/share/systemd/"
+            fi
+            if [ -d "${SYS_OUT}/lib/udev" ]; then
+              mkdir -p "out/lib/udev"
+              rsync -a "${SYS_OUT}/lib/udev/" "out/lib/udev/"
+            fi
+          fi
+
+          if nix eval --json ".#mirror.hmActivation.${host}.${user}" >/dev/null 2>&1; then
+            nix build --print-out-paths ".#mirror.hmActivation.${host}.${user}"
+            HM_OUT="$(readlink -f result)"
+            if [ -d "${HM_OUT}/home-files" ]; then
+              if [ "$os" = "darwin" ]; then
+                mkdir -p "out/Users/${user}"
+                rsync -a "${HM_OUT}/home-files/" "out/Users/${user}/"
+              else
+                mkdir -p "out/home/${user}"
+                rsync -a "${HM_OUT}/home-files/" "out/home/${user}/"
+              fi
+            fi
+            if [ "$os" = "darwin" ] && [ -d "${HM_OUT}/LaunchAgents" ]; then
+              mkdir -p "out/Users/${user}/Library/LaunchAgents"
+              rsync -a "${HM_OUT}/LaunchAgents/" "out/Users/${user}/Library/LaunchAgents/"
+            fi
+          fi
+
+          cp -a flake.lock out/ || true
+          echo "OUT_DIR=$PWD/out" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare mirror branch
+        run: |
+          set -euxo pipefail
+          rm -rf mirror-repo
+          git clone --no-checkout "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git" mirror-repo
+          cd mirror-repo
+          if ! git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
+            git checkout --orphan "${BRANCH}"
+            rm -rf .
+          else
+            git checkout "${BRANCH}"
+            git pull --ff-only origin "${BRANCH}" || true
+          fi
+
+      - name: Sync files
+        run: |
+          set -euxo pipefail
+          cd mirror-repo
+          rm -rf ./* .[^.] .??* || true
+          rsync -a "${{ steps.build.outputs.OUT_DIR }}/" ./
+
+      - name: Commit & push
+        run: |
+          set -euxo pipefail
+          cd mirror-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(${BRANCH}): weekly mirror" || echo "No changes to commit"
+          git push origin "${BRANCH}"
