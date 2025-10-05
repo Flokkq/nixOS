@@ -21,6 +21,9 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
             sandbox = true
+            auto-optimise-store = true
+            keep-outputs = false
+            keep-derivations = false
 
       - name: Cache flake inputs
         uses: actions/cache@v4
@@ -59,6 +62,9 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
             sandbox = true
+            auto-optimise-store = true
+            keep-outputs = false
+            keep-derivations = false
 
       - name: Use Cachix (pull/push)
         uses: cachix/cachix-action@v14
@@ -85,9 +91,11 @@ jobs:
           os="${{ matrix.os }}"
           user="flokkq"
 
+          nix store optimise || true
+
           mkdir -p out
 
-          nix build --print-out-paths ".#mirror.systemOut.${host}"
+          nix build --print-out-paths --option max-jobs 1 ".#mirror.systemOut.${host}"
           SYS_OUT="$(readlink -f result)"
 
           if [ "$os" = "darwin" ]; then
@@ -127,7 +135,7 @@ jobs:
           fi
 
           if nix eval --json ".#mirror.hmActivation.${host}.${user}" >/dev/null 2>&1; then
-            nix build --print-out-paths ".#mirror.hmActivation.${host}.${user}"
+            nix build --print-out-paths --option max-jobs 1 ".#mirror.hmActivation.${host}.${user}"
             HM_OUT="$(readlink -f result)"
             if [ -d "${HM_OUT}/home-files" ]; then
               if [ "$os" = "darwin" ]; then
@@ -147,26 +155,32 @@ jobs:
           cp -a flake.lock out/ || true
           echo "OUT_DIR=$PWD/out" >> "$GITHUB_OUTPUT"
 
+          nix store gc || true
+          nix store optimise || true
+
       - name: Prepare mirror branch
+        shell: bash
         run: |
           set -euxo pipefail
           rm -rf mirror-repo
-          git clone --no-checkout "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git" mirror-repo
+          git clone --filter=blob:none --no-checkout "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git" mirror-repo
           cd mirror-repo
-          if ! git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
-            git checkout --orphan "${BRANCH}"
-            rm -rf .
+
+          if git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
+            git checkout -B "${BRANCH}" "origin/${BRANCH}" || git checkout -B "${BRANCH}"
           else
-            git checkout "${BRANCH}"
-            git pull --ff-only origin "${BRANCH}" || true
+            git checkout --orphan "${BRANCH}"
           fi
 
+          git reset --hard
+          git clean -fdx
+
       - name: Sync files
+        shell: bash
         run: |
           set -euxo pipefail
           cd mirror-repo
-          rm -rf ./* .[^.] .??* || true
-          rsync -a "${{ steps.build.outputs.OUT_DIR }}/" ./
+          rsync -a --delete "${{ steps.build.outputs.OUT_DIR }}/" ./
 
       - name: Commit & push
         run: |
