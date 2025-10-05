@@ -13,14 +13,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: { clean: true }
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v8
+
       - uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
             sandbox = true
+
+      - name: Cache flake inputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/nix
+            ~/.local/share/nix
+          key: ${{ runner.os }}-flake-inputs-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flake-inputs-
+
       - id: mk-matrix
         run: |
-          HOSTS="$(nix eval --json .#ci.hosts)"
+          HOSTS="$(nix eval --json .#mirror.hosts)"
           echo "matrix={\"include\":${HOSTS}}" >> "$GITHUB_OUTPUT"
 
   mirror:
@@ -33,14 +47,34 @@ jobs:
       GH_PAT: ${{ secrets.GH_PAT }}
       MIRROR_REPO: flokkq/dotfiles-mirror
       BRANCH: ${{ matrix.name }}
+
     steps:
       - uses: actions/checkout@v4
         with: { clean: true }
+
+      - uses: DeterminateSystems/magic-nix-cache-action@v8
+
       - uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
             sandbox = true
+
+      - name: Use Cachix (pull/push)
+        uses: cachix/cachix-action@v14
+        with:
+          name: flokkq
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Cache flake inputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/nix
+            ~/.local/share/nix
+          key: ${{ runner.os }}-flake-inputs-${{ hashFiles('flake.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flake-inputs-
 
       - name: Build system + HM outputs (rootfs layout)
         id: build
@@ -53,7 +87,7 @@ jobs:
 
           mkdir -p out
 
-          nix build --print-out-paths ".#ci.systemOut.${host}"
+          nix build --print-out-paths ".#mirror.systemOut.${host}"
           SYS_OUT="$(readlink -f result)"
 
           if [ "$os" = "darwin" ]; then
@@ -92,8 +126,8 @@ jobs:
             fi
           fi
 
-          if nix eval --json ".#ci.hmActivation.${host}.${user}" >/dev/null 2>&1; then
-            nix build --print-out-paths ".#ci.hmActivation.${host}.${user}"
+          if nix eval --json ".#mirror.hmActivation.${host}.${user}" >/dev/null 2>&1; then
+            nix build --print-out-paths ".#mirror.hmActivation.${host}.${user}"
             HM_OUT="$(readlink -f result)"
             if [ -d "${HM_OUT}/home-files" ]; then
               if [ "$os" = "darwin" ]; then
@@ -111,7 +145,6 @@ jobs:
           fi
 
           cp -a flake.lock out/ || true
-
           echo "OUT_DIR=$PWD/out" >> "$GITHUB_OUTPUT"
 
       - name: Prepare mirror branch

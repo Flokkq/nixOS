@@ -263,47 +263,9 @@
 
     templates = import ./templates {inherit lib;};
 
-    overlays = forAllSystems (system:
-      import ./overlays {
-        inherit inputs system;
-      });
-
-    ci = {
-      hosts =
-        map (h: {
-          name = h.name;
-          os = h.system.os;
-          runner =
-            if h.system.os == "darwin"
-            then "macos-latest"
-            else "ubuntu-latest";
-        })
-        hosts;
-
-      systemOut = builtins.listToAttrs (map (h: {
-          name = h.name;
-          value =
-            if h.system.os == "darwin"
-            then (darwinConfigurations.${h.name}.system)
-            else (nixosConfigurations.${h.name}.config.system.build.toplevel);
-        })
-        hosts);
-
-      hmActivation = builtins.listToAttrs (map (h: {
-            name = h.name;
-            value = let
-              hmPkg = user: let
-                cfg =
-                  if h.system.os == "darwin"
-                  then darwinConfigurations.${h.name}.config
-                  else nixosConfigurations.${h.name}.config;
-              in (cfg.home-manager.users.${user}.home.activationPackage or
-         cfg.home-manager.users.${user}.activationPackage);
-            in {
-              flokkq = hmPkg "flokkq";
-            };
-          })
-        hosts);
+    # Used to mirror the system to a remote repo in CI
+    mirror = import ./lib/mirror.nix {
+      inherit lib hosts nixosConfigurations darwinConfigurations;
     };
   };
 }
