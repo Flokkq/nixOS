@@ -175,39 +175,44 @@ jobs:
         run: |
           set -euxo pipefail
           rm -rf mirror-repo
-          git clone --filter=blob:none --no-checkout "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git" mirror-repo
+          git clone --filter=blob:none "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git" mirror-repo
+        # ab hier im Mirror-Repo arbeiten
+      - name: Configure mirror remote & branch
+        working-directory: mirror-repo
+        shell: bash
+        run: |
+          set -euxo pipefail
+          # defensiv: Origin exakt setzen
+          git remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git"
 
-          # Make sure 'origin' is exactly the mirror repo (defensive)
-          git -C mirror-repo remote set-url origin "https://x-access-token:${GH_PAT}@github.com/${MIRROR_REPO}.git"
-
-          if git -C mirror-repo ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
-            git -C mirror-repo checkout -B "${BRANCH}" "origin/${BRANCH}" || git -C mirror-repo checkout -B "${BRANCH}"
+          # vorhandenen Branch holen oder neu anlegen
+          if git ls-remote --exit-code --heads origin "${BRANCH}" >/dev/null 2>&1; then
+            git fetch origin "${BRANCH}:${BRANCH}"
+            git checkout "${BRANCH}"
           else
-            git -C mirror-repo checkout --orphan "${BRANCH}"
+            git checkout --orphan "${BRANCH}"
           fi
 
-          git -C mirror-repo reset --hard
-          git -C mirror-repo clean -fdx
-
-          git -C mirror-repo rev-parse --is-inside-work-tree
-          git -C mirror-repo remote -v
-          git -C mirror-repo symbolic-ref --short HEAD
+          # Arbeitsbaum leeren
+          git reset --hard
+          git clean -fdx
 
       - name: Sync files
+        working-directory: mirror-repo
         shell: bash
         run: |
           set -euxo pipefail
-          rsync -a --delete "${{ steps.build.outputs.OUT_DIR }}/" "mirror-repo/"
+          rsync -a --delete "${{ steps.build.outputs.OUT_DIR }}/" "./"
 
       - name: Commit & push
+        working-directory: mirror-repo
         shell: bash
         run: |
           set -euxo pipefail
-          git -C mirror-repo config user.name  "github-actions[bot]"
-          git -C mirror-repo config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git -C mirror-repo checkout -B "${BRANCH}"
-
-          git -C mirror-repo add -A
-          git -C mirror-repo commit -m "chore(${BRANCH}): weekly mirror" || echo "No changes to commit"
-          git -C mirror-repo push -u origin "${BRANCH}"
+          git checkout -B "${BRANCH}"
+          git add -A
+          git commit -m "chore(${BRANCH}): weekly mirror" || echo "No changes to commit"
+          git push -u origin "${BRANCH}"
