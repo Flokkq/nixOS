@@ -4,5 +4,6 @@
     # ./dooit
 
     ./zathura.nix
+    ./obsidian.nix
   ];
 }
