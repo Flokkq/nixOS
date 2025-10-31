@@ -30,16 +30,16 @@
         # pkgs.qemu_kvm saves disk space allowing to emulate only host architectures.
         package = pkgs.qemu;
 
-        ovmf = {
-          enable = true;
-          packages = [
-            (pkgs.OVMF.override {
-              secureBoot = true;
-              tpmSupport = true;
-            })
-            .fd
-          ];
-        };
+        # ovmf = {
+        #   enable = true;
+        #   packages = [
+        #     (pkgs.OVMF.override {
+        #       secureBoot = true;
+        #       tpmSupport = true;
+        #     })
+        #     .fd
+        #   ];
+        # };
 
         swtpm = {
           enable = true;
