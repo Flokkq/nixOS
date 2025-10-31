@@ -21,21 +21,11 @@
 
             # NixOS root partition
             nixos_root = {
-              size = "400G";
+              size = "1280G";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
-              };
-            };
-
-            # Windows partition
-            windows = {
-              type = "0700";
-              size = "1375G";
-              content = {
-                type = "filesystem";
-                format = "ntfs";
               };
             };
           };
