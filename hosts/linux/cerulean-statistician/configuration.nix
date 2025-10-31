@@ -13,7 +13,7 @@
     ../../../nixos/common/containers/docker.nix
 
     ../../../nixos/linux
-    ../../../nixos/linux/media/pipewire.nix
+    ../../../nixos/linux/media/pulseaudio.nix
 
     ../../../nixos/linux/hardware/gpu/nvidia.nix
   ];
