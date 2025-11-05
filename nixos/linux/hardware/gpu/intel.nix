@@ -13,7 +13,7 @@
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
-    vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true;};
+    vaapiIntel = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
   };
 
   hardware.graphics = {
@@ -22,7 +22,7 @@
     extraPackages = with pkgs; [
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       libvdpau-va-gl
-      vaapiVdpau
+      libva-vdpau-driver
       intel-ocl
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
     ];
