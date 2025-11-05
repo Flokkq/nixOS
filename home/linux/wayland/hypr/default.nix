@@ -113,7 +113,7 @@
           "$mainMod, D, exec, ${lib.getExe pkgs.vesktop}"
           "$mainMod, F, exec, ${lib.getExe pkgs.nautilus}"
           "$mainMod, S, exec, ${lib.getExe pkgs.spotify}"
-          "$mainMod, P, exec, ${lib.getExe pkgs._1password}"
+          "$mainMod, P, exec, ${lib.getExe pkgs._1password-gui-beta}"
           "$mainMod, G, exec, ${lib.getExe pkgs.gimp}"
 
           "$mainMod, V, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-mute   @DEFAULT_SINK@ toggle"

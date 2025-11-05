@@ -9,8 +9,8 @@
       kitty
       ghostty
       alacritty
-      _1password-gui
-      rpi-imager
+      _1password-gui-beta
+      # rpi-imager
       wireshark
       ghidra
       burpsuite

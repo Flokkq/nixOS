@@ -84,7 +84,7 @@
   };
 
   hardware.graphics.extraPackages = with pkgs; [
-    vaapiVdpau
+    libva-vdpau-driver
     nvidia-vaapi-driver
   ];
 }
