@@ -54,6 +54,7 @@ return {
                 roslyn = {},
                 clangd = {},
                 gopls = {},
+                haskell_language_server = {},
                 nixd = {
                     settings = {
                         nixd = {
