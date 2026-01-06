@@ -52,7 +52,6 @@ return {
                     single_file_support = true,
                 },
                 roslyn = {},
-                tinymist = {},
                 clangd = {},
                 gopls = {},
                 nixd = {
@@ -67,7 +66,6 @@ return {
                 },
                 bashls = {},
                 cssls = {},
-                typescript_language_server = {},
                 eslint = {
                     cmd = { "vscode-eslint-language-server", "--stdio" },
                     settings = {
