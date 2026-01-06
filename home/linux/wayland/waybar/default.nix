@@ -30,7 +30,7 @@
           "on-click" = "activate";
 
           "active-only" = false;
-          persistent_workspaces = {
+          "persistent-workspaces" = {
             "*" = [1 2 3 4 5 6 8 9];
           };
         };
