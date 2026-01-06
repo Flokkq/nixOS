@@ -116,6 +116,7 @@
           "$mainMod, S, exec, ${lib.getExe pkgs.spotify}"
           "$mainMod, P, exec, ${lib.getExe pkgs._1password-gui-beta}"
           "$mainMod, G, exec, ${lib.getExe pkgs.gimp}"
+          "$mainMod, O, exec, ${lib.getExe pkgs.obsidian}"
 
           "$mainMod, V, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-mute   @DEFAULT_SINK@ toggle"
           "$mainMod, U, exec, ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle"
