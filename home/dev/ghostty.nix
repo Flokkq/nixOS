@@ -1,7 +1,7 @@
 _: {
   programs.ghostty = {
     enable = true;
-    package = null;
+
     enableZshIntegration = true;
     # installVimSyntax = true;
 

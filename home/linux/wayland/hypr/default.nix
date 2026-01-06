@@ -207,12 +207,6 @@
         "float,class:.waypaper-wrapped"
         "float,class:waypaper"
         "float,class:Raspberry Pi Imager"
-        "move, 2, class:ghostty"
-        "move, 3, class:Google-chrome"
-        "move, 1, class:vesktop"
-        "move, 4, class:Spotify"
-        "move, 5, class:Gimp"
-        "move, 5, class:.*ghidra.*"
       ];
     };
 
