@@ -2,7 +2,7 @@
 
 # Use nushell for shell commands
 # To usage this justfile, you need to enter a shell with just & nushell installed:
-# 
+#
 #   nix shell nixpkgs#just nixpkgs#nushell
 set shell := ["nu", "-c"]
 
@@ -42,7 +42,7 @@ history:
 # Open a nix shell with the flake
 [group('nix')]
 repl:
-  nix repl -f flake:nixpkgs
+  NIXPKGS_ALLOW_UNFREE=1 nix repl -f flake:nixpkgs --impure
 
 # remove all generations older than 7 days
 # on darwin, you may need to switch to root user to run this command
@@ -103,7 +103,7 @@ s-hypr mode="default":
 
 ############################################################################
 #
-#  Darwin related commands 
+#  Darwin related commands
 #
 ############################################################################
 
@@ -125,7 +125,7 @@ darwin-rollback:
 [group('desktop')]
 yabai-reload:
   launchctl kickstart -k "gui/502/org.nixos.yabai";
-  launchctl kickstart -k "gui/502/org.nixos.skhd"; 
+  launchctl kickstart -k "gui/502/org.nixos.skhd";
 
 ############################################################################
 #
