@@ -2,6 +2,8 @@
   imports = [
     ./internet.nix
     ./bluetooth.nix
-    ./wifi.nix
+
+    # conflicts with ./internet.nix
+    # ./wifi.nix
   ];
 }
