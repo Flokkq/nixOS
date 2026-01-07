@@ -128,7 +128,7 @@
           "$mainMod SHIFT, B, exec, ${pkgs.blueman}/bin/blueman-manager"
           "$mainMod, W, exec, ${pkgs.networkmanagerapplet}/bin/nm-connection-editor"
 
-          "$mainMod, Z, exec, ${lib.getExe pkgs.woomer}"
+          "$mainMod, Z, exec, ${lib.getExe pkgs.woomer} --monitor ${nixlib.getPrimaryMonitor meta.monitors}"
 
           "$mainMod SHIFT, C, exec, pidof ${lib.getExe pkgs.hyprlock} || ${lib.getExe pkgs.hyprlock}"
 

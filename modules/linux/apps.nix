@@ -20,6 +20,7 @@
       swaynotificationcenter
       screenkey
       gimp
+      foliate
 
       # waybar
       waybar
@@ -42,7 +43,7 @@
     ++ (
       if meta.system.desktop == "wayland"
       then with pkgs; [woomer]
-      else if meta.system.desktop == "wayland"
+      else if meta.system.desktop == "xorg"
       then with pkgs; [zoomer]
       else []
     );
