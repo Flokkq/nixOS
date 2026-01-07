@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./music
+    ./foliate
     # ./dooit
 
     ./zathura.nix
