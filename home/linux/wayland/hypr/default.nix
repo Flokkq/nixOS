@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./hyprland-environment.nix
     ./hypridle.nix
     ./hyprlock.nix
   ];
@@ -92,8 +91,6 @@
         "sudo mount -a"
         "swww init"
         "waybar &"
-        "hyprpaper --config ~/.config/hypr/hyprpaper.conf &"
-        "hypridle --config ~/.config/hypr/hypridle.conf"
         "[workspace 2 silent] ghostty"
         "[workspace 1 silent] vesktop"
         "[workspace 3 silent] google-chrome-stable"
@@ -205,11 +202,11 @@
         "workspace 5, class:.*ghidra.*"
       ];
 
-      windowrule = [
-        "float,class:.waypaper-wrapped"
-        "float,class:waypaper"
-        "float,class:Raspberry Pi Imager"
-      ];
+      # windowrule = [
+      #   "float:,class:.waypaper-wrapped"
+      #   "float:,class:waypaper"
+      #   "float:,class:Raspberry Pi Imager"
+      # ];
     };
 
     extraConfig = ''
