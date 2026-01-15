@@ -77,4 +77,10 @@ in {
     desktopManager.xterm.enable = false;
   };
   services.xrdp.defaultWindowManager = "bspwm";
+
+  services.tailscale = {
+    enable = true;
+
+    extraSetFlags = ["--operator=flokkq"];
+  };
 }

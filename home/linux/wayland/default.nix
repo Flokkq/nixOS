@@ -9,4 +9,6 @@ _: {
     ./grimblast.nix
     ./waypaper.nix
   ];
+
+  services.tailscale-systray.enable = true;
 }
