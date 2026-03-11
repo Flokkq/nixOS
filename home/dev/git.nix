@@ -26,7 +26,7 @@
 
       rebase = {
         autoStash = true;
-        misingCommitsCheck = "warn";
+        missingCommitsCheck = "warn";
       };
 
       status = {
