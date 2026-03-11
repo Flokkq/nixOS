@@ -51,7 +51,7 @@
     };
 
     # Custom initialization
-    initExtra = ''
+    initContent = ''
       export MANPAGER='nvim +Man!'
       export XDG_CONFIG_HOME="$HOME/.config"
       export EDITOR="nvim"

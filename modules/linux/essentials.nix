@@ -4,7 +4,7 @@
     grimblast
     slurp
     swappy
-    xorg.xev
+    xev
     kanata
     alsa-utils
     networkmanagerapplet
@@ -14,9 +14,9 @@
     xdg-desktop-portal-hyprland
     xdg-desktop-portal
 
-    xorg.xcursorthemes
-    xorg.xinit
-    xorg.xinput
+    xcursorthemes
+    xinit
+    xinput
     picom
   ];
 }

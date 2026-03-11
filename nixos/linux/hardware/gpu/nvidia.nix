@@ -47,11 +47,6 @@
       nvidiaPersistenced = true;
     };
 
-    opengl = {
-      enable = true;
-      extraPackages = with pkgs; [mesa.drivers];
-    };
-
     # Required for Nvidia support in containers (Docker, Podman, etc.)
     nvidia-container-toolkit = {
       enable = true;
@@ -75,16 +70,19 @@
       # amdgpuBusId = "PCI:54:0:0";
     };
     */
-  };
 
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        mesa
+        libva-vdpau-driver
+        nvidia-vaapi-driver
+      ];
+    };
+  };
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "nvidia";
     # VDPAU_DRIVER = "va_gl";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
-
-  hardware.graphics.extraPackages = with pkgs; [
-    libva-vdpau-driver
-    nvidia-vaapi-driver
-  ];
 }

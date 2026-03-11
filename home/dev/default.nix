@@ -4,7 +4,7 @@
     ./editors
     ./btop
     # ./zellij
-    ./neofetch
+    # ./neofetch
     ./bat
     ./yazi
 

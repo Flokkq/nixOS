@@ -45,7 +45,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd ${startupCmd}";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd ${startupCmd}";
         user = "greeter";
       };
     };
@@ -63,8 +63,11 @@ in {
   services.picom.enable = enable_xorg;
   services.xserver = {
     enable = enable_xorg;
-    layout = "us";
-    xkbOptions = "eurosign:e";
+
+    xkb = {
+      options = "eurosign:e";
+      layout = "us";
+    };
 
     windowManager.bspwm = {
       enable = enable_xorg;

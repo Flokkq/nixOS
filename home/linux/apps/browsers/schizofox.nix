@@ -18,10 +18,19 @@
     };
 
     misc = {
-      drmFix = true;
+      drm.enable = true;
       disableWebgl = false;
       # startPageURL = "file://${toString ./startpage.html}";
       contextMenu.enable = true;
+
+      bookmarks = [
+        {
+          Title = "Github";
+          URL = "https://www.github.com/";
+          Favicon = "https://www.gitub.com/favicon.ico";
+          Placement = "toolbar";
+        }
+      ];
     };
 
     extensions = {
@@ -34,14 +43,5 @@
         "vimium-ff@gavinsharp.github.com".install_url = "https://addons.mozilla.org/firefox/downloads/latest/vimium/latest.xpi";
       };
     };
-
-    bookmarks = [
-      {
-        Title = "Github";
-        URL = "https://www.github.com/";
-        Favicon = "https://www.gitub.com/favicon.ico";
-        Placement = "toolbar";
-      }
-    ];
   };
 }

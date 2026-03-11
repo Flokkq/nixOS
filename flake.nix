@@ -48,6 +48,12 @@
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
 
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
+
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
@@ -184,7 +190,6 @@
           ./hosts/linux/${host.name}/configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
             home-manager.backupFileExtension = "bak";
             home-manager.useUserPackages = true;
             home-manager.users.flokkq = import ./hosts/linux/home.nix;
@@ -232,7 +237,6 @@
           }
           home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
             home-manager.backupFileExtension = "bak";
             home-manager.users.flokkq = import ./hosts/darwin/home.nix;
             home-manager.useUserPackages = true;

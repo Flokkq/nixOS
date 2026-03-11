@@ -7,7 +7,7 @@ _:
   #   "${nix-gaming}/modules/pipewireLowLatency.nix"
   # ];
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # make pipewire realtime-capable
   security.rtkit.enable = true;

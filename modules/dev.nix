@@ -19,7 +19,7 @@
     git
     zoxide
     bat
-    neofetch
+    fastfetch
     delta
     ffmpeg
 
@@ -36,7 +36,7 @@
     zellij
 
     # gui
-    jetbrains.idea-ultimate
+    jetbrains.idea
     jetbrains.rider
     jetbrains.datagrip
     jetbrains.rust-rover

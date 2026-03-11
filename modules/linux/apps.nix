@@ -10,6 +10,8 @@
       ghostty
       alacritty
       _1password-gui-beta
+      _1password-cli
+
       # rpi-imager
       wireshark
       ghidra
@@ -22,6 +24,8 @@
       gimp
       foliate
       qpwgraph
+      elephant
+      polkit
 
       # waybar
       waybar

@@ -12,11 +12,6 @@
         email = "webcla21@htl-kaindorf.at";
       };
 
-      signing.signByDefault = true;
-    };
-
-    ignores = ["*~" ".DS_Store" ".direnv"];
-    extraConfig = {
       init.defaultBranch = "main";
 
       core = {
@@ -60,6 +55,10 @@
       };
 
       credential.helper = "!gh auth git-credential";
+
+      signing.signByDefault = true;
     };
+
+    ignores = ["*~" ".DS_Store" ".direnv"];
   };
 }

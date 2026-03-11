@@ -2,8 +2,12 @@
   programs.yazi = {
     enable = true;
     package = pkgs.yazi;
+
     enableBashIntegration = true;
     enableNushellIntegration = true;
+
+    shellWrapperName = "y";
+
     settings = {
       manager = {
         show_hidden = true;

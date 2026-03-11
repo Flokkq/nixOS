@@ -12,7 +12,8 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
+    systemd.enable = true;
+
     settings = {
       monitor = nixlib.generateHyprlandMonitorConfig meta.monitors;
 
@@ -192,21 +193,19 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      windowrulev2 = [
-        "suppressevent maximize, class:.*"
-        "workspace 2, class:ghostty"
-        "workspace 3, class:Google-chrome"
-        "workspace 1, class:vesktop"
-        "workspace 4, class:Spotify"
-        "workspace 5, class:Gimp"
-        "workspace 5, class:.*ghidra.*"
-      ];
+      windowrule = [
+        "suppress_event maximize, match:class .*"
+        "workspace 2, match:class ghostty"
+        "workspace 3, match:class Google-chrome"
+        "workspace 1, match:class vesktop"
+        "workspace 4, match:class Spotify"
+        "workspace 5, match:class Gimp"
+        "workspace 5, match:class .*ghidra.*"
 
-      # windowrule = [
-      #   "float:,class:.waypaper-wrapped"
-      #   "float:,class:waypaper"
-      #   "float:,class:Raspberry Pi Imager"
-      # ];
+        "float on, match:class .waypaper-wrapped"
+        "float on, match:class waypaper"
+        "float on, match:class Raspberry Pi Imager"
+      ];
     };
 
     extraConfig = ''
