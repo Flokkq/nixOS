@@ -3,11 +3,12 @@ _: {
     ./hypr
     ./swaync
     ./waybar
-    ./wofi
+    # ./wofi
 
     ./avizo.nix
     ./grimblast.nix
     ./waypaper.nix
+    ./walker.nix
   ];
 
   services.tailscale-systray.enable = true;

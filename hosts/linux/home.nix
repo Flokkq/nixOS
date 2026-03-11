@@ -1,7 +1,13 @@
-{lib, ...}: {
+{
+  lib,
+  inputs,
+  ...
+}: {
   imports = [
     ../../home
     ../../home/linux
+
+    inputs.walker.homeManagerModules.default
   ];
 
   # Home Manager needs a bit of information about the user and paths

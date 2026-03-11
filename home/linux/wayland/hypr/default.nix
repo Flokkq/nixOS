@@ -102,9 +102,9 @@
 
       bind =
         [
-          "$mainMod, E, exec,  ${lib.getExe pkgs.wofi} --show drun"
-          "$mainMod SHIFT, E, exec, ${lib.getExe pkgs.wofi} --show=run"
-          # "$mainMod, N, exec, bash -lc 'NIXPKGS_ALLOW_UNFREE=1 nix run \"nixpkgs#$(${lib.getExe pkgs.wofi} --dmenu)\" --impure'" # wip, does not work at all
+          "$mainMod, E, exec,  ${lib.getExe pkgs.walker} --hideqa"
+          "$mainMod SHIFT, E, exec, ${lib.getExe pkgs.walker} -m runner --hideqa"
+          "$mainMod, R, exec, ${lib.getExe pkgs.walker} -m calc"
           "$mainMod SHIFT, N, exec, ${pkgs.swaynotificationcenter}/bin/swaync-client -rs && ${pkgs.swaynotificationcenter}/bin/swaync-client -t"
           "$mainMod, Q, exec, ${lib.getExe pkgs.ghostty}"
           "$mainMod, C, killactive"
