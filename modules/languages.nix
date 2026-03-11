@@ -16,6 +16,7 @@
     # language servers
     # ../home/dev/editors/nvim/nvim/lua/plugins/lsp.lua
     ++ [
+      gopls
       zls
       rust-analyzer
       tinymist

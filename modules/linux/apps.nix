@@ -21,6 +21,7 @@
       screenkey
       gimp
       foliate
+      qpwgraph
 
       # waybar
       waybar

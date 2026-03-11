@@ -39,6 +39,7 @@
     jetbrains.idea-ultimate
     jetbrains.rider
     jetbrains.datagrip
+    jetbrains.rust-rover
     vscode
   ];
 }

@@ -1,10 +1,3 @@
-{...}: {
-  programs.obsidian = {
-    enable = true;
-
-    defaultSettings = {
-      communityPlugins = ["Vimrc Support" "Git"];
-      themes = ["Catppuccin"];
-    };
-  };
+_: {
+  programs.obsidian.enable = true;
 }
