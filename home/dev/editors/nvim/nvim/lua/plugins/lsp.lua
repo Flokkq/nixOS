@@ -51,6 +51,11 @@ return {
                     root_dir = require("lspconfig.util").root_pattern("zls.json", "build.zig", ".git"),
                     single_file_support = true,
                 },
+                crates = {
+                    cmd = { 'crates-lsp' },
+                    filetypes = { 'toml' },
+                    root_markers = { 'Cargo.toml', '.git' },
+                },
                 roslyn = {},
                 clangd = {},
                 gopls = {},

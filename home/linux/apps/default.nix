@@ -2,5 +2,6 @@
   imports = [
     ./communication
     ./browsers
+    ./foliate
   ];
 }

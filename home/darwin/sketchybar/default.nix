@@ -1,5 +1,6 @@
 {pkgs, ...}: let
   binaries = import ./c-binaries.nix {inherit pkgs;};
+  lua = pkgs.lua5_5.withPackages (_: [pkgs.sbarlua]);
 in {
   home.file.".config/sketchybar" = {
     source = ./sketchybar;
@@ -7,14 +8,9 @@ in {
     onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
   };
 
-  home.file.".local/share/sketchybar_lua/sketchybar.so" = {
-    source = "${pkgs.sbar-lua}/lib/sketchybar.so";
-    onChange = "${pkgs.sketchybar}/bin/sketchybar --reload";
-  };
-
   home.file.".config/sketchybar/sketchybarrc" = {
     text = ''
-      #!/usr/bin/env ${pkgs.lua54Packages.lua}/bin/lua
+      #!${lua}/bin/lua
       package.path = "./?.lua;./?/init.lua;" .. package.path
       -- Load the sketchybar-package and prepare the helper binaries
       require("helpers")

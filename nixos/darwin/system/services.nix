@@ -1,10 +1,13 @@
 # Services Configuration
-{pkgs, ...}: {
+{pkgs, ...}: let
+  sketchybarLua = pkgs.lua5_5.withPackages (_: [pkgs.sbarlua]);
+in {
   nix.enable = true;
 
   services.sketchybar = {
     enable = true;
     package = pkgs.sketchybar;
+    extraPackages = [sketchybarLua];
   };
 
   services.jankyborders = {

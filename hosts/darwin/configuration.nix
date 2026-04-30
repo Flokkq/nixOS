@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   lib,
   ...
@@ -22,13 +21,6 @@
   system.primaryUser = "flokkq";
 
   nix.settings.trusted-users = ["flokkq"];
-
-  # TODO: fix overlays
-  nixpkgs.overlays = [
-    (_final: prev: {
-      sbar-lua = prev.callPackage ../../pkgs/darwin/sbar-lua.nix {inherit pkgs;};
-    })
-  ];
 
   system.stateVersion = 5;
 }
