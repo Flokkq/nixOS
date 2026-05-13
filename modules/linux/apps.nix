@@ -13,7 +13,7 @@
       _1password-cli
 
       # rpi-imager
-      wireshark
+      # wireshark
       ghidra
       burpsuite
       nautilus

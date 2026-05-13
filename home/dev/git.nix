@@ -6,6 +6,8 @@
   programs.git = {
     enable = true;
 
+    signing.signByDefault = true;
+
     settings = {
       user = {
         name = "Flokkq";
@@ -55,8 +57,6 @@
       };
 
       credential.helper = "!gh auth git-credential";
-
-      signing.signByDefault = true;
     };
 
     ignores = ["*~" ".DS_Store" ".direnv"];

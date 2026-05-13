@@ -2,7 +2,7 @@
   name = "catppuccin-mocha";
   scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   polarity = "dark";
-  wallpaper = ../../wallpapers/nixos.png;
+  wallpaper = ../../wallpapers/nixos-catppuccin-mocha.png;
 
   cursor = {
     package = pkgs.catppuccin-cursors.mochaLavender;

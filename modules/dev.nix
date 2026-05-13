@@ -22,6 +22,8 @@
     fastfetch
     delta
     ffmpeg
+    tree-sitter
+    fd
 
     # tui
     typioca

@@ -1,10 +1,8 @@
-# QT Configuration
-#- <https://wiki.nixos.org/wiki/Qt>
 _: {
-  # Configure QT themes to resemble GTK themes
-  qt = {
+  qt.enable = true;
+
+  stylix.targets.qt = {
     enable = true;
-    # platformTheme = "gtk2";
-    # style = "gtk2";
+    platform = "qtct";
   };
 }

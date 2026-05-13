@@ -1,19 +1,24 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: let
+  colors = config.lib.stylix.colors.withHashtag;
+
   settings = {
-    # theme = "catppuccin-mocha";
     font-size = 12;
-    font-family = ["Monaco" "Hack Nerd Font"];
+
     font-thicken = true;
     font-thicken-strength = 150;
+
     cursor-style = "block";
     cursor-style-blink = false;
     cursor-invert-fg-bg = false;
-    cursor-color = "lightgrey";
-    cursor-text = "black";
+
+    cursor-color = colors.base05;
+    cursor-text = colors.base00;
+
     shell-integration-features = ["no-cursor"];
     scrollback-limit = 100000;
 
@@ -28,7 +33,6 @@
     desktop-notifications = false;
     window-decoration = false;
 
-    # macos-window-shadow = false;
     macos-titlebar-style = "hidden";
   };
 
@@ -37,6 +41,8 @@
     mkKeyValue = lib.generators.mkKeyValueDefault {} " = ";
   };
 in {
+  stylix.targets.ghostty.enable = true;
+
   programs.ghostty = {
     enable = true;
     package =
@@ -45,8 +51,6 @@ in {
       else pkgs.ghostty;
 
     enableZshIntegration = true;
-    # installVimSyntax = true;
-
     inherit settings;
   };
 

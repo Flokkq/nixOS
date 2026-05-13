@@ -75,7 +75,7 @@
     ];
 
     pkgsForLib = import inputs.nixpkgs {
-      # cpu does not matter here since we only use it to build the lib
+      # architecture does not matter here since we only use it to build the lib
       system = "x86_64-linux";
     };
 
@@ -91,7 +91,7 @@
           os = "linux";
           desktop = "wayland";
         };
-        theme = lib.getTheme "catppuccin-mocha";
+        theme = lib.getTheme "gruvbox-dark";
         monitors = [
           {
             name = "HDMI-A-2";

@@ -1,7 +1,5 @@
 {meta, ...}: {
-  config = {
-    stylix = {
-      cursor = meta.theme.cursor or {};
-    };
+  config.stylix = {
+    cursor = meta.theme.cursor or {};
   };
 }
