@@ -2,12 +2,12 @@
   imports = [
     ./shells
     ./editors
-    ./btop
     # ./zellij
     # ./neofetch
     ./bat
     ./yazi
 
+    ./btop.nix
     ./git.nix
     ./tmux.nix
     ./zoxide.nix

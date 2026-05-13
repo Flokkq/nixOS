@@ -36,7 +36,7 @@
       playerctl
 
       # hypr
-      swww
+      awww
       libnotify
       wofi
       hypridle

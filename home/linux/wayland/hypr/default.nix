@@ -90,7 +90,7 @@
         "systemctl --user start hyprland-session.target"
         "nm-applet &"
         "sudo mount -a"
-        "swww init"
+        "awww init"
         "waybar &"
         "[workspace 2 silent] ghostty"
         "[workspace 1 silent] vesktop"

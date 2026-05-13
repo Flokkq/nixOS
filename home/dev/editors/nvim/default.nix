@@ -10,6 +10,8 @@ in {
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    withRuby = true;
+    withPython3 = true;
 
     plugins = with pkgs.vimPlugins; [
       base16-nvim

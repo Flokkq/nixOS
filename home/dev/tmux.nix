@@ -1,4 +1,8 @@
-{config, pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   colors = config.lib.stylix.colors.withHashtag;
 in {
   stylix.targets.tmux.enable = true;

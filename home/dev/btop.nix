@@ -1,13 +1,8 @@
 {...}: {
-  # home.file.".config/btop/themes" = {
-  #   source = ./themes;
-  # };
-
   programs.btop = {
     enable = true;
 
     settings = {
-      # color_theme = "catppuccin_mocha";
       theme_background = true;
       truecolor = true;
       force_tty = false;

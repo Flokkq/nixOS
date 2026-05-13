@@ -17,4 +17,7 @@
 
     ../../../nixos/linux/hardware/gpu/intel.nix
   ];
+
+  fileSystems."/home".neededForBoot = true;
+  system.stateVersion = "24.05";
 }
