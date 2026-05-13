@@ -1,15 +1,8 @@
-{pkgs, ...}: let
-  catppuccin = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "catppuccin";
-    version = "unstable-2023-01-06";
-    src = pkgs.fetchFromGitHub {
-      owner = "dreamsofcode-io";
-      repo = "catppuccin-tmux";
-      rev = "main";
-      sha256 = "sha256-FJHM6LJkiAwxaLd5pnAoF3a7AE1ZqHWoCpUJE0ncCA8=";
-    };
-  };
+{config, pkgs, ...}: let
+  colors = config.lib.stylix.colors.withHashtag;
 in {
+  stylix.targets.tmux.enable = true;
+
   programs.tmux = {
     enable = true;
 
@@ -23,8 +16,6 @@ in {
     shortcut = "C-q";
 
     plugins = with pkgs.tmuxPlugins; [
-      catppuccin
-
       vim-tmux-navigator
       better-mouse-mode
       sensible
@@ -46,9 +37,6 @@ in {
     ];
 
     extraConfig = ''
-      # catppuccin
-      set -g @catppuccin_flavour 'mocha' # or frappe, macchiato, latte
-
       # set-default colorset-option -ga terminal-overrides ",xterm-256color:Tc"
       set -as terminal-features ",xterm-256color:RGB"
       # set-option -sa terminal-overrides ",xterm*:Tc"
@@ -82,6 +70,27 @@ in {
 
       # set vi-mode
       set-window-option -g mode-keys vi
+
+      # Old tmux bar layout, recolored with Stylix.
+      set -g status on
+      set -g status-bg "${colors.base00}"
+      set -g status-justify left
+      set -g status-left-length 100
+      set -g status-right-length 100
+      set -g status-style "fg=${colors.base05},bg=${colors.base00}"
+      set -g message-style "fg=${colors.base0C},bg=${colors.base01},align=centre"
+      set -g message-command-style "fg=${colors.base0C},bg=${colors.base01},align=centre"
+      set -g pane-border-style "fg=${colors.base01}"
+      set -g pane-active-border-style "fg=${colors.base0D}"
+      setw -g window-status-activity-style "fg=${colors.base05},bg=${colors.base00},none"
+      setw -g window-status-separator ""
+      setw -g window-status-style "fg=${colors.base05},bg=${colors.base00},none"
+      set -g status-left ""
+      set -g status-right "#[fg=${colors.base0E},bg=${colors.base00},nobold,nounderscore,noitalics]#[fg=${colors.base00},bg=${colors.base0E},nobold,nounderscore,noitalics] #[fg=${colors.base05},bg=${colors.base01}] #W #{?client_prefix,#[fg=${colors.base08}],#[fg=${colors.base0B}]}#[bg=${colors.base01}]#{?client_prefix,#[bg=${colors.base08}],#[bg=${colors.base0B}]}#[fg=${colors.base00}] #[fg=${colors.base05},bg=${colors.base01}] #S "
+      setw -g window-status-format "#[fg=${colors.base00},bg=${colors.base0D}] #I #[fg=${colors.base05},bg=${colors.base01}] #W "
+      setw -g window-status-current-format "#[fg=${colors.base00},bg=${colors.base09}] #I #[fg=${colors.base05},bg=${colors.base01}] #(echo '#{pane_current_path}' | rev | cut -d'/' -f-2 | rev) "
+      setw -g clock-mode-colour "${colors.base0D}"
+      setw -g mode-style "fg=${colors.base0E},bg=${colors.base03},bold"
 
       # keybindings
       bind-key -T copy-mode-vi v send-keys -X begin-selection

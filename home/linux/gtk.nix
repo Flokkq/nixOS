@@ -1,20 +1,7 @@
-_: {
+{config, ...}: {
   stylix.targets.gtk.enable = true;
   gtk = {
     enable = true;
-
-    # catppuccin = {
-    #   enable = true;
-    #   cursor = {
-    #     enable = true;
-    #     accent = "lavender";
-    #   };
-    #   icon.enable = true;
-    #   flavor = "mocha";
-    #   accent = "pink";
-    #   size = "standard";
-    #   tweaks = ["normal"];
-    # };
 
     gtk3 = {
       bookmarks = [
@@ -29,8 +16,6 @@ _: {
 
       # <https://docs.gtk.org/gtk3/class.Settings.html#properties>
       extraConfig = {
-        gtk-application-prefer-dark-theme = 1;
-
         # Remove the app menu (Minimize / Maximize / Close buttons) from the title bar
         gtk-decoration-layout = "menu:none";
 
@@ -41,10 +26,10 @@ _: {
     };
 
     gtk4 = {
+      theme = config.gtk.theme;
+
       # <https://docs.gtk.org/gtk4/class.Settings.html#properties>
       extraConfig = {
-        gtk-application-prefer-dark-theme = 1;
-
         # Remove the app menu (Minimize / Maximize / Close buttons) from the title bar
         gtk-decoration-layout = "menu:none";
 

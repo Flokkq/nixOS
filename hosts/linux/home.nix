@@ -18,6 +18,12 @@
   targets.genericLinux.enable = true;
 
   home.activation = {
+    removeOldKvantumThemeLink = lib.hm.dag.entryBefore ["linkGeneration"] ''
+      if [ -L "$HOME/.config/Kvantum/Base16Kvantum" ]; then
+        rm -f "$HOME/.config/Kvantum/Base16Kvantum"
+      fi
+    '';
+
     linkDesktopApplications = {
       after = ["writeBoundary" "createXdgUserDirectories"];
       before = [];

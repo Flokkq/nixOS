@@ -1,23 +1,15 @@
 {
-  config,
   lib,
   pkgs,
   ...
 }: let
-  colors = config.lib.stylix.colors.withHashtag;
-
   settings = {
-    font-size = 12;
-
     font-thicken = true;
     font-thicken-strength = 150;
 
     cursor-style = "block";
     cursor-style-blink = false;
     cursor-invert-fg-bg = false;
-
-    cursor-color = colors.base05;
-    cursor-text = colors.base00;
 
     shell-integration-features = ["no-cursor"];
     scrollback-limit = 100000;

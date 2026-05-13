@@ -1,4 +1,16 @@
-{...}: {
-  home.file.".config/vesktop/themes/style.css".text = ''@import url("https://catppuccin.github.io/discord/dist/catppuccin-mocha-pink.theme.css")'';
-  home.file.".config/vesktop/settings/settings.json".source = ../../../apps/communication/vesktop.json;
+{lib, ...}: let
+  vencordSettings = builtins.fromJSON (builtins.readFile ../../../apps/communication/vesktop.json);
+in {
+  programs.vesktop = {
+    enable = true;
+    package = null;
+
+    vencord.settings =
+      vencordSettings
+      // {
+        enabledThemes = lib.mkForce ["stylix.css"];
+        themeLinks = lib.mkForce [];
+        useQuickCss = lib.mkForce false;
+      };
+  };
 }
