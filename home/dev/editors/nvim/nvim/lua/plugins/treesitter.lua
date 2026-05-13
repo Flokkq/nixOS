@@ -1,80 +1,98 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        build = function()
-            require("nvim-treesitter.install").update({ with_sync = true })
-        end,
-        event = { "BufEnter" },
+        branch = "main",
+        lazy = false,
+        build = ":TSUpdate",
         dependencies = {
-            -- Additional text objects for treesitter
-            "nvim-treesitter/nvim-treesitter-textobjects",
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                branch = "main",
+            },
         },
         config = function()
-            ---@diagnostic disable: missing-fields
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
+            local parsers = {
+                "c",
+                "cpp",
+                "rust",
+                "zig",
+                "go",
+                "bash",
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "tsx",
+                "json",
+                "lua",
+                "markdown",
+                "markdown_inline",
+                "nix",
+                "vim",
+                "vimdoc",
+            }
+
+            require("nvim-treesitter").setup({
+                install_dir = vim.fn.stdpath("data") .. "/site",
+            })
+
+            require("nvim-treesitter").install(parsers)
+
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
                     "c",
+                    "cpp",
                     "rust",
                     "zig",
                     "go",
-                    "cpp",
+                    "sh",
                     "bash",
-                    "css",
                     "html",
+                    "css",
+                    "javascript",
+                    "typescript",
+                    "typescriptreact",
                     "json",
                     "lua",
                     "markdown",
-                    "typescript",
+                    "nix",
+                    "vim",
                 },
-                sync_install = false,
-                highlight = {
-                    enable = true,
-                },
-                indent = {
-                    enable = true,
-                },
-                autopairs = {
-                    enable = true,
-                },
-                autotag = {
-                    enable = true,
-                },
-                incremental_selection = {
-                    enable = true,
-                },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-                        keymaps = {
-                            -- You can use the capture groups defined in textobjects.scm
-                            ["aa"] = "@parameter.outer",
-                            ["ia"] = "@parameter.inner",
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
-                            ["ac"] = "@class.outer",
-                            ["ic"] = "@class.inner",
-                        },
+                callback = function(args)
+                    pcall(vim.treesitter.start)
+                    vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end,
+            })
+
+            require("nvim-treesitter-textobjects").setup({
+                select = {
+                    lookahead = true,
+                    keymaps = {
+                        ["aa"] = "@parameter.outer",
+                        ["ia"] = "@parameter.inner",
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["ac"] = "@class.outer",
+                        ["ic"] = "@class.inner",
                     },
-                    move = {
-                        enable = true,
-                        set_jumps = true, -- whether to set jumps in the jumplist
-                        goto_next_start = {
-                            ["]m"] = "@function.outer",
-                            ["]]"] = "@class.outer",
-                        },
-                        goto_next_end = {
-                            ["]M"] = "@function.outer",
-                            ["]["] = "@class.outer",
-                        },
-                        goto_previous_start = {
-                            ["[m"] = "@function.outer",
-                            ["[["] = "@class.outer",
-                        },
-                        goto_previous_end = {
-                            ["[M"] = "@function.outer",
-                            ["[]"] = "@class.outer",
-                        },
+                },
+                move = {
+                    set_jumps = true,
+                    goto_next_start = {
+                        ["]m"] = "@function.outer",
+                        ["]]"] = "@class.outer",
+                    },
+                    goto_next_end = {
+                        ["]M"] = "@function.outer",
+                        ["]["] = "@class.outer",
+                    },
+                    goto_previous_start = {
+                        ["[m"] = "@function.outer",
+                        ["[["] = "@class.outer",
+                    },
+                    goto_previous_end = {
+                        ["[M"] = "@function.outer",
+                        ["[]"] = "@class.outer",
                     },
                 },
             })

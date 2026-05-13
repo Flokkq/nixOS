@@ -54,7 +54,6 @@
     initContent = ''
       export MANPAGER='nvim +Man!'
       export XDG_CONFIG_HOME="$HOME/.config"
-      export EDITOR="nvim"
       DISABLE_UNTRACKED_FILES_DIRTY="true"
       HISTSIZE=999999999
       SAVEHIST=999999999

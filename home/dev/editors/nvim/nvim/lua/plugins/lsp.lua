@@ -2,7 +2,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         event = { "BufReadPost" },
-        cmd = { "LspInfo", "LspInstall", "LspUninstall" },
+        cmd = { "LspInfo" },
         dependencies = {
             -- Install lsp autocompletions
             "hrsh7th/cmp-nvim-lsp",
@@ -51,15 +51,9 @@ return {
                     root_dir = require("lspconfig.util").root_pattern("zls.json", "build.zig", ".git"),
                     single_file_support = true,
                 },
-                crates = {
-                    cmd = { 'crates-lsp' },
-                    filetypes = { 'toml' },
-                    root_markers = { 'Cargo.toml', '.git' },
-                },
-                roslyn = {},
+                -- roslyn = {},
                 clangd = {},
                 gopls = {},
-                haskell_language_server = {},
                 nixd = {
                     settings = {
                         nixd = {
@@ -72,27 +66,6 @@ return {
                 },
                 bashls = {},
                 cssls = {},
-                eslint = {
-                    cmd = { "vscode-eslint-language-server", "--stdio" },
-                    settings = {
-                        format = true,                            -- Ensure ESLint can handle formatting
-                        workingDirectory = { mode = "location" }, -- Use the working directory where `eslint.config.js` resides
-                    },
-                    filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "svelte" },
-                    root_dir = function(fname)
-                        return require("lspconfig.util").root_pattern(
-                            ".eslintrc",
-                            ".eslintrc.js",
-                            ".eslintrc.cjs",
-                            ".eslintrc.json",
-                            ".eslintrc.yaml",
-                            ".eslintrc.yml",
-                            "eslint.config.js",
-                            "eslint.config.mjs",
-                            "eslint.config.cjs"
-                        )(fname) or require("lspconfig.util").find_git_ancestor(fname)
-                    end,
-                },
                 html = {},
                 jsonls = {},
                 lua_ls = {
@@ -119,14 +92,11 @@ return {
 
             -- Iterate over our servers and set them up
             for name, config in pairs(servers) do
-                require("lspconfig")[name].setup({
-                    cmd = config.cmd,
-                    capabilities = capabilities,
-                    filetypes = config.filetypes,
-                    handlers = vim.tbl_deep_extend("force", {}, default_handlers, config.handlers or {}),
-                    on_attach = on_attach,
-                    settings = config.settings,
-                })
+                config.capabilities = capabilities
+                config.handlers = vim.tbl_deep_extend("force", {}, default_handlers, config.handlers or {})
+                config.on_attach = on_attach
+                vim.lsp.config(name, config)
+                vim.lsp.enable(name)
             end
 
             -- Configure borderd for LspInfo ui
@@ -134,9 +104,11 @@ return {
 
             -- Configure diagnostics border
             vim.diagnostic.config({
-                virtual_text = true,
                 float = {
                     border = "rounded",
+                    source = "if_many",
+                    header = "",
+                    prefix = "",
                 },
             })
         end,
