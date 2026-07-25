@@ -12,6 +12,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     systemd.enable = true;
 
     settings = {
@@ -76,7 +77,6 @@
       };
 
       dwindle = {
-        pseudotile = true;
         preserve_split = true;
       };
 
@@ -132,7 +132,6 @@
 
           # Window Management
           "$mainMod, SHIFT P, pseudo"
-          "$mainMod, T, togglesplit"
           "$mainMod, M, fullscreen, 1"
           "$mainMod SHIFT, M, fullscreen, 0"
 

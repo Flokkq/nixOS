@@ -1,4 +1,4 @@
-{config, ...}: {
+_: {
   stylix.targets.gtk.enable = true;
   gtk = {
     enable = true;
@@ -26,8 +26,6 @@
     };
 
     gtk4 = {
-      theme = config.gtk.theme;
-
       # <https://docs.gtk.org/gtk4/class.Settings.html#properties>
       extraConfig = {
         # Remove the app menu (Minimize / Maximize / Close buttons) from the title bar
