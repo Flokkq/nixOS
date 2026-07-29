@@ -11,9 +11,6 @@
     pulseaudio
 
     # gui
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal
-
     xcursorthemes
     xinit
     xinput

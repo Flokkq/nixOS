@@ -1,16 +1,28 @@
 # Services Configuration
 {
+  inputs,
+  lib,
   pkgs,
   meta,
   ...
 }: let
+  hyprlandPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   startupCmd =
     if meta.system.desktop == "wayland"
-    then "Hyprland"
+    then lib.getExe' hyprlandPackage "start-hyprland"
     else "startx";
   enable_xorg =
     meta.system.desktop == "xorg";
 in {
+  environment.sessionVariables = lib.mkIf (meta.system.desktop == "wayland") {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    MOZ_ENABLE_WAYLAND = "1";
+    NIXOS_OZONE_WL = "1";
+    XDG_CURRENT_DESKTOP = "Hyprland";
+    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_SESSION_TYPE = "wayland";
+  };
+
   # For programs like gparted (that requires root permission) to work
   # <https://wiki.nixos.org/wiki/Polkit>
   security.polkit.enable = true;

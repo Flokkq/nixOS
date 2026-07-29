@@ -7,6 +7,7 @@ _: {
 
     ./avizo.nix
     ./grimblast.nix
+    ./showmethekey.nix
     ./waypaper.nix
     ./walker.nix
   ];

@@ -21,6 +21,7 @@
       waypaper
       swaynotificationcenter
       screenkey
+      showmethekey
       gimp
       foliate
       qpwgraph

@@ -12,7 +12,6 @@ _:
   # make pipewire realtime-capable
   security.rtkit.enable = true;
 
-  # pipewire low latency
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -20,16 +19,7 @@ _:
 
     alsa = {
       enable = true;
-      support32Bit = false;
-    };
-
-    extraConfig.pipewire."92-low-latency" = {
-      "context.properties" = {
-        "default.clock.rate" = 48000;
-        "default.clock.quantum" = 32;
-        "default.clock.min-quantum" = 32;
-        "default.clock.max-quantum" = 32;
-      };
+      support32Bit = true;
     };
   };
 }
